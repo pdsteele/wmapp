@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'pg'
+gem 'simplest_auth', '0.3.1'
 
 group :assets do
   gem 'sass-rails',     '~> 3.2.3'
