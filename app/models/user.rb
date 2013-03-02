@@ -1,3 +1,10 @@
 class User < ActiveRecord::Base
-  # attr_accessible :title, :body
+  include SimplestAuth::Model
+
+  validates :email, :presence => true,
+                    :uniqueness => { :case_sensitive => false }
+  validates :password, :confirmation => true
+  validates :password_confirmation, :presence => true
+
+  authenticate_by :email
 end
