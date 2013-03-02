@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-    subject { Factory(:user) }
+    subject { FactoryGirl.build(:user) }
 
     describe "validations" do
         it { should validate_presence_of(:email) }
