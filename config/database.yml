@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  database: wmapp_development
+  pool: 5
+  timeout: 5000
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: wmapp_test
+  pool: 5
+  timeout: 5000
+  host: localhost
