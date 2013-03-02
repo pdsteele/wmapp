@@ -1,0 +1,30 @@
+<h1>Create an account</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited your account from being created:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |mgs| %>
+      <li><%= mgs %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <div class="row">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="row">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="row">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <%= f.submit "Create Account", :class => "btn btn-primary" %>
+<% end %>
