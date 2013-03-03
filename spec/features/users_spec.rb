@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Users" do
-  let!(:user) { FactoryGirl.build(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   describe "when not logged in" do
     it "can sign up with valid info" do
@@ -25,6 +25,17 @@ describe "Users" do
       click_button 'Create Account'
 
       page.should have_content '2 errors prohibited your account from being created:'
+    end
+
+    it "can log in" do
+      visit '/login'
+
+      fill_in 'Email', :with => user.email
+      fill_in 'Password', :with => user.password
+
+      click_button 'Log in'
+
+      page.should have_content 'You are now logged in.'
     end
   end
 end
