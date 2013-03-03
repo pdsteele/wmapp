@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   validates :email, :presence => true,
                     :uniqueness => { :case_sensitive => false },
-                    :format => { :with => /\A([a-z]|\d)+@email.wm.edu\z/ }
+                    :format => { :with => /\A([a-z]|\d)+@email.wm.edu\z/, :message => "You must have a valid William & Mary student email address to register." }
   validates :password, :confirmation => true
   validates :password_confirmation, :presence => true
 
