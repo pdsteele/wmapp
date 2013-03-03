@@ -38,4 +38,14 @@ describe "Users" do
       page.should have_content 'You are now logged in.'
     end
   end
+
+  describe "when logged in" do
+    before { log_in }
+    
+    it "can sign out" do
+      visit '/'
+      click_link 'Log Out'
+      page.should have_content 'You have been signed out.'
+    end
+  end
 end
