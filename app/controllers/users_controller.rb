@@ -17,16 +17,4 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-
-  def password
-  end
-
-  def update
-    if current_user.update_attributes(params[:user])
-      flash[:success] = "Your password has been changed."
-      redirect_to root_url
-    else
-      render "password"
-    end
-  end
 end
