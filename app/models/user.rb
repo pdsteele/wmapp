@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   attr_accessor   :password
 
   validates :email, :presence => true,
-                    :uniqueness => { :case_sensitive => false }
+                    :uniqueness => { :case_sensitive => false },
+                    :format => { :with => /\A([a-z]|\d)+@email.wm.edu\z/ }
   validates :password, :confirmation => true
   validates :password_confirmation, :presence => true
 
