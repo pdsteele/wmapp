@@ -25,6 +25,16 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  
+  <div class="row">
+    <%= f.label :grad_year, "Graduating Class" %><br />
+    <%= f.select(:grad_year, options_for_select(@grad_years)) %>
+  </div>
+  
+  <div class="row">
+    <%= f.label :dorm, "Dorm" %><br />
+    <%= f.select(:dorm, options_for_select(@dorms)) %>
+  </div>
 
   <%= f.submit "Create Account", :class => "btn btn-primary" %>
 <% end %>
