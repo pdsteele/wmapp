@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'pg'
 gem 'simplest_auth', '0.3.1'
 
 group :assets do
@@ -24,9 +23,15 @@ group :development, :test do
   gem 'shoulda-matchers',   '~> 1.4.2'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'pry',                '~> 0.9.12'
+  gem 'sqlite3', '1.3.5'
 end
 
 group :test do
   gem 'capybara', '~> 2.0.2'
   gem 'launchy',  '~> 2.2.0'
 end
+
+group :production do
+    gem 'pg', '0.12.2'
+end
+
