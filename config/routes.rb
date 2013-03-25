@@ -1,5 +1,5 @@
 Wmapps::Application.routes.draw do
-  resources :users, :execpt => [:destroy, :edit]
+  resources :users, :except => [:destroy, :edit]
   resources :sessions, :only => [:new, :create, :destroy]
 
   root :to => 'pages#home'
