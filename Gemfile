@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'simplest_auth', '0.3.1'
-gem 'activeadmin' 
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'sass-rails'
 gem 'meta_search', '>= 1.1.0.pre'
 
