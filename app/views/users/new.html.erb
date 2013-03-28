@@ -12,8 +12,33 @@
   <% end %>
 
   <div class="row">
-    <%= f.label :email %><br />
+    <%= f.label :name, "Name" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="row">
+    <%= f.label :email, "WM Email Address" %><br />
     <%= f.text_field :email %>
+  </div>
+
+  <div class="row">
+    <%= f.label :bannerID, "Banner ID Number (930xxxxxx)" %><br />
+    <%= f.text_field :bannerID %>
+  </div>
+
+  <div class="row">
+    <%= f.label :phone, "Phone Number" %><br />
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="row">
+    <%= f.label :dorm, "Dorm" %><br />
+    <%= f.select(:dorm, options_for_select(@dorms)) %>
+  </div>
+
+  <div class="row">
+    <%= f.label :room, "Room Number" %><br />
+    <%= f.text_field :room %>
   </div>
 
   <div class="row">
@@ -26,15 +51,5 @@
     <%= f.password_field :password_confirmation %>
   </div>
   
-  <div class="row">
-    <%= f.label :grad_year, "Graduating Class" %><br />
-    <%= f.select(:grad_year, options_for_select(@grad_years)) %>
-  </div>
-  
-  <div class="row">
-    <%= f.label :dorm, "Dorm" %><br />
-    <%= f.select(:dorm, options_for_select(@dorms)) %>
-  </div>
-
   <%= f.submit "Create Account", :class => "btn btn-primary" %>
 <% end %>
