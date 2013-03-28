@@ -2,9 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'simplest_auth', '0.3.1'
+gem 'activeadmin' 
+gem 'sass-rails'
+gem 'meta_search', '>= 1.1.0.pre'
 
 group :assets do
-  gem 'sass-rails',     '~> 3.2.3'
+#  gem 'sass-rails',     '~> 3.2.3'
   gem 'coffee-rails',   '~> 3.2.1'
   gem 'uglifier',       '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.3.0.1'
