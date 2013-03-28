@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @grad_years = [2013, 2014, 2015, 2016]
-    @dorms = %w(Dinwiddie Stith Yates Monroe)
+    @dorms = Buildings.all.map(&:name)
   end
 
   def create
