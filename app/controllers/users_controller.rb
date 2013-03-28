@@ -12,7 +12,10 @@ class UsersController < ApplicationController
       self.current_user = @user
       redirect_to @user
     else
-      render :action => 'new'
+        redirect_to signup_path
+        #figure out a way to discriminate between error types?
+        flash[:failure] = "Failed to create account! Did you enter your password correctly and use a WM email?"
+     # render :action => 'new'
     end
   end
 
