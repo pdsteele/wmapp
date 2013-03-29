@@ -9,5 +9,6 @@ class CreateWorkorders < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :workorders, [:user_id, :created_at]
   end
 end

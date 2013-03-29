@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :dorm, :phone, :room, :bannerID
   attr_accessor   :password
 
+  has_many :workorders, dependent: :destroy
+
   before_save { |user| user.email = email.downcase }
 
   

@@ -52,6 +52,8 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
+    bootstrap-will_paginate (0.0.6)
+      will_paginate
     bourbon (3.1.1)
       sass (>= 3.2.0)
       thor
@@ -227,6 +229,7 @@ GEM
     warden (1.2.1)
       rack (>= 1.0)
     websocket (1.0.7)
+    will_paginate (3.0.3)
     xpath (1.0.0)
       nokogiri (~> 1.3)
 
@@ -236,6 +239,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   bootstrap-sass (~> 2.3.0.1)
+  bootstrap-will_paginate (= 0.0.6)
   capistrano
   capistrano-ext
   capybara (~> 2.0.2)
@@ -254,3 +258,4 @@ DEPENDENCIES
   simplest_auth (= 0.3.1)
   sqlite3 (= 1.3.5)
   uglifier (>= 1.0.3)
+  will_paginate (= 3.0.3)
