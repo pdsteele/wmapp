@@ -1,6 +1,6 @@
 class AlterUserStructure < ActiveRecord::Migration
   def change
-    remove_column :users, :grad_year, :integer
+    remove_column :users, :grad_year
     add_column :users, :name, :string
     add_column :users, :phone, :string
     add_column :users, :bannerID, :string
