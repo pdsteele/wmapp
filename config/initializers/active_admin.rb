@@ -206,5 +206,12 @@ ActiveAdmin.setup do |config|
   #
   # config.filters = true
 
+  # config/initializers/active_admin.rb
+  module ActiveAdmin
+    class BaseController
+      with_role :admin
+    end
+  end
+
 
 end

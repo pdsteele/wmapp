@@ -1,55 +1,42 @@
 <h1>Create an account</h1>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited your account from being created:</h2>
-
-    <ul>
-    <% @user.errors.full_messages.each do |mgs| %>
-      <li><%= mgs %></li>
-    <% end %>
-    </ul>
-  <% end %>
-
   <div class="row">
-    <%= f.label :name, "Name" %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="row">
-    <%= f.label :email, "WM Email Address" %><br />
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="row">
-    <%= f.label :bannerID, "Banner ID Number (930xxxxxx)" %><br />
-    <%= f.text_field :bannerID %>
-  </div>
-
-  <div class="row">
-    <%= f.label :phone, "Phone Number" %><br />
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="row">
-    <%= f.label :dorm, "Dorm" %><br />
-    <%= f.select(:dorm, options_for_select(@dorms)) %>
-  </div>
-
-  <div class="row">
-    <%= f.label :room, "Room Number" %><br />
-    <%= f.text_field :room %>
-  </div>
-
-  <div class="row">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="row">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
+    <div class="span6 offset3">
+      <%= form_for @user do |f| %>
+      <%= render 'error_message' %>
   
-  <%= f.submit "Create Account", :class => "btn btn-primary" %>
-<% end %>
+
+
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+  
+
+      <%= f.label :email, "WM Email Address" %>
+      <%= f.text_field :email %>
+
+
+      <%= f.label :bannerID, "Banner ID Number (930xxxxxx)" %>
+      <%= f.text_field :bannerID %>
+
+      <%= f.label :phone, "Phone Number" %>
+      <%= f.text_field :phone %>
+
+  
+      <%= f.label :dorm, "Dorm" %>
+      <%= f.select(:dorm, options_for_select(Buildings.all.map(&:name).sort)) %>
+  
+      <%= f.label :room, "Room Number" %>
+      <%= f.text_field :room %>
+  
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+  
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+  
+  
+      <%= f.submit "Create Account", :class => "btn btn-primary" %>
+  <% end %>
+</div>
+</div>

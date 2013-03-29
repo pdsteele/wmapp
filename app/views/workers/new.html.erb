@@ -1,0 +1,33 @@
+<h1>Create an account</h1>
+
+<%= @worker = Worker.new %>
+
+<%= form_for @worker do |f| %>
+
+  <div class="row">
+    <%= f.label :name, "Name" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="row">
+    <%= f.label :email, "WM Email Address" %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="row">
+    <%= f.label :phone, "Phone Number" %><br />
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="row">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="row">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  
+  <%= f.submit "Create Account", :class => "btn btn-primary" %>
+<% end %>

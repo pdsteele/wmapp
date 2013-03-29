@@ -1,8 +1,8 @@
 class Worker < ActiveRecord::Base
     include SimplestAuth::Model
 
-    attr_accessible :email, :name, :password, :password_confirmation, :phone
-    attr_accessor   :password
+    attr_accessible :email, :name, :phone
+    attr_accessible :email, :name, :password, :password_confirmation, :phone, :crypted_password, as: :admin
 
     before_save { |user| user.email = email.downcase }
 

@@ -8,3 +8,6 @@ Then rails s will load the site
 
 To get the database populated with buildings (in case it gets wiped or anything like that), there is a script in /scripts called addBuildings script. Load the console with "rails c" and then run the command "load("scripts/addBuildingScript.rb")"
 
+Initial admin has credentials:
+admin@example.com
+password
