@@ -8,9 +8,18 @@ class SessionsController < ApplicationController
       self.current_user = user
       flash[:success] = "You are now logged in."
       redirect_to root_url
+
     else
-      flash.now[:error] = "Couldn't find a user with those credentials."
-      render :action => 'new'
+      user = Worker.authenticate(params[:email], params[:password])
+      if user
+        self.current_user = user
+        flash[:success] = "You are now logged in."
+        redirect_to root_url
+
+      else
+        flash.now[:error] = "Couldn't find a user with those credentials."
+        render :action => 'new'
+      end
     end
   end
 

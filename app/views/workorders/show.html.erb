@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @workorder.description %>
+</p>
+
+<p>
+  <b>Building:</b>
+  <%= @workorder.building %>
+</p>
+
+<p>
+  <b>Room:</b>
+  <%= @workorder.room %>
+</p>
+
+<p>
+  <b>Worker:</b>
+  <%= @workorder.worker %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @workorder.state %>
+</p>
+
+
+<%= link_to 'Edit', edit_workorder_path(@workorder) %> |
+<%= link_to 'Back', workorders_path %>

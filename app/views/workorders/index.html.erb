@@ -1,0 +1,31 @@
+<h1>Listing workorders</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Building</th>
+    <th>Room</th>
+    <th>Worker</th>
+    <th>State</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @workorders.each do |workorder| %>
+  <tr>
+    <td><%= workorder.description %></td>
+    <td><%= workorder.building %></td>
+    <td><%= workorder.room %></td>
+    <td><%= workorder.worker %></td>
+    <td><%= workorder.state %></td>
+    <td><%= link_to 'Show', workorder %></td>
+    <td><%= link_to 'Edit', edit_workorder_path(workorder) %></td>
+    <td><%= link_to 'Destroy', workorder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Workorder', new_workorder_path %>
