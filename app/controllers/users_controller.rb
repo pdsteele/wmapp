@@ -11,15 +11,15 @@ class UsersController < ApplicationController
   def create
 
     begin
-    if current_user.admin?
-      @user = User.new(params[:user])
-      if @user.save
-      flash[:success] = "Your account has been successfully created!"
-      redirect_to admin_path 
-      else
-        flash[:failure] = "Failed to create account!"
+      if current_user.admin?
+        @user = User.new(params[:user])
+        if @user.save
+          flash[:success] = "Your account has been successfully created!"
+          redirect_to admin_path 
+        else
+          flash[:failure] = "Failed to create account!"
+        end
       end
-    end
 
     rescue
       @user = User.new(params[:user])
@@ -33,8 +33,6 @@ class UsersController < ApplicationController
         render 'new'
       end
     end
-
-
   end
 
   def show
