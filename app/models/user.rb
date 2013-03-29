@@ -18,5 +18,5 @@ class User < ActiveRecord::Base
   validates :room, :presence => true
   validates :bannerID, :presence => true, :format => { :with => /^930[0-9][0-9][0-9][0-9][0-9][0-9]$/, :message => "Invalid banner ID" }
 
-  authenticate_by :email
+  authenticate_by :email 
 end
