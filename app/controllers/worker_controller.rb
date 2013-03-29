@@ -21,4 +21,3 @@ class WorkerController < ApplicationController
     @worker = Worker.find(params[:id])
   end
 end
-end
