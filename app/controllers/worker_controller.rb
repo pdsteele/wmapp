@@ -13,7 +13,7 @@ class WorkerController < ApplicationController
     else
         #redirect_to signup_path
         #figure out a way to discriminate between error types?
-        flash[:failure] = "Failed to create account! Did you enter your password correctly and use a WM email?"
+        flash[:failure] = "Failed to create account!"
     end
   end
 

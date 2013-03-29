@@ -1,6 +1,15 @@
-<h1><%= @user.email %></h1>
+<h1><%= current_user.name %>'s Workorders</h1>
 
 <div class="row">
-  <strong>Account created:</strong>
-  <%= @user.created_at.strftime("%B %d, %Y") %>
+
+  <div class="span8">
+    <% if current_user.workorders.any? %>
+      <h3><%= current_user.workorders.count %> Total Workorders</h3>
+      <ol class="workorders">
+        <%= render @workorders %>
+      </ol>
+      
+    <% end %>
+  </div>
+
 </div>

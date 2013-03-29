@@ -1,0 +1,37 @@
+<%= form_for(@workorder) do |f| %>
+  <% if @workorder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workorder.errors.count, "error") %> prohibited this workorder from being saved:</h2>
+
+      <ul>
+      <% @workorder.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :building %><br />
+    <%= f.text_field :building %>
+  </div>
+  <div class="field">
+    <%= f.label :room %><br />
+    <%= f.text_field :room %>
+  </div>
+  <div class="field">
+    <%= f.label :worker %><br />
+    <%= f.text_field :worker %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

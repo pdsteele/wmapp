@@ -3,8 +3,12 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :email, :password, :password_confirmation, :dorm, :phone, :room, :bannerID
   attr_accessor   :password
+  attr_accessible :email, :name, :password, :password_confirmation, :dorm, :phone, :room, :bannerID, :crypted_password, as: :admin
+
+  has_many :workorders, dependent: :destroy
 
   before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
 
   
   validates :name, :presence => true
@@ -19,4 +23,11 @@ class User < ActiveRecord::Base
   validates :bannerID, :presence => true, :format => { :with => /^930[0-9][0-9][0-9][0-9][0-9][0-9]$/, :message => "is not a valid banner ID number" }
 
   authenticate_by :email 
+
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
+    
 end

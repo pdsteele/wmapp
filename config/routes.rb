@@ -1,9 +1,11 @@
 Wmapps::Application.routes.draw do
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :users, :except => [:destroy, :edit]
+  resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :workorders, only: [:create, :destroy]
 
   root :to => 'pages#home'
 
