@@ -1,88 +1,88 @@
-Buildings.new("Adair").save
-Buildings.new("Andrews").save
-Buildings.new("Blow").save
-Buildings.new("Bozarth").save
-Buildings.new("Center for Archaeological Research").save
-Buildings.new("Ceramics Studio").save
-Buildings.new("Endocrinology Lab").save
-Buildings.new("Ewell").save
-Buildings.new("ISC1").save
-Buildings.new("ISC2").save
-Buildings.new("James Blair ").save
-Buildings.new("Jones").save
-Buildings.new("Keck").save
-Buildings.new("Law School").save
-Buildings.new("Matoaka Art Studio").save
-Buildings.new("McGlothlin-Street Hall").save
-Buildings.new("Miller").save
-Buildings.new("Millington").save
-Buildings.new("Morton").save
-Buildings.new("PBK Hall").save
-Buildings.new("Prince George House").save
-Buildings.new("Small").save
-Buildings.new("School Of Education").save
-Buildings.new("Tucker").save
-Buildings.new("Tyler").save
-Buildings.new("Washington").save
-Buildings.new("Wren").save
-Buildings.new("Barrett").save
-Buildings.new("Brown").save
-Buildings.new("Bryan").save
-Buildings.new("Cabell").save
-Buildings.new("Camm").save
-Buildings.new("Campus Center").save
-Buildings.new("Chandler ").save
-Buildings.new("Commons Dining Hall").save
-Buildings.new("Dawson").save
-Buildings.new("Dinwiddie").save
-Buildings.new("Dupont").save
-Buildings.new("Fauquier").save
-Buildings.new("Giles").save
-Buildings.new("Gooch").save
-Buildings.new("Graduate Housing Complex").save
-Buildings.new("Harrison").save
-Buildings.new("Hughes").save
-Buildings.new("Hunt").save
-Buildings.new("Jamestown North").save
-Buildings.new("Jamestown South").save
-Buildings.new("Jefferson ").save
-Buildings.new("Landrum").save
-Buildings.new("Lodge 2").save
-Buildings.new("Lodge 4").save
-Buildings.new("Lodge 6").save
-Buildings.new("Lodge 8").save
-Buildings.new("Lodge 10").save
-Buildings.new("Lodge 12").save
-Buildings.new("Lodge 16").save
-Buildings.new("Ludwell Apts").save
-Buildings.new("Madison").save
-Buildings.new("Meridian Coffee House").save
-Buildings.new("Monroe ").save
-Buildings.new("Munford").save
-Buildings.new("Nicholas").save
-Buildings.new("Nicholson").save
-Buildings.new("Old Dominion ").save
-Buildings.new("Page").save
-Buildings.new("Pleasants").save
-Buildings.new("Preston").save
-Buildings.new("Reves Hall").save
-Buildings.new("Sadler Center ").save
-Buildings.new("Sor 1: KKG").save
-Buildings.new("Sor 2: ACO").save
-Buildings.new("Sor 3: CO").save
-Buildings.new("Sor 4: DDD").save
-Buildings.new("Sor 5: PBP").save
-Buildings.new("Sor 6: KD").save
-Buildings.new("Sor 7: DG").save
-Buildings.new("Sor 8: PM").save
-Buildings.new("Sor 9: KAT").save
-Buildings.new("Sor 10: Bozzarth").save
-Buildings.new("Sor 11: GPB").save
-Buildings.new("Sor 12: DP(Mullen)").save
-Buildings.new("Spotswood").save
-Buildings.new("Stith").save
-Buildings.new("Taliaferro").save
-Buildings.new("Tazewell").save
-Buildings.new("Tribe Square").save
-Buildings.new("Units (specify letter in room number)").save
-Buildings.new("Yates").save
+Buildings.new(:name => "Adair").save
+Buildings.new(:name => "Andrews").save
+Buildings.new(:name => "Blow").save
+Buildings.new(:name => "Bozarth").save
+Buildings.new(:name => "Center for Archaeological Research").save
+Buildings.new(:name => "Ceramics Studio").save
+Buildings.new(:name => "Endocrinology Lab").save
+Buildings.new(:name => "Ewell").save
+Buildings.new(:name => "ISC1").save
+Buildings.new(:name => "ISC2").save
+Buildings.new(:name => "James Blair ").save
+Buildings.new(:name => "Jones").save
+Buildings.new(:name => "Keck").save
+Buildings.new(:name => "Law School").save
+Buildings.new(:name => "Matoaka Art Studio").save
+Buildings.new(:name => "McGlothlin-Street Hall").save
+Buildings.new(:name => "Miller").save
+Buildings.new(:name => "Millington").save
+Buildings.new(:name => "Morton").save
+Buildings.new(:name => "PBK Hall").save
+Buildings.new(:name => "Prince George House").save
+Buildings.new(:name => "Small").save
+Buildings.new(:name => "School Of Education").save
+Buildings.new(:name => "Tucker").save
+Buildings.new(:name => "Tyler").save
+Buildings.new(:name => "Washington").save
+Buildings.new(:name => "Wren").save
+Buildings.new(:name => "Barrett").save
+Buildings.new(:name => "Brown").save
+Buildings.new(:name => "Bryan").save
+Buildings.new(:name => "Cabell").save
+Buildings.new(:name => "Camm").save
+Buildings.new(:name => "Campus Center").save
+Buildings.new(:name => "Chandler ").save
+Buildings.new(:name => "Commons Dining Hall").save
+Buildings.new(:name => "Dawson").save
+Buildings.new(:name => "Dinwiddie").save
+Buildings.new(:name => "Dupont").save
+Buildings.new(:name => "Fauquier").save
+Buildings.new(:name => "Giles").save
+Buildings.new(:name => "Gooch").save
+Buildings.new(:name => "Graduate Housing Complex").save
+Buildings.new(:name => "Harrison").save
+Buildings.new(:name => "Hughes").save
+Buildings.new(:name => "Hunt").save
+Buildings.new(:name => "Jamestown North").save
+Buildings.new(:name => "Jamestown South").save
+Buildings.new(:name => "Jefferson ").save
+Buildings.new(:name => "Landrum").save
+Buildings.new(:name => "Lodge 2").save
+Buildings.new(:name => "Lodge 4").save
+Buildings.new(:name => "Lodge 6").save
+Buildings.new(:name => "Lodge 8").save
+Buildings.new(:name => "Lodge 10").save
+Buildings.new(:name => "Lodge 12").save
+Buildings.new(:name => "Lodge 16").save
+Buildings.new(:name => "Ludwell Apts").save
+Buildings.new(:name => "Madison").save
+Buildings.new(:name => "Meridian Coffee House").save
+Buildings.new(:name => "Monroe ").save
+Buildings.new(:name => "Munford").save
+Buildings.new(:name => "Nicholas").save
+Buildings.new(:name => "Nicholson").save
+Buildings.new(:name => "Old Dominion ").save
+Buildings.new(:name => "Page").save
+Buildings.new(:name => "Pleasants").save
+Buildings.new(:name => "Preston").save
+Buildings.new(:name => "Reves Hall").save
+Buildings.new(:name => "Sadler Center ").save
+Buildings.new(:name => "Sor 1: KKG").save
+Buildings.new(:name => "Sor 2: ACO").save
+Buildings.new(:name => "Sor 3: CO").save
+Buildings.new(:name => "Sor 4: DDD").save
+Buildings.new(:name => "Sor 5: PBP").save
+Buildings.new(:name => "Sor 6: KD").save
+Buildings.new(:name => "Sor 7: DG").save
+Buildings.new(:name => "Sor 8: PM").save
+Buildings.new(:name => "Sor 9: KAT").save
+Buildings.new(:name => "Sor 10: Bozzarth").save
+Buildings.new(:name => "Sor 11: GPB").save
+Buildings.new(:name => "Sor 12: DP(Mullen)").save
+Buildings.new(:name => "Spotswood").save
+Buildings.new(:name => "Stith").save
+Buildings.new(:name => "Taliaferro").save
+Buildings.new(:name => "Tazewell").save
+Buildings.new(:name => "Tribe Square").save
+Buildings.new(:name => "Units (specify letter in room number)").save
+Buildings.new(:name => "Yates").save
