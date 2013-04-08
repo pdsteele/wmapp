@@ -2,15 +2,17 @@
 @import "bootstrap-responsive";
 
 body {
-  padding-top: 60px;
+    padding-top: 60px;
+}
+
+.container {
+    left:auto;
+    right:auto;
 }
 
 html {
+    overflow: auto;
     overflow-y: scroll;
-}
-
-body {
-    padding-top: 60px;
 }
 
 section {
