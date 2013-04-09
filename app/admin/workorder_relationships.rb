@@ -4,18 +4,25 @@ ActiveAdmin.register WorkorderRelationship do
     
     
     index do
-		# @worker = Worker.find_by_id(:worker_id)
-# 		puts( "THE id", :worker_id )
-# 		puts( @worker )
+		puts( "THE id", WorkorderRelationship.find_by_worker_id(:worker_id) )
+		puts("----------------------")
+		puts( "#{@worker}" )
+		puts("--------------------")
     	#end
 		column :id                     
-		column :worker_id        
+		column :worker_id
 		column :workorder_id
-		# column "Worker Name" do |worker_name|
-# 			worker_name.find_by_id(params[:worker_id])
-# 			end
+		
+		column "Worker Name" do |workorder_relationship|
+			Worker.find_by_id(workorder_relationship.worker_id)[:name]
+		end
+		
+		column "Requestor" do |workorder_relationship|
+			#this should be refactored at some point :}
+			User.find_by_id( Workorder.find_by_id(workorder_relationship.workorder_id).user_id)[:name]
+		end
 			
-		#column "Worker Name", @worker[:name]
+			
 			
 		#column "Description"
 		#puts(@worker[:name])

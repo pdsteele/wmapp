@@ -18,6 +18,6 @@ class WorkorderRelationship < ActiveRecord::Base
   #validates :worker_id,    presence: true
   validates :workorder_id, presence: true
   
-    puts( "Makes it in workorder relationship" )
+  puts( "Makes it in workorder relationship" )
 
 end
