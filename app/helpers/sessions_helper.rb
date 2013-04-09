@@ -5,8 +5,12 @@ module SessionsHelper
     self.current_user = user
   end
 
-  def signed_in?
-    !current_user.nil?
+  def signed_in_user?
+    !current_user.nil? && current_user.class == User
+  end
+
+  def signed_in_worker?
+    !current_user.nil? && current_user.class == Worker
   end
 
   def current_user=(user)
@@ -14,7 +18,8 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+    @current_user ||= Worker.find_by_remember_token(cookies[:remember_token])
+    @current_user ||= User.find_by_remember_token(cookies[:remember_token]) 
   end
 
   def current_user?(user)
@@ -22,7 +27,7 @@ module SessionsHelper
   end
 
   def signed_in_user
-    unless signed_in?
+    unless signed_in_user?
       store_location
       redirect_to login_url, notice: "Please sign in."
     end
