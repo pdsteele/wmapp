@@ -1,4 +1,7 @@
 class WorkerController < ApplicationController
+  before_filter :signed_in_worker, only: [:edit, :update, :show]
+  before_filter :correct_worker,   only: [:edit, :update, :show]
+
   def new
     @worker = Worker.new
   end
@@ -17,7 +20,31 @@ class WorkerController < ApplicationController
     end
   end
 
+  def edit
+    #@worker = Worker.find(params[:id])
+  end
+
   def show
     @worker = Worker.find(params[:id])
   end
+
+  def update
+    #@worker = Worker.find(params[:id])
+    if @worker.update_attributes(params[:worker])
+      flash[:success] = "Profile updated"
+      sign_in_ @worker
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+      def correct_worker
+        @worker = Worker.find(params[:id])
+        redirect_to(root_path) unless current_user?(@worker)
+      end
+
+
 end

@@ -33,6 +33,13 @@ module SessionsHelper
     end
   end
 
+  def signed_in_worker
+    unless signed_in_worker?
+      store_location
+      redirect_to login_url, notice: "Please sign in."
+    end
+  end
+
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
