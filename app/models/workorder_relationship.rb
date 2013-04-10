@@ -2,7 +2,7 @@
 # Model to create a work order relationship (essentially an assignment). 
 # Idea is that an assignment is created when it is assigned and destroyed
 # when it is cleared
-#
+##
 class WorkorderRelationship < ActiveRecord::Base
 
 
@@ -15,8 +15,9 @@ class WorkorderRelationship < ActiveRecord::Base
   
 
   
-  #validates :worker_id,    presence: true
+  validates :worker_id,    presence: true
   validates :workorder_id, presence: true
+  
   
   puts( "Makes it in workorder relationship" )
 

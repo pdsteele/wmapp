@@ -3,12 +3,65 @@ ActiveAdmin.register WorkorderRelationship do
     
     
     
+    ##
+    # ActiveAdmin uses the InheritedResources gem( see http://railscasts.com/episodes/230-inherited-resources 
+    # or https://github.com/josevalim/inherited_resources).  This means that the new, show, update, etc resource
+    # actions don't have to be explicitly stated in the controller.  We can override this funtionality by 
+    # explicitly listing them in a block that is passed to "controller".  This allows us to do special
+    # actions before and after the RESTful operation is performed.  We are interested in updating 
+    # the "worker" and "state" attributes of workorder after a WorkorderRelation ship is created, 
+    # updated, and destroyed
+    ##
+    
+    
+    controller do
+	  def create #do |new_workorder_relationship|
+
+		create!
+		
+		# everything down here is done after the workorder is created--note that @workorder is defined
+		# in the default create action provided by InheritedResources
+		
+		
+		# what this (hideous)line is supposed to be doing: finding the workorder that was just assigned
+		# and setting its "worker" attribute to the name person to whom it was assigned
+		Workorder.find_by_id(@workorder_relationship.workorder_id).update_attributes(:worker => Worker.find_by_id(@workorder_relationship.worker_id)[:name])
+	  end
+	end
+	
+	 controller do
+	  def destroy
+
+		destroy! do |workorder_relationship|
+		
+		  Workorder.find_by_id(@workorder_relationship.workorder_id).update_attributes(:worker => "None")
+		end
+	  end
+	end
+	
+	
+	controller do
+	  def update #do |new_workorder_relationship|
+
+		update!
+		
+		Workorder.find_by_id(@workorder_relationship.workorder_id).update_attributes(:worker => Worker.find_by_id(@workorder_relationship.worker_id)[:name])
+	  end
+	end
+
+
+	                     
+
+
+# form do |f|                         
+#     f.inputs "Admin Details" do       
+#       f.input :worker
+#       f.input :description#, :as => :select,  :collection => Workorder.all
+#     end                               
+#     f.actions                         
+#   end  
+    
     index do
-		puts( "THE id", WorkorderRelationship.find_by_worker_id(:worker_id) )
-		puts("----------------------")
-		puts( "#{@worker}" )
-		puts("--------------------")
-    	#end
 		column :id                     
 		column :worker_id
 		column :workorder_id
@@ -18,17 +71,10 @@ ActiveAdmin.register WorkorderRelationship do
 		end
 		
 		column "Requestor" do |workorder_relationship|
-			#this should be refactored at some point :}
+			#this could be refactored at some point :}
 			User.find_by_id( Workorder.find_by_id(workorder_relationship.workorder_id).user_id)[:name]
 		end
 			
-			
-			
-		#column "Description"
-		#puts(@worker[:name])
-		# if :worker_id.nil? == false
-# 			column @worker[:name]
-# 		end
 		default_actions                   
     end         
     

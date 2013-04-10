@@ -1,43 +1,64 @@
+
+
+
 ActiveAdmin.register Workorder do
     controller { with_role :admin }  
     
-   actions :index, :show 
    #scope :all
    scope :pending
    scope :in_progress
    scope :completed  
    
-   
-   
-  #  index do
-#     actions do |workorder|
-#     	link_to "Assign "
-#   end
-   
-   show do |ad|
-      attributes_table do
-        row :id
-        row :description 
-        row :building
-        row :room
-        row :worker
-        row :state
+    batch_action :assign do |selection|
+      Workorder.find(selection).each do |post|
+        post.flag! :hot
       end
-      
-      controller do 
-      	def workers
-      		Worker.all
-      	end
-      	panel "Assign" do
-         table_for(workers) do |t|
-         t.column("Building")     {|item|  item.building        }
-         t.column("Description")  {|item|  item.description     }
-        end
-      end
-      
-      active_admin_comments
     end
-   end
+  
+    
+end
+
+
+# ActiveAdmin.register Workorder do
+#     controller { with_role :admin }  
+#     
+#    actions :index, :show 
+#    #scope :all
+#    scope :pending
+#    scope :in_progress
+#    scope :completed  
+#    
+#    
+#    
+#   #  index do
+# #     actions do |workorder|
+# #     	link_to "Assign "
+# #   end
+#    
+#    show do |ad|
+#       attributes_table do
+#         row :id
+#         row :description 
+#         row :building
+#         row :room
+#         row :worker
+#         row :state
+#       end
+#       
+#       controller do 
+#       	def workers
+#       		Worker.all
+#       	end
+#       	panel "Assign" do
+#          table_for(workers) do |t|
+#          t.column("Building")     {|item|  item.building        }
+#          t.column("Description")  {|item|  item.description     }
+#         end
+#       end
+#       
+#       active_admin_comments
+#     end
+#    end
   # show do
 #     panel "Assign" do
 #        table_for(workorder.attribu) do |t|
@@ -71,5 +92,5 @@ ActiveAdmin.register Workorder do
 # 	 	 link_to("Assign", admin_project_assign_path(Workorder))
 #      end
     
-end
+#end
 

@@ -25,6 +25,7 @@ class Worker < ActiveRecord::Base
 	# relationship.  When a worker is deleted his workorders should be too.
 	has_many :workorder_relationships, foreign_key: "worker_id", dependent: :destroy
 	
+	
 	has_many :work_assignments, through: :workorder_relationships #, source: :
 
 
