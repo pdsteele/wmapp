@@ -1,6 +1,8 @@
 ActiveAdmin.register WorkorderRelationship do
     controller { with_role :admin }
     
+        menu :label => "Assignments" # more descriptive than "Workorder Relationships"
+
     
     
     ##
@@ -53,13 +55,13 @@ ActiveAdmin.register WorkorderRelationship do
 	                     
 
 
-# form do |f|                         
-#     f.inputs "Admin Details" do       
+ form do |f|                         
+    f.inputs :title => "Assignment Details"       
 #       f.input :worker
 #       f.input :description#, :as => :select,  :collection => Workorder.all
-#     end                               
-#     f.actions                         
-#   end  
+     #end                               
+     f.actions                         
+   end  
     
     index do
 		column :id                     
