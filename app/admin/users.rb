@@ -8,7 +8,7 @@ ActiveAdmin.register User do
         f.input :email
         f.input :phone
         f.input :bannerID
-        f.input :dorm, :label => "Building"
+        f.input :dorm, :collection => Buildings.order("name ASC").all.map{ |building| [building.name] } 
         f.input :room
         f.input :password
         f.input :password_confirmation
