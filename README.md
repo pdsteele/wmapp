@@ -13,3 +13,9 @@ admin@example.com
 password
 
 
+=======Assigning Workers Branch=============
+
+
+1.  Implemented WorkorderRelationship.rb which will represent the state of a worker being assigned to a workorder
+2.  Made it so that when a WorkorderRelationship is created, destroyed, updated the name of the worker will be changed on the workorder
+

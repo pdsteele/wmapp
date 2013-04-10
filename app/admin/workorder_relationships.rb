@@ -73,8 +73,8 @@ ActiveAdmin.register WorkorderRelationship do
 		end
 		
 		column "Requestor" do |workorder_relationship|
-			#this could be refactored at some point :}
-			User.find_by_id( Workorder.find_by_id(workorder_relationship.workorder_id).user_id)[:name]
+			# This line was working now gives a bug
+			# User.find_by_id( Workorder.find_by_id(workorder_relationship.workorder_id).user_id)[:name]
 		end
 			
 		default_actions                   
