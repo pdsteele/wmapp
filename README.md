@@ -13,3 +13,10 @@ admin@example.com
 password
 
 
+
+====================Assigning-Worker Branch======================
+
+1. Created a WorkorderRelationship model that reflects the state of a worker being assigned to a workorder
+2. Made it so that when a WorkorderRelationship( an assignment) is created, destroyed, or updated, the name of the worker should be changed. 
+3. Other minor changes
+

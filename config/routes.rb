@@ -7,7 +7,12 @@ Wmapps::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+#<<<<<<< HEAD
   resources :workorders, only: [:new, :create, :destroy]
+#=======
+  resources :workorders, only: [:create, :destroy]
+  resources :worker, :only => [:edit, :update, :show]
+#>>>>>>> 527ed5d1ed511ff278790c4b610f0c9b3967d150
 
   root :to => 'pages#home'
 
