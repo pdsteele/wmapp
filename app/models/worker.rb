@@ -7,7 +7,7 @@ class Worker < ActiveRecord::Base
     before_save { |user| user.email = email.downcase }
     before_save :create_remember_token
 
-    #has_many :workorders, dependent: :destroy
+    has_many :workorders, dependent: :destroy
 
   
     validates :name,  :presence => true

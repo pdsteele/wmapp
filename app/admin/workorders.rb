@@ -6,20 +6,20 @@ ActiveAdmin.register Workorder do
     #     f.input :user, :collection => User.order("name ASC").all.map{ |user| [user.name] }
     #     f.input :building, :collection => Buildings.order("name ASC").all.map{ |building| [building.name] } 
     #     f.input :room
-    #     #f.input :worker, :collection => Worker.all
-    #     f.input :state, :collection => ['Pending', 'In Progress', 'Deferred', 'Resolved', 'Closed']
+    #     f.input :worker, :collection => Worker.order("name ASC").all.map{ |user| [user.name] }
+    #     f.input :state, :collection => ['Pending', 'Assigned', 'In Progress', 'Deferred', 'Resolved', 'Closed']
     #     f.input :description
     #   end
     #   f.buttons
     # end
 
     
-   actions :index, :show, :new, :edit, :destroy
-   #scope :all
-   scope :pending
-   scope :in_progress
-   scope :completed  
-   scope :deferred
+   # actions :index, :show, :new, :edit, :destroy
+   # #scope :all
+   # scope :pending
+   # scope :in_progress
+   # scope :completed  
+   # scope :deferred
    
    
    

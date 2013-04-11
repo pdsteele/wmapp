@@ -1,10 +1,10 @@
 class Workorder < ActiveRecord::Base
 
-  before_create :set_state_default #when a work order is created, its default value should be "Pending"
-  before_create :set_worker_to_None
+  before_save :set_state_default #when a work order is created, its default value should be "Pending"
+  #before_create :set_worker
   
-  attr_accessible :building, :description, :room,  :user_id
-  attr_accessible :building, :description, :room, :state, :worker, :user_id, as: :admin #everything accessible as admin
+  attr_accessible :building, :description, :room,  :user_id, :worker_id
+  attr_accessible :building, :description, :room, :state, :worker, :user_id, :worker_id, as: :admin #everything accessible as admin
   
   belongs_to :user
   belongs_to :worker
@@ -18,16 +18,19 @@ class Workorder < ActiveRecord::Base
   
   
   def set_state_default
-  	self.state = "Pending"
+    if (self.worker_id.nil?)
+  	   self.state = "Pending"
+    end
   end
   
-  def set_worker_to_None
-  	self.worker = nil
+  def set_worker
+  	self.worker_id = nil
   end
 	
   #scope :all,         where(  )
-  scope :completed,   where(:state => "Completed")
+  scope :closed,      where(:state => "Closed")
   scope :in_progress, where(:state => "In Progress")
+  scope :assigned,    where(:state => "Assigned")
   scope :pending,     where(:state => "Pending")
   scope :deferred,    where(:state => "Deferred")
 
