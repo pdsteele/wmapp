@@ -6,7 +6,7 @@ class WorkordersController < ApplicationController
   def new
   	@user = current_user
   	@current_user_building = @user[:dorm] # the use shouldn't have to enter their info for building and room
-	@current_user_room     = @user[:room] # we will set these as defaults in the text fields by passing them to the partial
+	  @current_user_room     = @user[:room] # we will set these as defaults in the text fields by passing them to the partial
 
   	@workorder = Workorder.new
   end
@@ -25,9 +25,7 @@ class WorkordersController < ApplicationController
   def create
     @user = current_user
     @current_user_building = @user[:dorm]
-	@current_user_room     = @user[:room]
-    # @workorder[:building] = @user[:building]
-    #@workorder[:room]     = @user[:dorm]
+	  @current_user_room     = @user[:room]
     @workorder = current_user.workorders.build(params[:workorder])
     
     if @workorder.save

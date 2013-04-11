@@ -7,6 +7,7 @@ class Workorder < ActiveRecord::Base
   attr_accessible :building, :description, :room, :state, :worker, :user_id, as: :admin #everything accessible as admin
   
   belongs_to :user
+  belongs_to :worker
   
  # default_value_for :state, "Pending"
   
@@ -21,13 +22,14 @@ class Workorder < ActiveRecord::Base
   end
   
   def set_worker_to_None
-  	self.worker = "None"
+  	self.worker = nil
   end
 	
   #scope :all,         where(  )
   scope :completed,   where(:state => "Completed")
   scope :in_progress, where(:state => "In Progress")
   scope :pending,     where(:state => "Pending")
+  scope :deferred,    where(:state => "Deferred")
 
   default_scope order: 'workorders.created_at DESC'
 end

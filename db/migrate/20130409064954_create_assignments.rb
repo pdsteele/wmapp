@@ -1,8 +1,6 @@
 class CreateAssignments < ActiveRecord::Migration
   def change
-    create_table :assignments do |t|
-
-      t.timestamps
+    drop_table :assignments 
+    drop_table :workorder_relationships   
     end
   end
-end
