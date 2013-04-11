@@ -1,8 +1,13 @@
 class Worker < ActiveRecord::Base
     include SimplestAuth::Model
 
+<<<<<<< HEAD
+    attr_accessible :email, :name, :password, :password_confirmation, :phone
+    attr_accessible :email, :name, :password, :password_confirmation, :phone, :crypted_password, as: :admin
+=======
     attr_accessible :email, :name, :phone, :password, :password_confirmation
     attr_accessible :email, :name, :phone, :password, :password_confirmation, :crypted_password, as: :admin
+>>>>>>> assigning_workers
 
     before_save { |user| user.email = email.downcase }
     before_save :create_remember_token

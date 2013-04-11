@@ -1,5 +1,6 @@
 ActiveAdmin.register Workorder do
     controller { with_role :admin }  
+<<<<<<< HEAD
 
     form do |f|
       f.inputs "Workorder Details" do
@@ -11,6 +12,7 @@ ActiveAdmin.register Workorder do
       f.buttons
     end
 
+=======
     
    actions :index, :show 
    #scope :all
@@ -82,5 +84,6 @@ ActiveAdmin.register Workorder do
 # 	 	 link_to("Assign", admin_project_assign_path(Workorder))
 #      end
     
+>>>>>>> assigning_workers
 end
 

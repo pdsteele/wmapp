@@ -17,21 +17,14 @@
   </div>
   <div class="field">
     <%= f.label :building %><br />
-    <%= f.text_field :building %>
+    <%= f.text_field :building, :value => @current_user_building %> <!--Default text is the current user's building-->
   </div>
   <div class="field">
     <%= f.label :room %><br />
-    <%= f.text_field :room %>
-  </div>
-  <div class="field">
-    <%= f.label :worker %><br />
-    <%= f.text_field :worker %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
+    <%= f.text_field :room, :value => @current_user_room %><!--Default text is the current user's room-->
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
