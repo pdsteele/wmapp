@@ -4,7 +4,9 @@
   <span class="content"><b>Building: </b><%= workorder.building %></span>
   <span class="content"><b>Room: </b><%= workorder.room %></span>
   <span class="content"><b>State: </b><%= workorder.state %></span>
+  <% unless workorder.worker.nil? %> 
   <span class="content"><b>Worker: </b><%= workorder.worker.name %></span>
+  <% end %>
 
   <span class="timestamp">
     Originally created <%= time_ago_in_words(workorder.created_at) %> ago.
