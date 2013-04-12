@@ -3,8 +3,8 @@ class Workorder < ActiveRecord::Base
   before_save :set_state_default #when a work order is created, its default value should be "Pending"
   #before_create :set_worker
   
-  attr_accessible :building, :description, :room,  :user_id, :worker_id
-  attr_accessible :building, :description, :room, :state, :worker, :user_id, :worker_id, as: :admin #everything accessible as admin
+  attr_accessible :building, :description, :room, :state,  :user_id #should remove state when work logs implemented 
+  attr_accessible :building, :description, :room, :state,  :user_id, :worker_id, as: :admin #everything accessible as admin
   
   belongs_to :user
   belongs_to :worker

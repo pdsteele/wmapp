@@ -11,19 +11,36 @@
     </div>
   <% end %>
 
+  <% if @workorder.worker == current_user %>
+    <div class="field"><%= f.label "User name: " %> <b><%= @workorder.user.name %></b></div>
+    <div class="field"><%= f.label "User email: " %> <b><%= @workorder.user.email %></b></div>
+    <div class="field"><%= f.label "User phone: " %> <b><%= @workorder.user.phone %></b></div>
+  <% end %>
+
   <div class="field">
     <%= f.label :building %><br />
-    <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort, :selected => @current_user_building)) %> <!--Default text is the current user's building-->
+    <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort, :selected => @workorder.building)) %> <!--Default text is the current user's building-->
   </div>
   <div class="field">
     <%= f.label :room %><br />
-    <%= f.text_field :room, :value => @current_user_room %><!--Default text is the current user's room-->
+    <%= f.text_field :room, :value => @workorder.room %><!--Default text is the current user's room-->
   </div>
 
+  <% if @workorder.worker == current_user %>
+    <div class="field">
+      <%= f.label :state %><br />
+      <%= f.select(:state, options_for_select(['Pending', 'Assigned','In Progress', 'Deferred', 'Resolved'], :selected => @workorder.state)) %> 
+    </div>
+
+    <div class="field"><%= f.label "Description: " %> <b><%= @workorder.description %></b></div>
+  <% end %>
+
+  <% if @workorder.user == current_user %>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description, :cols => "15", :rows => "8" %>
+    <%= f.text_area :description, :cols => "15", :rows => "8" %> <!-- workers cannot modify the description -->
   </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
