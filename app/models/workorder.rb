@@ -32,6 +32,7 @@ class Workorder < ActiveRecord::Base
 	
   #scope :all,         where(  )
   scope :closed,      where(:state => "Closed")
+  scope :resolved,    where(:state => "Resolved")
   scope :in_progress, where(:state => "In Progress")
   scope :assigned,    where(:state => "Assigned")
   scope :pending,     where(:state => "Pending")
