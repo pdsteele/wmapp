@@ -3,11 +3,9 @@
 
 body {
     padding-top: 60px;
-    overflow-y: auto;
 }
 
 .container {
-    position: relative;
     left:auto;
     right:auto;
     overflow-y: auto;
@@ -23,7 +21,6 @@ section {
 
 textarea {
     resize: vertical;
-    overflow-y: auto;
 }
 
 .center {
