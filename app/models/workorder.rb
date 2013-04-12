@@ -20,7 +20,10 @@ class Workorder < ActiveRecord::Base
   def set_state_default
     if (self.worker_id.nil?)
   	   self.state = "Pending"
+    elsif (!self.worker_id.nil? && self.state == "Pending")
+       self.state = "Assigned"
     end
+
   end
   
   def set_worker

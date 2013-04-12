@@ -36,6 +36,14 @@ class WorkordersController < ApplicationController
     end
   end
 
+  def show
+    @workorder = Workorder.find(params[:id])
+  end
+
+  def edit
+    @workorder = Workorder.find(params[:id])
+  end
+
   def destroy
     #@user = User.find(params[:id])
     @workorder.destroy

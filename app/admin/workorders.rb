@@ -1,17 +1,17 @@
 ActiveAdmin.register Workorder do
     controller { with_role :admin }  
 
-    # form do |f|
-    #   f.inputs "Workorder Details" do
-    #     f.input :user, :collection => User.order("name ASC").all.map{ |user| [user.name] }
-    #     f.input :building, :collection => Buildings.order("name ASC").all.map{ |building| [building.name] } 
-    #     f.input :room
-    #     f.input :worker, :collection => Worker.order("name ASC").all.map{ |user| [user.name] }
-    #     f.input :state, :collection => ['Pending', 'Assigned', 'In Progress', 'Deferred', 'Resolved', 'Closed']
-    #     f.input :description
-    #   end
-    #   f.buttons
-    # end
+    form do |f|
+      f.inputs "Workorder Details" do
+        f.input :user, :collection => User.order("name ASC").all.map{ |user| [user.name, user.id] }
+        f.input :building, :collection => Buildings.order("name ASC").all.map{ |building| [building.name] } 
+        f.input :room
+        f.input :worker, :collection => Worker.order("name ASC").all.map{ |worker| [worker.name, worker.id] }
+        f.input :state, :collection => ['Pending', 'Assigned', 'In Progress', 'Deferred', 'Resolved', 'Closed']
+        f.input :description
+      end
+      f.buttons
+    end
 
     
    # actions :index, :show, :new, :edit, :destroy

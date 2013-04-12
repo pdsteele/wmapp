@@ -6,8 +6,8 @@ Wmapps::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :worker, :only => [:edit, :update, :show]
-  resources :workorders, only: [:new, :create, :destroy]
-
+  resources :workorders
+  
   root :to => 'pages#home'
 
   match '/login',   :to => 'sessions#new'
