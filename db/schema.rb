@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-#ActiveRecord::Schema.define(:version => 20130409060932) do
-#=======
-#ActiveRecord::Schema.define(:version => 20130409064954) do
-#>>>>>>> 527ed5d1ed511ff278790c4b610f0c9b3967d150
-#=======
 ActiveRecord::Schema.define(:version => 20130411210236) do
-#>>>>>>> 95d5e105a3aceed2a9f57b0e96ac11fb1dc68ce5
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -86,6 +78,13 @@ ActiveRecord::Schema.define(:version => 20130411210236) do
   end
 
   add_index "workers", ["remember_token"], :name => "index_workers_on_remember_token"
+
+  create_table "workorder_relationships", :force => true do |t|
+    t.integer  "worker_id"
+    t.integer  "workorder_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "workorders", :force => true do |t|
     t.string   "description"

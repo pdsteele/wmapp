@@ -23,6 +23,8 @@ class Worker < ActiveRecord::Base
 
     authenticate_by :email 
 
+
+
 	##
 	# each worker can have multiple workorders and, hence, multiple workorder relationships.
 	# we state thtat the foreign_key is the workorder_id since this should uniquely identify each 

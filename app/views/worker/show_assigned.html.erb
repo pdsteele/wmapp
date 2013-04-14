@@ -6,9 +6,8 @@
     <% if current_user.workorders.any? %>
       <h3><%= current_user.workorders.where(:state => "Assigned").count %> Assigned Workorders</h3>
       <ol class="workorders">
-        <%= render @workorders %>
+        <%= render @workorders %> <!--renders _workorder.html.erb-->
       </ol>
-      
     <% end %>
   </div>
 

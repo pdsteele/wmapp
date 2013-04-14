@@ -17,6 +17,14 @@
     <span class="content"><b>Worker: </b><%= workorder.worker.name %></span>
   <% end %>
 
+
+
+   <!--Default is POST-->
+  <%= button_to "Accept", workorder_path(workorder.id), :method => :get%>
+
+
+  <%= button_to "Defer" , '/deferral'%> 
+
   <span class="timestamp">
     Originally created <%= time_ago_in_words(workorder.created_at) %> ago.
   </span>

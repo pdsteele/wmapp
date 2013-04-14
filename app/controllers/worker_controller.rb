@@ -48,6 +48,13 @@ class WorkerController < ApplicationController
   def show_in_progress
     @workorders = current_user.workorders.where(:state => "In Progress")
   end
+  
+  
+  def show_deferral_form
+  	@worker = current_user
+  end
+  
+ 
 
   private
 
