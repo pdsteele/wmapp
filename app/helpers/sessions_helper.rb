@@ -22,6 +22,17 @@ module SessionsHelper
     @current_user ||= User.find_by_remember_token(cookies[:remember_token]) 
   end
 
+  def all_workorders
+    @current_user ||= Worker.find_by_remember_token(cookies[:remember_token]) 
+    workorders = current_user.workorders
+  end
+
+
+  def assigned_workorders
+    @worker ||= Worker.find_by_remember_token(cookies[:remember_token]) 
+    @workorders ||= @worker.workorders.where(:state => "Assigned")
+  end
+
   def current_user?(user)
     user == current_user
   end

@@ -1,10 +1,10 @@
 <h1><%= current_user.name %>'s Workorders</h1>
-<h5>Click on 'Workorder Details' to check out updates and to append notes for Facilities Management!</h5>
+<h5>These are the workorders you are currently working on</h5>
 
 <div class="row">
   <div class="span8">
     <% if current_user.workorders.any? %>
-      <h3><%= current_user.workorders.count %> Workorders</h3>
+      <h3><%= current_user.workorders.where(:state => "In Progress").count %> Workorders in Progress</h3>
       <ol class="workorders">
         <%= render @workorders %>
       </ol>

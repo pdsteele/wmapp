@@ -25,7 +25,8 @@ class WorkerController < ApplicationController
   end
 
   def show
-    @worker = Worker.find(params[:id])
+    #@worker = Worker.find(params[:id])
+      @workorders = @worker.workorders
   end
 
   def update
@@ -37,6 +38,15 @@ class WorkerController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def show_assigned
+    #@worker = Worker.find(params[:id])
+    @workorders = current_user.workorders.where(:state => "Assigned")
+  end
+
+  def show_in_progress
+    @workorders = current_user.workorders.where(:state => "In Progress")
   end
 
   private

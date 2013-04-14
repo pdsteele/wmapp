@@ -1,6 +1,6 @@
 <h1>Editing workorder</h1>
 
-<%= render 'form' %>
+<%= render 'form', :locals => { :current_user_building => @current_user_building, :current_user_room => @current_user_room} %>
 
 <%= link_to 'Show', @workorder %> |
-<%= link_to 'Back', workorders_path %>
+<%= link_to 'Back', @user %>

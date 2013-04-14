@@ -1,0 +1,15 @@
+<h1><%= current_user.name %>'s Assigned Workorders</h1>
+<h5>Accept or defer workorders here</h5>
+
+<div class="row">
+  <div class="span8">
+    <% if current_user.workorders.any? %>
+      <h3><%= current_user.workorders.where(:state => "Assigned").count %> Assigned Workorders</h3>
+      <ol class="workorders">
+        <%= render @workorders %>
+      </ol>
+      
+    <% end %>
+  </div>
+
+</div>
