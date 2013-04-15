@@ -29,6 +29,7 @@ Wmapps::Application.routes.draw do
   match '/deferral', :to => 'worker#show_deferral_form'
   
   match '/accepted_workorder', :to => 'worker#show_accepted_workorder'
+  match '/deferred_workorder', :to => 'worker#show_deferred_workorder'
   
   #match '/clients/:status' => 'clients#index', :foo => "bar" 
 end

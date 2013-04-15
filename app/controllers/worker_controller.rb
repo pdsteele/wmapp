@@ -59,7 +59,7 @@ class WorkerController < ApplicationController
     flash[:success] = "You have accepted the following workorder!"
   	@workorder = Workorder.find(params[:workorder_id])
   	
-  	# worker needs to have access to state attribute here, hence second argument
+  	# worker needs to have access to state attribute here, hence second argument of update_attributes
 	Workorder.find(params[:workorder_id]).update_attributes({:state => "In Progress"}, :as => :admin)  	
   end
   
@@ -67,7 +67,7 @@ class WorkerController < ApplicationController
   def show_deferred_workorder
   	flash[:notice] = "You have deferred the following workorder!"
   	@workorder = Workorder.find(params[:workorder_id])
-	Workorder.find(params[:workorder_id]).update_attributes(:state => "Deferred", :as => :admin) 
+	Workorder.find(params[:workorder_id]).update_attributes({:state => "Deferred"}, :as => :admin) 
   end
   
 

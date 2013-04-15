@@ -21,7 +21,6 @@ ActiveAdmin.register_page "Dashboard" do
     end
   end
 
-	puts("FIRST BLOCK")
 
   section "Deferred Workorders" do
     table_for Workorder.where(:state => 'Deferred') do |t|
@@ -38,7 +37,6 @@ ActiveAdmin.register_page "Dashboard" do
   end
 
 
-	puts ("SECOND BLOCK")
 
   section "Worker Stats" do
     table_for Worker.all do |t|
@@ -48,7 +46,6 @@ ActiveAdmin.register_page "Dashboard" do
     end
   end 
 
-puts("THIRD BLOCK")
   section "Unassigned Workorders" do
     table_for Workorder.where(:state => 'Pending') do |t|
       t.column("Updated") { |workorder| time_ago_in_words(workorder.updated_at)+" ago" }
@@ -64,7 +61,6 @@ puts("THIRD BLOCK")
 end
 
 
-puts("FOURTH BLOCK")
 
   #show deferred workorders
 
