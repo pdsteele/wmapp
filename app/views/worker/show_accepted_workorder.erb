@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<span class="content"><b>User: </b><%= @workorder.user.name %></span>
+    <span class="content"><b>Email: </b><%= @workorder.user.email %></span>
+    <span class="content"><b>Phone: </b><%= @workorder.user.phone %></span>
+
+  <span class="content"><b>Description: </b><%= @workorder.description %></span>
+  <span class="content"><b>Building:    </b><%= @workorder.building %></span>
+  <span class="content"><b>Room:        </b><%= @workorder.room %></span>
+  
+    <span class="content"><b>State: </b><%= @workorder.state %></span>
+  
+  <% unless @workorder.worker.nil? %> 
+    <span class="content"><b>Worker: </b><%= @workorder.worker.name %></span>
+  <%end%>
+  <span class="timestamp">
+    Originally created <%= time_ago_in_words(@workorder.created_at) %> ago ||
+  </span>
+  <span class="timestamp">
+    Last Updated <%= time_ago_in_words(@workorder.updated_at) %> ago
+  </span>
+  

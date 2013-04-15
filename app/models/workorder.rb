@@ -6,6 +6,7 @@ class Workorder < ActiveRecord::Base
   #attr_accessible :building, :description, :room, :state,  :user_id #should remove state when work logs implemented 
   attr_accessible :building, :description, :room, :state,  :user_id, :worker_id, as: :admin #everything accessible as admin
   
+  
   belongs_to :user
   belongs_to :worker
   

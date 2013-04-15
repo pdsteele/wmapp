@@ -18,12 +18,10 @@
   <% end %>
 
 
-
-   <!--Default is POST-->
-  <%= button_to "Accept", workorder_path(workorder.id), :method => :get%>
-
-
-  <%= button_to "Defer" , '/deferral'%> 
+  <% if (current_user.class == Worker) and (workorder.state == "Assigned") %>
+    <%= button_to "Accept", accepted_workorder_path(:workorder_id => workorder.id)%>
+    <%= button_to "Defer" , '/deferral'%> 
+  <% end %>
 
   <span class="timestamp">
     Originally created <%= time_ago_in_words(workorder.created_at) %> ago.
