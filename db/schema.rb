@@ -79,13 +79,6 @@ ActiveRecord::Schema.define(:version => 20130411210236) do
 
   add_index "workers", ["remember_token"], :name => "index_workers_on_remember_token"
 
-  create_table "workorder_relationships", :force => true do |t|
-    t.integer  "worker_id"
-    t.integer  "workorder_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
   create_table "workorders", :force => true do |t|
     t.string   "description"
     t.string   "building"

@@ -10,8 +10,6 @@ class Workorder < ActiveRecord::Base
   belongs_to :user
   belongs_to :worker
   
-  has_one :workorder_relationship # a workorder should only be assigned to one worker at a time
-  
  # default_value_for :state, "Pending"
   
   validates :description, presence: true

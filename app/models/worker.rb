@@ -1,8 +1,6 @@
 class Worker < ActiveRecord::Base
     include SimplestAuth::Model
 
-
-#>>>>>>> 527ed5d1ed511ff278790c4b610f0c9b3967d150
     attr_accessible :email, :name, :phone, :password, :password_confirmation
     attr_accessible :email, :name, :phone, :password, :password_confirmation, :crypted_password, as: :admin
 
