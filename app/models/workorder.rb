@@ -9,6 +9,7 @@ class Workorder < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :worker
+  has_many :worklog
   
  # default_value_for :state, "Pending"
   
@@ -24,8 +25,7 @@ class Workorder < ActiveRecord::Base
     elsif (!self.worker_id.nil? && self.state == "Pending")
        self.state = "Assigned"
     end
-
-  end
+  end #end function 
   
   def set_worker
   	self.worker_id = nil

@@ -56,6 +56,7 @@ class WorkordersController < ApplicationController
 
   def destroy
     #@user = User.find(params[:id])
+    @workorder = Workorder.find(params[:id])
     @workorder.destroy
   end
 

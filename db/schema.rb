@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411210236) do
+ActiveRecord::Schema.define(:version => 20130417022205) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(:version => 20130411210236) do
   end
 
   add_index "workers", ["remember_token"], :name => "index_workers_on_remember_token"
+
+  create_table "worklogs", :force => true do |t|
+    t.string   "state"
+    t.string   "description"
+    t.boolean  "fac_man_only"
+    t.string   "name"
+    t.integer  "workorder_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "worklogs", ["workorder_id", "created_at"], :name => "index_worklogs_on_workorder_id_and_created_at"
 
   create_table "workorders", :force => true do |t|
     t.string   "description"

@@ -19,12 +19,16 @@
 
   <!--Display buttons here only if current_user is a worker and the workorder is in 'Assigned' state-->
   <% if (current_user.class == Worker) and (workorder.state == "Assigned") %>
-    <%= button_to "Accept", accepted_workorder_path(:workorder_id => workorder.id)%>
-	<%= button_to "Defer",  deferred_workorder_path(:workorder_id => workorder.id)%>
-
-
-    <!-- button_to "Defer" , '/deferral' -->
+    <% @workorder = workorder %>
+    <% @worklog = workorder.worklog.new(params[:worklog]) %><br />
+    <%= render 'accept_workorder' %> 
+    
   <% end %>
+
+  <% if (current_user.class == Worker) and (workorder.state == "In Progress") %>
+    <% @worklog = workorder.worklog.new %> 
+    <%= render 'accept_workorder' %> 
+  <% end %> <!-- end conditional --> 
 
   <span class="timestamp">
     Originally created <%= time_ago_in_words(workorder.created_at) %> ago.
@@ -32,4 +36,4 @@
   <span class="timestamp">
     Last Updated <%= time_ago_in_words(workorder.updated_at) %> ago.
   </span>
-</li>
+</li> 

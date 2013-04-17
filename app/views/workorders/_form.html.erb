@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <% if @workorder.worker == current_user %>
+  <% if @workorder.worker == current_user %> <!-- what is displayed for workers --> 
     <div class="field"><%= f.label "User name: " %> <b><%= @workorder.user.name %></b></div>
     <div class="field"><%= f.label "User email: " %> <b><%= @workorder.user.email %></b></div>
     <div class="field"><%= f.label "User phone: " %> <b><%= @workorder.user.phone %></b></div>
@@ -32,7 +32,7 @@
 
     <div class="field"><%= f.label "Description: " %> <b><%= @workorder.description %></b></div>
 
-  <% else %>
+  <% else %> <!-- what is displayed to users --> 
       <div class="field">
         <%= f.label :building %><br />
         <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort, :selected => current_user.dorm)) %> <!--Default text is the current user's building-->
@@ -47,7 +47,7 @@
       <%= f.label :description %><br />
       <%= f.text_area :description, :cols => "15", :rows => "8" %> <!-- workers cannot modify the description -->
     </div>
-  <% end %>
+  <% end %> <!-- end if --> 
 
   <div class="actions">
     <%= f.submit %>

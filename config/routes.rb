@@ -5,19 +5,11 @@ Wmapps::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-#<<<<<<< HEAD
-#<<<<<<< HEAD
-#  resources :workorders, only: [:new, :create, :destroy]
-#=======
-#  resources :workorders, only: [:create, :destroy]
-#  resources :worker, :only => [:edit, :update, :show]
-#>>>>>>> 527ed5d1ed511ff278790c4b610f0c9b3967d150
-
-#=======
   resources :worker, :only => [:edit, :update, :show]
-  resources :workorders
+  resources :workorders do
+    resources :worklogs
+  end
   
-#>>>>>>> 95d5e105a3aceed2a9f57b0e96ac11fb1dc68ce5
   root :to => 'pages#home'
 
   match '/login',   :to => 'sessions#new'
