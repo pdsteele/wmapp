@@ -2,15 +2,15 @@
       <%= render 'worklog_error_message' %>
 
       <div class="field">
-        <%= f.label "Explain why you are re-opening this workorder" %><br />
+        <%= f.label "Explain why you are canceling this workorder" %><br />
         <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
       </div>
 
-      <%= f.hidden_field :state, :value => "Reopened" %> 
+      <%= f.hidden_field :state, :value => "Resolved" %> 
 
       <%= f.hidden_field :fac_man_only, :value => false %>
       
       <div class="actions">
-        <%= f.submit "Re-open Workorder" %>
+        <%= f.submit "Cancel Workorder" %>
       </div>
 <% end %> <!-- end form --> 

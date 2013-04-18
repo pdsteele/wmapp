@@ -17,7 +17,11 @@ class WorklogsController < ApplicationController
         if (@worklog.save)
             flash[:success] = "Workorder updated!"
             @workorder.state = @worklog.state #updates work order whenever worklog is created 
+            @workorder.updated_at = @worklog.updated_at #update 'updated' time for workorder 
             @workorder.save
+            redirect_back_or current_user
+        else
+            flash[:error] = "Cannot submit blank update"
             redirect_back_or current_user
         end
         #render 'worker/show_assigned'

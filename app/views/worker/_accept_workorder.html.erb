@@ -1,4 +1,5 @@
 <%= form_for([@workorder,@worklog]) do |f| %>
+      <%= render 'worklog_error_message' %>
 
       <div class="field">
           <%= f.label :state %><br />
@@ -13,6 +14,6 @@
       <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to true in controller if deferred --> 
       
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Accept/Defer Workorder" %>
       </div>
 <% end %>

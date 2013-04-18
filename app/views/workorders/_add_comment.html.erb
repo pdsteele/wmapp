@@ -1,16 +1,22 @@
 <%= form_for([@workorder,@worklog]) do |f| %>
+      <%= render 'worklog_error_message' %>
+      
+      <% if current_user.class == Worker %> 
+        <div class="field">
+            <%= f.label "Hide from User?" %><br />
+            <%= f.select(:fac_man_only, options_for_select([false, true])) %> <!--allow workers to choose to hide a comment from the user -->
+        </div>
+      <% else %>
+        <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to false no matter what for users--> 
+      <% end %> 
 
       <div class="field">
-          <%= f.label :state %><br />
-          <%= f.select(:state, options_for_select(["In Progress", "Deferred"])) %> <!--Default text is the current user's building-->
+        <%= f.label "Comment/Update" %><br />
+        <%= f.text_area :description, :cols => "15", :rows => "5" %> <!--Default text is the current user's building-->
       </div>
 
-      <div class="field">
-        <%= f.label "If accepting, input approximate time/date that you will fix it --- If deferring, input your reason why." %><br />
-        <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
-      </div>
 
-      <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to true in controller if deferred --> 
+      <%= f.hidden_field :state, :value => @workorder.state %> <!-- inherit state from workorder --> 
       
       <div class="actions">
         <%= f.submit %>

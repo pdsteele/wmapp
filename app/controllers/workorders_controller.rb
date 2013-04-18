@@ -48,6 +48,7 @@ class WorkordersController < ApplicationController
 
   def show
     @workorder = Workorder.find(params[:id])
+    store_location
   end
 
   def edit

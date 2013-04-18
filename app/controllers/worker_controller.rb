@@ -43,7 +43,7 @@ class WorkerController < ApplicationController
 
   def show_assigned
     #@worker = Worker.find(params[:id])
-    @workorders = current_user.workorders.where(:state => "Assigned")
+    @workorders = current_user.workorders.where(:state => "Assigned", :state => "Reopened") #also shows workorders that were resolved but reopened 
     store_location 
     
     if (!@worklog.nil? and @worklog.save)
@@ -71,25 +71,25 @@ class WorkerController < ApplicationController
   end
   
   
-  def show_deferral_form
-  	@worker = current_user
-  end
+  # def show_deferral_form
+  # 	@worker = current_user
+  # end
   
  
-  def show_accepted_workorder
-    flash[:success] = "You have accepted the following workorder!"
-  	@workorder = Workorder.find(params[:workorder_id])
+  # def show_accepted_workorder
+  #   flash[:success] = "You have accepted the following workorder!"
+  # 	@workorder = Workorder.find(params[:workorder_id])
   	
-  	# worker needs to have access to state attribute here, hence second argument of update_attributes
-	  Workorder.find(params[:workorder_id]).update_attributes({:state => "In Progress"}, :as => :admin)  	
-  end
+  # 	# worker needs to have access to state attribute here, hence second argument of update_attributes
+	 #  Workorder.find(params[:workorder_id]).update_attributes({:state => "In Progress"}, :as => :admin)  	
+  # end
   
   
-  def show_deferred_workorder
-  	flash[:notice] = "You have deferred the following workorder!"
-  	@workorder = Workorder.find(params[:workorder_id])
-	  #Workorder.find(params[:workorder_id]).update_attributes({:state => "Deferred"}, :as => :admin) 
-  end
+  # def show_deferred_workorder
+  # 	flash[:notice] = "You have deferred the following workorder!"
+  # 	@workorder = Workorder.find(params[:workorder_id])
+	 #  #Workorder.find(params[:workorder_id]).update_attributes({:state => "Deferred"}, :as => :admin) 
+  # end
   
 
   private
