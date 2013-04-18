@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def show
     #@user = User.find(params[:id])
     @workorders = current_user.workorders#.paginate(page: params[:page])
+    store_location 
   end
 
   def edit

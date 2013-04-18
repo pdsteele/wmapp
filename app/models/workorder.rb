@@ -35,9 +35,10 @@ class Workorder < ActiveRecord::Base
   scope :closed,      where(:state => "Closed")
   scope :resolved,    where(:state => "Resolved")
   scope :in_progress, where(:state => "In Progress")
+  scope :reopened,    where(:state => "Reopened")
   scope :assigned,    where(:state => "Assigned")
   scope :pending,     where(:state => "Pending")
   scope :deferred,    where(:state => "Deferred")
 
-  default_scope order: 'workorders.created_at DESC'
+  default_scope order: 'workorders.updated_at DESC'
 end

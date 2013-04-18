@@ -1,12 +1,11 @@
 <%= form_for([@workorder,@worklog]) do |f| %>
-
       <div class="field">
           <%= f.label :state %><br />
-          <%= f.select(:state, options_for_select(["Resolved"])) %> <!--Default text is the current user's building-->
+          <%= f.select(:state, options_for_select(["Reopened"])) %> <!--re-open ticket to deferred state --> 
       </div>
-      
+
       <div class="field">
-        <%= f.label "Provide details on the work completed" %><br />
+        <%= f.label "Explain why you are re-opening this workorder" %><br />
         <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
       </div>
 

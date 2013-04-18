@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       user = Worker.authenticate(params[:email], params[:password])
       if user #&& user.authenticate(params[:session][:password])
         sign_in_ user
-        redirect_to root_url
+        redirect_to current_user
         #self.current_user = user
         flash[:success] = "Welcome! Please check your queued work orders and remember to be friendly!"
         #redirect_to root_url

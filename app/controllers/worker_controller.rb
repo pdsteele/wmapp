@@ -27,6 +27,7 @@ class WorkerController < ApplicationController
   def show
     #@worker = Worker.find(params[:id])
       @workorders = @worker.workorders
+      store_location 
   end
 
   def update
@@ -43,12 +44,14 @@ class WorkerController < ApplicationController
   def show_assigned
     #@worker = Worker.find(params[:id])
     @workorders = current_user.workorders.where(:state => "Assigned")
+    store_location 
     
     if (!@worklog.nil? and @worklog.save)
       flash[:success] = "Update complete!"
       render 'show_assigned'
       #redirect_to :back #reloads page 
-    #else
+    else
+      render 'show_assigned'
       #flash[:notice] = "Error occurred, please try again" 
       #redirect_to :back
     end
@@ -57,13 +60,13 @@ class WorkerController < ApplicationController
 
   def show_in_progress
     @workorders = current_user.workorders.where(:state => "In Progress")
+    store_location 
 
     if (!@worklog.nil? and @worklog.save)
-      #flash[:success] = "Update complete!"
-      redirect_to :back #reloads page
+      flash[:success] = "Update complete!"
+      render 'show_in_progress'
     else
-      flash[:notice] = "Error occurred, please try again" 
-      #redirect_to :back
+      render 'show_in_progress'
     end
   end
   

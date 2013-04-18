@@ -21,4 +21,6 @@ class Worklog < ActiveRecord::Base
     #decide whether to inherit state here or upon creation
   end #end function
 
+  default_scope order: 'worklogs.updated_at DESC'
+
 end

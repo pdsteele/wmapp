@@ -10,13 +10,17 @@ class WorklogsController < ApplicationController
         @worklog = @workorder.worklog.new(params[:worklog])
         @worklog.name = current_user.name
 
+        if (@worklog.state == "Deferred")
+            @worklog.fac_man_only = true
+        end
+
         if (@worklog.save)
-            flash[:success] = @worklog.description
-            @workorder.state = @worklog.state
+            flash[:success] = "Workorder updated!"
+            @workorder.state = @worklog.state #updates work order whenever worklog is created 
             @workorder.save
+            redirect_back_or current_user
         end
         #render 'worker/show_assigned'
-        redirect_to root_path
     end
 
     def index

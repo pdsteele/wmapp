@@ -1,3 +1,4 @@
+<h1>Workorder Details</h1>
 <p id="notice"><%= notice %></p>
 
 <!-- Will add in work log features here, don't forget to accordingly modify edit, depending on work log capabilities -->
@@ -10,14 +11,32 @@
   <span class="content"><b>Description: </b><%= @workorder.description %></span>
   <span class="content"><b>Building: </b><%= @workorder.building %></span>
   <span class="content"><b>Room: </b><%= @workorder.room %></span>
-  <% if @workorder.state == "Deferred" %>
+
+  <!-- override deferred state to hide from user --> 
+  <% if (@workorder.state == "Deferred" and current_user.class == User) %>
     <span class="content"><b>State: </b>Pending</span>
   <% else %>
     <span class="content"><b>State: </b><%= @workorder.state %></span>
   <% end %> 
+
   <% unless @workorder.worker.nil? %> 
     <span class="content"><b>Worker: </b><%= @workorder.worker.name %></span>
   <% end %>
+
+  <!-- show latest worklog description if a worklog exists -->
+  <% if (!workorder.worklog.last.nil?) %>
+    <spac class="content"><b>Latest Update: </b><%= workorder.worklog.last.description %></span>
+  <% end %>
+
+  <h2>Workorder Updates and Comments</h2>
+  <h3>Add new comments below to provide Facilities Management with more information (e.g. alternate phone number, good times to visit, new/strange occurrences) </h3> 
+  <!-- render worklog creation with state inherited from workorder - if worker show option to hide from user -->
+  <!-- display form to resolve workorder if current_user is a worker and the workorder is 'In Progress' state --> 
+  <% @worklog = @workorder.worklog.new(params[:worklog]) %><br />
+  <%= render 'add_comment' %> 
+
+
+  <!-- show worklogs if any exist -->
 
   <span class="timestamp">
     Originally created <%= time_ago_in_words(@workorder.created_at) %> ago ||
@@ -27,5 +46,5 @@
   </span>
   <br>
 
-<%= link_to 'Edit', edit_workorder_path(@workorder) %> |
+<!-- <%= link_to 'Edit', edit_workorder_path(@workorder) %> | --> 
 <%= link_to 'Back', @user %>
