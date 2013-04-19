@@ -91,6 +91,13 @@ ActiveRecord::Schema.define(:version => 20130417022205) do
 
   add_index "worklogs", ["workorder_id", "created_at"], :name => "index_worklogs_on_workorder_id_and_created_at"
 
+  create_table "workorder_relationships", :force => true do |t|
+    t.integer  "worker_id"
+    t.integer  "workorder_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "workorders", :force => true do |t|
     t.string   "description"
     t.string   "building"

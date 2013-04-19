@@ -7,7 +7,7 @@ class WorklogsController < ApplicationController
     def create
         #@workorder = @worklog.workorder_id
         @workorder = Workorder.find(params[:workorder_id])
-        @worklog = @workorder.worklog.new(params[:worklog])
+        @worklog  = @workorder.worklog.new(params[:worklog])
         @worklog.name = current_user.name
 
         if (@worklog.state == "Deferred")
@@ -43,3 +43,6 @@ class WorklogsController < ApplicationController
         @worklog = Worklog.find(params[:id])
     end #end function
 end
+
+
+

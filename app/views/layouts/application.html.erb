@@ -15,10 +15,11 @@
         <%= value %>
         <a class="close" data-dismiss="alert" href="#">&times;</a>
       </div>
-    <% end %>
-    <div class="span10">
-      <%= yield %>
-    </div>
+    <% end %> 
   </div>
+<!--fix to scrolling issues made by moving this section in a new div-->
+  <div class="span10"> 
+      <%= yield %> <!--main section-->
+    </div>
 </body>
 </html>

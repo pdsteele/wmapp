@@ -3,16 +3,26 @@
 
 body {
     padding-top: 60px;
+    position: absolute;
 }
 
 .container {
     left:auto;
     right:auto;
     overflow-y: auto;
+    overflow-x: hidden;
 }
+
+.scrollable {
+    height: 100%;
+    overflow: auto;
+}
+
 
 html {
     overflow-y: auto;
+    overflow-x: hidden;
+
 }
 
 section {

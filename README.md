@@ -14,9 +14,8 @@ password
 
 
 
-====================Assigning-Worker Branch======================
+====================Scrolling Fixed ======================
 
-1. Created a WorkorderRelationship model that reflects the state of a worker being assigned to a workorder
-2. Made it so that when a WorkorderRelationship( an assignment) is created, destroyed, or updated, the name of the worker should be changed. 
-3. Other minor changes
+1. Made a small change to appliation.html.erb that allowed scrolling (entire page isn't attached to navbar).
+2. Had to move a line "config.time_zone = 'Eastern Time (US & Canada)'" in the file config/environment.rb to config/environments/development.rb because I couldn't migrate the database otherwise.
 
