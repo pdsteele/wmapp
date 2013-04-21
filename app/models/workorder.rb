@@ -9,7 +9,7 @@ class Workorder < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :worker
-  has_many :worklog
+  has_many :worklogs
   
  # default_value_for :state, "Pending"
   
