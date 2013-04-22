@@ -1,45 +1,54 @@
-<h1>Sign up!</h1>
-<h2>Create an account here to submit work orders to WM Facilities Management!</h2>
-<h2>You must use a valid WM email address and Banner ID number</h2>
+<div class="row-fluid; position: absolute; overflow-y: auto;">
+    <div class="span8 offset2">
+      <h1>Sign up!</h1>
+      <h2>Create an account here to submit work orders to WM Facilities Management!</h2>
+      <h2>You must use a valid WM email address and Banner ID number</h2>
 
-  <div class="row">
-    <div class="span6 offset3">
       <%= form_for @user do |f| %>
-      <%= render 'error_message' %>
-  
+        <%= render 'shared/error_message' %>
+
+        <div class="field">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email, "WM Email Address" %>
+          <%= f.text_field :email %>
+        </div>
+
+        <div class="field">
+          <%= f.label :bannerID, "Banner ID Number (930xxxxxx)" %>
+          <%= f.text_field :bannerID %>
+        </div>
+
+        <div class="field">
+          <%= f.label :phone, "Phone Number" %>
+          <%= f.text_field :phone %>
+        </div>
+
+        <div class="field">
+          <%= f.label :dorm, "Dorm" %>
+          <%= f.select(:dorm, options_for_select(Buildings.all.map(&:name).sort)) %>
+        </div>
+
+        <div class="field">
+          <%= f.label :room, "Room Number" %>
+          <%= f.text_field :room %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
 
 
-      <%= f.label :name, "Name" %>
-      <%= f.text_field :name %>
-  
+        <div class="field">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </div>
 
-      <%= f.label :email, "WM Email Address" %>
-      <%= f.text_field :email %>
-
-
-      <%= f.label :bannerID, "Banner ID Number (930xxxxxx)" %>
-      <%= f.text_field :bannerID %>
-
-      <%= f.label :phone, "Phone Number" %>
-      <%= f.text_field :phone %>
-
-  
-      <%= f.label :dorm, "Dorm" %>
-      <%= f.select(:dorm, options_for_select(Buildings.all.map(&:name).sort)) %>
-  
-      <%= f.label :room, "Room Number" %>
-      <%= f.text_field :room %>
-  
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-  
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-  
-      <div class="row" id="button">
-      <%= f.submit "Create Account", :class => "btn btn-primary" %>
+        <%= f.submit "Create Account", :class => "btn btn-primary" %>
+      <% end %>
     </div>
-  <% end %>
-</div>
 </div>

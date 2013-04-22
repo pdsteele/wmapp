@@ -10,15 +10,9 @@ describe User do
         it { should validate_confirmation_of(:password) }
         it { should validate_presence_of(:password_confirmation) }
         it { should validate_presence_of(:dorm) }
-        it { should validate_presence_of(:grad_year) }
-
-        describe "graduating year" do
-          it "should allow valid years" do
-            (2013..2016).to_a.each do |year|
-              should allow_value(year).for(:grad_year)
-            end
-          end
-        end
+        it { should validate_presence_of(:room) }
+        it { should validate_presence_of(:bannerID) }
+        it { should have_many(:workorders) }
 
         context "when email format is valid" do
             valid_emails.each do |email|

@@ -6,9 +6,9 @@ def log_in
 end
 
 def valid_emails
-  %w[jake@email.wm.edu jonstewart@email.wm.edu tj@email.wm.edu]
+  %w[jake@email.wm.edu jonstewart@email.wm.edu tj@email.wm.edu staff@wm.edu prof@cs.wm.edu mathprof@math.wm.edu]
 end
 
 def invalid_emails
-  %w[jake@gmail.com willsmith oldie@wm.edu]
+  %w[jake@gmail.com willsmith]
 end
