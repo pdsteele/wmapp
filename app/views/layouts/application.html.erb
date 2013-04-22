@@ -10,6 +10,9 @@
 <body>
   <div class="container">
     <%= render "layouts/navbar" %>
+
+    <div class="visible-desktop" id="topspace"></div>
+
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>">
         <%= value %>
