@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <%= render :partial => "layouts/navbar" %>
   <div class="container">
-    <%= render "layouts/navbar" %>
 
     <div class="visible-desktop" id="topspace"></div>
 
@@ -19,9 +19,7 @@
         <a class="close" data-dismiss="alert" href="#">&times;</a>
       </div>
     <% end %>
-    <div class="span10">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </div>
 </body>
 </html>
