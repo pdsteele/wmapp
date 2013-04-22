@@ -1,7 +1,8 @@
 Wmapps::Application.routes.draw do
-
-   devise_for :admin_users, ActiveAdmin::Devise.config
+  root :to => 'pages#home'
   ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
@@ -10,7 +11,6 @@ Wmapps::Application.routes.draw do
     resources :worklogs
   end
   
-  root :to => 'pages#home'
 
   match '/login',   :to => 'sessions#new'
   match '/logout',  :to => 'sessions#destroy', via: :delete
