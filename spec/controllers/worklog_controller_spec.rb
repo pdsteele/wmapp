@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe WorklogController do
+describe WorklogsController do
 
 end
