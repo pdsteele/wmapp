@@ -22,6 +22,10 @@ Wmapps::Application.routes.draw do
   
   match '/accepted_workorder', :to => 'worker#show_accepted_workorder'
   match '/deferred_workorder', :to => 'worker#show_deferred_workorder'
+
+  match '/admin/workorders/:id(.:format)/assign', :to => 'admin/workorders#assign_workorder'
+  match '/admin/workorders/:id(.:format)/resolve', :to => 'admin/workorders#resolve_workorder'
+  match '/admin/workorders/:id/respond_to_comment/:worklog_id(.:format)', :to => 'admin/workorders#respond_to_comment', :as => 'respond_to_comment'
   
   #match '/clients/:status' => 'clients#index', :foo => "bar" 
 end

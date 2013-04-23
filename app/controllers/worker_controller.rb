@@ -43,7 +43,7 @@ class WorkerController < ApplicationController
 
   def show_assigned
     #@worker = Worker.find(params[:id])
-    @workorders = current_user.workorders.where(:state => "Assigned", :state => "Reopened") #also shows workorders that were resolved but reopened 
+    @workorders = current_user.workorders.where(:state => ["Assigned", "Reopened"]) #also shows workorders that were resolved but reopened 
     store_location 
     
     if (!@worklog.nil? and @worklog.save)
