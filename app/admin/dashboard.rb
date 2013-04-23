@@ -39,10 +39,11 @@ ActiveAdmin.register_page "Dashboard" do
 
   section "Worker Stats" do
     table_for Worker.all do |t|
-      t.column("Name") { |worker| link_to worker.name, admin_worker_path(worker.id) }
-      t.column("Number of Currently Assigned Workorders") { |worker| Workorder.where(:worker_id => worker.id, :state => "Assigned").size + Workorder.where(:worker_id => worker.id, :state => "In Progress").size }
-      t.column("Workorders Completed To Date") { |worker| Workorder.where(:worker_id => worker.id, :state => "Resolved").size + Workorder.where(:worker_id => worker.id, :state => "Closed").size }
-    end
+            t.column("Name") { |worker| link_to worker.name, admin_worker_path(worker.id) }
+            t.column("Number of Currently Assigned Workorders") { |worker| Workorder.where(:worker_id => worker.id, :state => "Assigned").size + Workorder.where(:worker_id => worker.id, :state => "In Progress").size }
+            t.column("Workorders Completed in Last Month") { |worker| Workorder.where(:worker_id => worker.id, :state => "Resolved").size + Workorder.where(:worker_id => worker.id, :state => "Closed").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
+            t.column("Workorders Reopened in Last Month") {|worker| Worklog.where(:worker_id => worker.id, :state => "Reopened").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
+    end #end table
   end 
 
   section "Unassigned Workorders" do

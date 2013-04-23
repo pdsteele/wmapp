@@ -29,6 +29,19 @@ ActiveAdmin.register Workorder do
         render 'form'
       end
 
+
+      #show worker stats panel if assigning
+      if (@worklogs_visible.first.state == 'Pending' or @worklogs_visible.first.state == 'Deferred' or @worklogs_visible.first.state == 'Reopened')
+        panel "Worker Stats" do
+          table_for Worker.all do |t|
+            t.column("Name") { |worker| link_to worker.name, admin_worker_path(worker.id) }
+            t.column("Number of Currently Assigned Workorders") { |worker| Workorder.where(:worker_id => worker.id, :state => "Assigned").size + Workorder.where(:worker_id => worker.id, :state => "In Progress").size }
+            t.column("Workorders Completed in Last Month") { |worker| Workorder.where(:worker_id => worker.id, :state => "Resolved").size + Workorder.where(:worker_id => worker.id, :state => "Closed").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
+            t.column("Workorders Reopened in Last Month") {|worker| Worklog.where(:worker_id => worker.id, :state => "Reopened").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
+          end #end table
+        end #end panel
+      end #end if
+
       panel "Comments and Updates" do
         table_for @worklogs_visible do |t|
           t.column("Author") { |worklog| worklog.name }
@@ -42,7 +55,6 @@ ActiveAdmin.register Workorder do
           t.column("Delete Update") { |worklog| link_to "Delete", admin_workorder_worklog_path(worklog.workorder_id, worklog), :method => :delete, :data => {:confirm => "Are you sure?"} }
         end #end table
       end #end panel
-
 
     end #end show override 
 
@@ -77,7 +89,7 @@ ActiveAdmin.register Workorder do
         @workorder = Workorder.find(params[:id])
         @worklog = @workorder.worklogs.new(params[:worklog])
         @worklogs_visible = @workorder.worklogs.all
-        @unsolicitedworklog = @workorder.worklogs.find(params[:worklog_id])#where(:unsolicited => true)
+        @unsolicitedworklog = @workorder.worklogs.find(params[:worklog_id])
 
         @unsolicitedworklog.unsolicited = false
 
