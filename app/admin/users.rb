@@ -36,7 +36,7 @@ ActiveAdmin.register User do
                 t.column("Created") { |workorder| time_ago_in_words(workorder.created_at)+" ago" }
                 t.column("Last Updated") { |workorder| time_ago_in_words(workorder.updated_at)+" ago" }
                 t.column("State") { |workorder| workorder.state }
-                t.column("Worker") { |workorder| link_to workorder.worker.name, admin_worker_path(workorder.worker_id) }
+                t.column("Worker") { |workorder| workorder.worker ? (link_to workorder.worker.name, admin_worker_path(workorder.worker_id)) : 'NONE' }
                 t.column("Description") { |workorder| workorder.description }
                 t.column("Link") { |workorder| link_to "Show Workorder", admin_workorder_path(workorder.id) }
             end #end table 

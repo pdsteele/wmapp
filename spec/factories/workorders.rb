@@ -2,10 +2,12 @@
 
 FactoryGirl.define do
   factory :workorder do
-    description "MyString"
-    building "MyString"
-    room "MyString"
-    worker "MyString"
-    state "MyString"
+    description "Fix Janet's toilet"
+    building "dinwiddie"
+    room "201"
+    state "Assigned"
+    worker { FactoryGirl.build(:worker) }
+    user { FactoryGirl.build(:user) }
+    worklogs { [FactoryGirl.build(:worklog)] }
   end
 end

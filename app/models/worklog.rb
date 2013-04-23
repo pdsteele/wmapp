@@ -15,7 +15,7 @@ class Worklog < ActiveRecord::Base
   validates :name, presence: true
   validates_presence_of :workorder
 
-  default_scope order: 'worklogs.updated_at DESC'
+  default_scope order: 'worklogs.created_at DESC'
 
   def set_default_state
       self.state = self.workorder.state 
@@ -36,17 +36,23 @@ class Worklog < ActiveRecord::Base
           self.unsolicited = false
       end 
 
-      #sets new state in workorder, or inherits one if blank
+      #inherits state if blank
       if (self.state.nil?)
         self.state = self.workorder.state
       
       elsif (self.state != self.workorder.state) 
-        # WORKORDER INHERITS STATE FROM WORKLOG
+        # WORKORDER INHERITS STATE AND WORKER FROM WORKLOG
         self.workorder.state = self.state
-        self.workorder.save
-      end #end if 
 
-      #sets new worker in workorder if it has changed
+        if (!self.worker_id.nil?) #only inherits non-nil workers during a state change 
+          self.workorder.worker_id = self.worker_id
+          self.workorder.worker = self.worker
+        end #end inner if 
+
+        self.workorder.save
+      end #end outer if 
+
+      #sets new worker in workorder if it has changed, but state has now 
       if ((!self.worker_id.nil?) and (self.worker_id != self.workorder.worker_id))
         self.workorder.worker_id = self.worker_id
         self.workorder.worker = self.worker

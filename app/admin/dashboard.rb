@@ -30,7 +30,7 @@ ActiveAdmin.register_page "Dashboard" do
     
     column do #starts column in this row 
       panel "Unassigned Workorders" do
-        table_for Workorder.where(:state => 'Pending') do |t|
+        table_for Workorder.where(:worker_id => nil) do |t|
           t.column("Created") { |workorder| time_ago_in_words(workorder.created_at)+" ago" }
           t.column("User") { |workorder| link_to User.where(:id => workorder.user_id).first.name, admin_user_path(workorder.user_id) }
           t.column("Building") { |workorder| workorder.building }
@@ -93,7 +93,7 @@ ActiveAdmin.register_page "Dashboard" do
   columns do #new row
     column do #new column
       panel "Inactive Resolved Workorders" do
-        table_for Workorder.where(:state => 'Resolved') do |t| #.find(:all, :conditions => ["updated_at < ?", 3.days.ago]) do |t| #shows resolved workorders that haven't been touched in at least 3 days
+        table_for Workorder.where(:state => 'Resolved').find(:all, :conditions => ["updated_at <= ?", 2.days.ago]) do |t| #shows resolved workorders that haven't been touched in at least 2 days
           t.column("Updated") { |workorder| time_ago_in_words(workorder.updated_at)+" ago" }
           t.column("User") { |workorder| link_to User.where(:id => workorder.user_id).first.name, admin_user_path(workorder.user_id) }
           t.column("Email") { |workorder| User.where(:id => workorder.user_id).first.email }

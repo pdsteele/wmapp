@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :worklog do
-    state "MyString"
-    description "MyString"
+    state "Pending"
+    description "Worklog of Jenny's toilet"
     fac_man_only false
-    name "MyString"
+    name "Steve"
     workorder_id 1
   end
 end

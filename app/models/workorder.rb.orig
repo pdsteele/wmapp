@@ -3,14 +3,19 @@ class Workorder < ActiveRecord::Base
   before_save :set_state_default #when a work order is created, its default value should be "Pending"
 
   
-  attr_accessible :building, :description, :room, :state, :user_id  
+  attr_accessible :building, :description, :room, :state, :user_id #should remove state when work logs implemented 
   attr_accessible :building, :description, :room, :state, :user_id, :worker_id, as: :admin #everything accessible as admin
   
   
   belongs_to :user
   belongs_to :worker
+<<<<<<< HEAD
   has_many :worklogs, dependent: :destroy
+=======
+  has_many :worklogs
+>>>>>>> 049820c0f7d5fcbedaa0baaea99606b144f69183
   
+ # default_value_for :state, "Pending"
   
   validates :description, presence: true
   validates :building,    presence: true
@@ -31,20 +36,15 @@ class Workorder < ActiveRecord::Base
   protected 
     def set_state_default
 
-      # #gets set to pending if no worker exists, unless user cancels or reopens
-      #COMMENTED OUT BECAUSE IT BREAKS CERTAIN CASES -> strange and not worth the time 
-      # if (self.worker_id.nil? && (self.state == "In Progress" || self.state == "Assigned" || self.state == "Deferred"))
-    	 #   self.state = "Pending"
-      # #changing a workorder to pending will reset the worker
-      # elsif (!self.worker_id.nil? && self.state == "Pending") 
-      #    self.worker_id = nil
-      #    self.worker = nil
-      # end
+      if (self.worker_id.nil?)
+    	   self.state = "Pending"
+      elsif (!self.worker_id.nil? && self.state == "Pending")
+         self.state = "Assigned"
+      end
 
-      #state SHOULD NEVER BE NIL - adopt it from a worklog or set it to pending 
       if (self.state.nil?)
-        if (!self.worklogs.first.nil?)
-          self.state = self.worklogs.first.state
+        if (!self.worklog.first.nil?)
+          self.state = self.worklog.first.state
         else
           self.state = "Pending"
         end #end inner if

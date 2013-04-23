@@ -17,7 +17,7 @@ ActiveAdmin.register Workorder do
           row("Building") { |workorder| workorder.building }
           row("Room") { |workorder| workorder.room }
           row("State") { |workorder| workorder.state }
-          row("Worker") { |workorder| workorder.worker ? workorder.worker : 'NONE' } 
+          row("Worker") { |workorder| workorder.worker ? (link_to workorder.worker.name, admin_worker_path(workorder.worker_id)) : 'NONE' } 
           row("User Description") { |workorder| workorder.description }
           row("Last Updated") { |workorder| time_ago_in_words(workorder.updated_at)+" ago" }
           row("Originally Created") { |workorder| time_ago_in_words(workorder.created_at)+" ago" }
@@ -32,7 +32,7 @@ ActiveAdmin.register Workorder do
 
 
       #show worker stats panel if assigning
-      if (@worklogs_visible.first.state == 'Pending' or @worklogs_visible.first.state == 'Deferred' or @worklogs_visible.first.state == 'Reopened')
+      if (@worklogs_visible.size == 0 or (@worklogs_visible.first.state == 'Pending' or @worklogs_visible.first.state == 'Deferred' or @worklogs_visible.first.state == 'Reopened'))
         panel "Worker Stats" do
           table_for Worker.all do |t|
             t.column("Name") { |worker| link_to worker.name, admin_worker_path(worker.id) }
@@ -44,11 +44,12 @@ ActiveAdmin.register Workorder do
         end #end panel
       end #end if
 
+
       panel "Comments and Updates" do
         table_for @worklogs_visible do |t|
           t.column("Author") { |worklog| worklog.name }
           t.column("Date Created") { |worklog| worklog.created_at.strftime("%b. %d %Y   %I:%M %p") }
-          t.column("Assigned Worker") { |worklog| worklog.worker ? worklog.worker.name : 'N/A' }
+          t.column("Assigned Worker") { |worklog| worklog.worker ? (link_to worklog.worker.name, admin_worker_path(workorder.worker_id)) : 'N/A' }
           t.column("State") {|worklog| worklog.state }
           t.column("Comment/Update") { |worklog| worklog.description }
           t.column("Hidden From User") { |worklog| status_tag (worklog.fac_man_only ? "true" : "false"), (worklog.fac_man_only ? :error : :ok) }

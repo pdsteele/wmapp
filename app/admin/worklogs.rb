@@ -25,8 +25,10 @@ ActiveAdmin.register Worklog do
                 @worklog.fac_man_only = false
             end
 
-            if (@worklog.worker.nil?)
+            #this may lead to questionable behavior - inherits worker from workorder if nil 
+            if (@worklog.worker_id.nil? || @worklog.worker.nil?)
                 @worklog.worker_id = @workorder.worker_id
+                @worklog.worker = @workorder.worker
             end
 
             #allow blank description in cases of changing assignment
@@ -53,7 +55,7 @@ ActiveAdmin.register Worklog do
             @workorder = Workorder.find(params[:workorder_id])
             @worklog = @workorder.worklogs.find(params[:id])
 
-            @workorder.state = @workorder.worklogs.all[1].state #gets second oldest worklog's state
+            @workorder.state = @workorder.worklogs.all[1].state #gets second newest worklog's state
 
             if (@worklog.destroy and @workorder.save)
                 flash[:error] = "Update has been deleted and workorder has been updated!"

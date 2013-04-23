@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 05f454e98ba70890bd9d1675dbd724e9da011c11
+  revision: 9339da6cfe9895f7a9cc2a922f4056f1296856f9
   specs:
     activeadmin (0.6.0)
       arbre (>= 1.0.1)
@@ -54,7 +54,7 @@ GEM
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.6)
       will_paginate
-    bourbon (3.1.1)
+    bourbon (3.1.4)
       sass (>= 3.2.0)
       thor
     bourne (1.1.2)
