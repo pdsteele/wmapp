@@ -8,6 +8,7 @@ class Worker < ActiveRecord::Base
     before_save :create_remember_token
 
     has_many :workorders, dependent: :destroy
+    has_many :worklogs #do not use destroy dependency here, so comments may still exist 
 
   
     validates :name,  :presence => true
@@ -20,42 +21,6 @@ class Worker < ActiveRecord::Base
     validates :password_confirmation, :presence => true
 
     authenticate_by :email 
-
-
-
-	##
-	# each worker can have multiple workorders and, hence, multiple workorder relationships.
-	# we state thtat the foreign_key is the workorder_id since this should uniquely identify each 
-	# relationship.  When a worker is deleted his workorders should be too.
-	#has_many :workorder_relationships, foreign_key: "worker_id", dependent: :destroy
-	
-	
-	#has_many :work_assignments, through: :workorder_relationships #, source: :
-
-
-
-	##
-	# Assignment is only done by an administrator
-	#
-	#def isAssigned?(workorder)
-	# 	workorder_relationships.find_by_workorder_id(workorder.id)
-	# end
-	
-	# def assign!( workorder )
-	# 	puts("hello")
-	# 	puts(" The workorder id: #{workorder.id}", workorder.id )
-		
-	# 	##
-	# 	# create! is a rails-defined method created by the has_many association.
-	# 	# Note that rails will automatically define the worker_id column since
-	# 	# we've used that as the primary key.  However, we have to pass it the 
-	# 	# workorder_id
-	# 	workorder_relationships.create!(workorder_id: workorder.id) 
-	# end 
-	
-	# def unassign!( workorder )
-	# 	workorder_relationships.find_by_workorder_id(workorder.id).destroy
-	# end
 
 
     private

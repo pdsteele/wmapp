@@ -25,6 +25,10 @@ class WorklogsController < ApplicationController
             @worklog.unsolicited = false
         end
 
+        if (@worklog.worker.nil?)
+                @worklog.worker_id = @workorder.worker_id
+        end
+
         if (@worklog.save)
             @workorder.state = @worklog.state #updates work order whenever worklog is created 
             @workorder.updated_at = @worklog.updated_at #update 'updated' time for workorder 

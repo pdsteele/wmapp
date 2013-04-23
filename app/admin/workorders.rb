@@ -33,6 +33,7 @@ ActiveAdmin.register Workorder do
         table_for @worklogs_visible do |t|
           t.column("Author") { |worklog| worklog.name }
           t.column("Date Created") { |worklog| worklog.created_at.strftime("%b. %d %Y   %I:%M %p") }
+          t.column("Assigned Worker") { |worklog| worklog.worker ? worklog.worker.name : 'N/A' }
           t.column("State") {|worklog| worklog.state }
           t.column("Comment/Update") { |worklog| worklog.description }
           t.column("Hidden From User") { |worklog| status_tag (worklog.fac_man_only ? "true" : "false"), (worklog.fac_man_only ? :error : :ok) }
@@ -98,7 +99,7 @@ ActiveAdmin.register Workorder do
     end #end controller overrides 
 
     
-   actions :index, :show, :new, :edit, :destroy
+   actions :index, :show, :new, :destroy
    scope :all
    scope :pending
    scope :in_progress

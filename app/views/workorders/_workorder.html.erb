@@ -43,7 +43,7 @@
   <!-- all code below for forms to accept/defer/resolve --> 
   
   <!--Display form here only if current_user is a worker and the workorder is in 'Assigned' state-->
-  <% if (current_user.class == Worker) and ((workorder.state == "Assigned") or (workorder.state == "Reopened")) %>
+  <% if (current_user.class == Worker) and ((workorder.state == "Assigned") or (workorder.state == "Reopened") or (workorder.state == "Deferred")) %>
     <% @workorder = workorder %>
     <% @worklog = workorder.worklogs.new(params[:worklog]) %><br />
     <%= render 'accept_workorder' %> 
