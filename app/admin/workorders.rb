@@ -1,6 +1,7 @@
 ActiveAdmin.register Workorder do
     controller { with_role :admin } 
 
+    #show page override 
     show do
       @workorder = Workorder.find(params[:id])
       @worklog = @workorder.worklogs.new(params[:worklog])
@@ -35,7 +36,8 @@ ActiveAdmin.register Workorder do
         panel "Worker Stats" do
           table_for Worker.all do |t|
             t.column("Name") { |worker| link_to worker.name, admin_worker_path(worker.id) }
-            t.column("Number of Currently Assigned Workorders") { |worker| Workorder.where(:worker_id => worker.id, :state => "Assigned").size + Workorder.where(:worker_id => worker.id, :state => "In Progress").size }
+            t.column("Number of Currently Assigned Workorders") { |worker| Workorder.where(:worker_id => worker.id, :state => "Assigned").size }
+            t.column("Number of Workorders In Progress") { |worker| Workorder.where(:worker_id => worker.id, :state => "In Progress").size }
             t.column("Workorders Completed in Last Month") { |worker| Workorder.where(:worker_id => worker.id, :state => "Resolved").size + Workorder.where(:worker_id => worker.id, :state => "Closed").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
             t.column("Workorders Reopened in Last Month") {|worker| Worklog.where(:worker_id => worker.id, :state => "Reopened").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
           end #end table
@@ -71,6 +73,7 @@ ActiveAdmin.register Workorder do
       f.buttons
     end
 
+    # CONTROLLER OVERRIDES
     controller do
 
       def assign_workorder
@@ -80,9 +83,28 @@ ActiveAdmin.register Workorder do
         #@worklog.name = current_admin_user.email
       end
 
-      def resolve_workorder 
+      def close_workorder 
         # page for resolving a workorder and creating worklog necessary
-      end
+        @workorder = Workorder.find(params[:id])
+        @worklog = @workorder.worklogs.new(params[:worklog])
+        @worklogs_visible = @workorder.worklogs.all
+
+        # creating closed worklog 
+        @worklog.name = "Administrator"
+        @worklog.state = "Closed"
+        @worklog.description = "Workorder has been resolved and inactive for some time, so it has been closed. Please submit a new workorder for new issues."
+        @worklog.fac_man_only = false
+        @worklog.unsolicited = false 
+        @worklog.worker_id = @workorder.worker_id
+        @worklog.worker = @workorder.worker
+
+        if @worklog.save
+          flash[:success] = "Workorder has been closed!"
+        end #end if
+
+        redirect_to admin_workorder_path(@workorder)
+
+      end #end function 
 
       def respond_to_comment
         # page to respond to high priority comment and automatically change its unsolicited bool to false 
@@ -94,19 +116,11 @@ ActiveAdmin.register Workorder do
         @unsolicitedworklog.unsolicited = false
 
         if @unsolicitedworklog.save
-          flash[:success] = "Comment marked as read!"
+          flash[:success] = "Comment marked as low priority!"
         end
 
         redirect_to admin_workorder_path(@workorder)
       end
-
-      # def update
-      #   @workorder = Workorder.find(params[:id])
-      #   if @workorder.update_attributes(params[:workorder])
-      #     flash[:success] = "Workorder updated"
-      #     redirect_to admin_workorder_path(@workorder.id)
-      #   end
-      # end
 
     end #end controller overrides 
 

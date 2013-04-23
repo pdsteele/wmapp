@@ -37,6 +37,15 @@ class Workorder < ActiveRecord::Base
       elsif (!self.worker_id.nil? && self.state == "Pending")
          self.state = "Assigned"
       end
+
+      if (self.state.nil?)
+        if (!self.worklog.first.nil?)
+          self.state = self.worklog.first.state
+        else
+          self.state = "Pending"
+        end #end inner if
+      end #end outer if 
+
     end #end function 
 	
 

@@ -1,6 +1,6 @@
 Wmapps::Application.routes.draw do
 
-   devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   resources :users
@@ -26,6 +26,7 @@ Wmapps::Application.routes.draw do
   match '/admin/workorders/:id(.:format)/assign', :to => 'admin/workorders#assign_workorder'
   match '/admin/workorders/:id(.:format)/resolve', :to => 'admin/workorders#resolve_workorder'
   match '/admin/workorders/:id/respond_to_comment/:worklog_id(.:format)', :to => 'admin/workorders#respond_to_comment', :as => 'respond_to_comment'
+  match '/admin/workorders/:id/close_workorder/', :to => 'admin/workorders#close_workorder', :as => 'close_workorder'
   
   #match '/clients/:status' => 'clients#index', :foo => "bar" 
 end

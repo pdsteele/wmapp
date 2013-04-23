@@ -53,11 +53,14 @@ ActiveAdmin.register Worklog do
             @workorder = Workorder.find(params[:workorder_id])
             @worklog = @workorder.worklogs.find(params[:id])
 
-            if @worklog.destroy
-                flash[:error] = "Update has been deleted!"
+            @workorder.state = @workorder.worklogs.all[1].state #gets second oldest worklog's state
+
+            if (@worklog.destroy and @workorder.save)
+                flash[:error] = "Update has been deleted and workorder has been updated!"
             else
                 flash[:error] = "An error has occurred, and the update may still exist. Please try again."
             end
+
 
             redirect_to admin_workorder_path(@workorder.id)
 
