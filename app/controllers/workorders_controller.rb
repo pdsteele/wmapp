@@ -37,12 +37,12 @@ class WorkordersController < ApplicationController
   end
 
   def update
-    @workorder = current_user.workorders.find(params[:id])
+    @workorder = Workorder.find(params[:id])
     if @workorder.update_attributes(params[:workorder])
       flash[:success] = "Workorder updated"
       redirect_to @workorder
     else
-      render 'edit'
+     render 'edit'
     end
   end
 

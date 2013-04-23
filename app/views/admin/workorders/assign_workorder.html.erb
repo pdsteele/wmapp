@@ -1,0 +1,35 @@
+<%= form_for(@workorder) do |workorder| %>
+
+    <div class="field"><%= workorder.label "User name: " %> <b><%= @workorder.user.name %></b></div>
+    <div class="field"><%= workorder.label "User email: " %> <b><%= @workorder.user.email %></b></div>
+    <div class="field"><%= workorder.label "User phone: " %> <b><%= @workorder.user.phone %></b></div>
+    <div class="field"><%= workorder.label "Building: " %> <b><%= @workorder.building %></b></div>
+    <div class="field"><%= workorder.label "Room: " %> <b><%= @workorder.room %></b></div>
+    <div class="field"><%= workorder.label "User Description: " %> <b><%= @workorder.description %></b></div>
+
+    <div class="field">
+        <%= workorder.label "Worker" %><br />
+        <%= workorder.select(:worker, options_for_select(Worker.all.map(&:name).sort)) %> <!--Default text is the current user's building-->
+    </div>
+
+
+    <%= workorder.fields_for :worklog do |f| %>
+
+      <div class="field">
+        <%= f.label "Notes to worker" %><br />
+        <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
+      </div>
+
+      <%= f.hidden_field :name, :value => current_admin_user.email %> 
+
+      <%= f.hidden_field :state, :value => "Assigned" %> 
+
+      <%= f.hidden_field :fac_man_only, :value => true %> <!-- no need for user to see notes here to worker --> 
+    <% end %>
+
+    <div class="actions">
+      <%= workorder.submit "Assign Workorder" %>
+    </div>
+
+
+<% end %>

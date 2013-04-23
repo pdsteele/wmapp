@@ -1,0 +1,16 @@
+<% @worklog = @workorder.worklogs.new(params[:worklog]) %> 
+
+<%= semantic_form_for [:admin, @workorder, @worklog] do |f| %>
+    <%= f.inputs do %>
+        <%= f.input :name, :input_html => { :value => current_admin_user.email } %>
+        <%= f.input :state, :collection => ['Pending', 'Assigned', 'In Progress', 'Resolved', 'Reopened', 'Closed'], :selected => @workorder.state, :hint => "This will change the workorder's 'state' to your selection!" %>
+        <%= f.input :description, :label => "Comment/Update", :hint => "This message IS VISIBLE to users unless you check the 'hide from users' box below" %>
+        <%= f.input :unsolicited, :label => "High Priority?", :hint => "This will force this update to be more visible to you and workers, until you mark it as 'low-priority'" %>
+        <%= f.input :fac_man_only, :label => "Hide from Users?", :hint => "This will force this update to more visible to the assigned worker for the next week" %>
+    <% end %> 
+
+    <%= f.actions do %>
+      <%= f.action :submit, :as => :button, :label => "Submit Update" %>
+    <% end %>
+
+<% end %>

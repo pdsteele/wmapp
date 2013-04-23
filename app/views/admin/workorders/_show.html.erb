@@ -1,0 +1,64 @@
+<h1>Workorder Details</h1>
+<hr>
+
+  <span class="content"><b>User: </b><%= @workorder.user.name %></span>
+  <span class="content"><b>Email: </b><%= @workorder.user.email %></span>
+  <span class="content"><b>Phone: </b><%= @workorder.user.phone %></span>
+  <span class="content"><b>Building: </b><%= @workorder.building %></span>
+  <span class="content"><b>Room: </b><%= @workorder.room %></span>
+  <span class="content"><b>State: </b><%= @workorder.state %></span>
+  <% unless @workorder.worker.nil? %> 
+    <span class="content"><b>Worker: </b><%= @workorder.worker.name %></span>
+  <% end %>
+  <span class="content"><b>Description: </b><%= @workorder.description %></span>
+  <span class="timestamp">
+    Last Updated <%= time_ago_in_words(@workorder.updated_at) %> ago
+  </span>
+  <span class="timestamp">
+    Originally created <%= time_ago_in_words(@workorder.created_at) %> ago 
+  </span>
+
+  <br /> <!-- hardcode breaks until css is fixed --> 
+
+
+    <h1>Add New Comments/Updates</h1>
+    <hr>
+    <!-- render worklog creation with state inherited from workorder - if worker show option to hide from user -->
+    <!-- display form to resolve workorder if current_user is a worker and the workorder is 'In Progress' state --> 
+    <% @worklog = @workorder.worklogs.new(params[:worklog]) %><br />
+    <%= form_for([@workorder,@worklog]) do |f| %>
+
+        <div class="field">
+              <%= f.label "Hide from User?" %><br />
+              <%= f.select(:fac_man_only, options_for_select([false, true])) %> <!--allow workers to choose to hide a comment from the user -->
+        </div>
+
+        <div class="field">
+          <%= f.label "Comment/Update" %><br />
+          <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
+        </div>
+
+        <%= f.hidden_field :name, :value => current_admin_user.email %> 
+        <%= f.hidden_field :state, :value => @workorder.state %> 
+        <%= f.hidden_field :unsolicited, :value => false %> 
+
+        <div class="actions">
+          <%= f.submit "Add comment" %>
+        </div>
+
+
+    <% end %> <!-- ends form --> 
+
+    <br /> <!-- hardcode breaks until css is fixed -->
+
+
+<% @worklogs_visible = @workorder.worklogs.all %>
+
+    <h1>Recent Updates and Comments</h1>
+    <hr>
+    <% if (!@worklogs_visible.first.nil?) %>
+      <li>
+        <%= render @worklogs_visible %>  
+      </li>
+    <% end %> <!-- ends conditional --> 
+

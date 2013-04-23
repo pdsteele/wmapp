@@ -6,8 +6,15 @@
             <%= f.label "Hide from User?" %><br />
             <%= f.select(:fac_man_only, options_for_select([false, true])) %> <!--allow workers to choose to hide a comment from the user -->
         </div>
+
+        <div class="field">
+            <%= f.label "Urgent for administrator to respond to?" %><br />
+            <%= f.select(:unsolicited, options_for_select([false, true])) %> <!-- select true if it should be flagged for viewing by administrator --> 
+        </div>
+
       <% else %>
         <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to false no matter what for users--> 
+        <%= f.hidden_field :unsolicited, :value => true %> <!-- comments/updates made by non-workers are always flagged to be viewed by an administrator --> 
       <% end %> 
 
       <div class="field">
@@ -16,9 +23,10 @@
       </div>
 
 
-      <%= f.hidden_field :state, :value => @workorder.state %> <!-- inherit state from workorder --> 
+      <%= f.hidden_field :state, :value => @workorder.state %> <!-- comments/minor updates do not change state, so inherit state from workorder --> 
       
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Submit Comment/Update" %>
       </div>
+      
 <% end %>

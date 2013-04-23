@@ -1,0 +1,10 @@
+<li>
+    <span class="content"><b>Author: </b><%= worklog.name %></span>
+    <span class="content"><b>State: </b><%= worklog.state %></span>
+    <span class="content"><b>Date: </b><%= worklog.created_at.strftime("%I:%M %p || %b. %d %Y") %></span>
+    <span class="content"><b>Hidden from User: </b><%= worklog.fac_man_only %></span>
+    <span class="content"><b>High Priority: </b><%= worklog.unsolicited %> <%= link_to "(Reply/Mark as Read)", respond_to_comment_path(worklog.workorder.id, worklog.id) %> </span>
+    <span class="content"><b>Comment/Update: </b><%= worklog.description %></span>
+    <hr>
+</li>
+    

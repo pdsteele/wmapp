@@ -5,4 +5,4 @@ require File.expand_path('../application', __FILE__)
 Wmapps::Application.initialize!
 
 # set time zone to be EST
-config.time_zone = 'Eastern Time (US & Canada)'
+#config.time_zone = 'Eastern Time (US & Canada)'
