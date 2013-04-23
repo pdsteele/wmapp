@@ -47,7 +47,7 @@ ActiveAdmin.register_page "Dashboard" do
         table_for Workorder.where(:state => 'Deferred') do |t|
           t.column("Updated") { |workorder| time_ago_in_words(workorder.updated_at)+" ago" }
           t.column("User") { |workorder| link_to User.where(:id => workorder.user_id).first.name, admin_user_path(workorder.user_id) }
-          t.column("Original Worker") { |workorder| link_to Worker.where(:id => workorder.worker_id).first.name, admin_worker_path(workorder.user_id) }
+          t.column("Original Worker") { |workorder| link_to Worker.where(:id => workorder.worker_id).first.name, admin_worker_path(workorder.worker_id) }
           t.column("Reason Deferred") { |workorder| workorder.worklogs.where(:state => "Deferred").first.description }
           t.column("Building") { |workorder| workorder.building }
           t.column("Room Number") { |workorder| workorder.room }
@@ -98,7 +98,7 @@ ActiveAdmin.register_page "Dashboard" do
           t.column("User") { |workorder| link_to User.where(:id => workorder.user_id).first.name, admin_user_path(workorder.user_id) }
           t.column("Email") { |workorder| User.where(:id => workorder.user_id).first.email }
           t.column("Phone") { |workorder| User.where(:id => workorder.user_id).first.phone }
-          t.column("Worker") { |workorder| link_to Worker.where(:id => workorder.worker_id).first.name, admin_worker_path(workorder.user_id) }
+          t.column("Worker") { |workorder| link_to Worker.where(:id => workorder.worker_id).first.name, admin_worker_path(workorder.worker_id) }
           t.column("Building") { |workorder| workorder.building }
           t.column("Room Number") { |workorder| workorder.room }
           t.column("Description") { |workorder| workorder.description }
