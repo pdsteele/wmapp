@@ -1,70 +1,73 @@
 <h1>Workorder Details</h1>
 <p id="notice"><%= notice %></p>
+<div class="row-fluid">
+  <div class="span4 offset4">
 
-<!-- Will add in work log features here, don't forget to accordingly modify edit, depending on work log capabilities -->
+    <% if @workorder.worker_id == current_user.id %>
+      <span class="content"><b>User: </b><%= @workorder.user.name %></span>
+      <span class="content"><b>Email: </b><%= @workorder.user.email %></span>
+      <span class="content"><b>Phone: </b><%= @workorder.user.phone %></span>
+    <% end %>
+    <span class="content"><b>Description: </b><%= @workorder.description %></span>
+    <span class="content"><b>Building: </b><%= @workorder.building %></span>
+    <span class="content"><b>Room: </b><%= @workorder.room %></span>
 
-  <% if @workorder.worker_id == current_user.id %>
-    <span class="content"><b>User: </b><%= @workorder.user.name %></span>
-    <span class="content"><b>Email: </b><%= @workorder.user.email %></span>
-    <span class="content"><b>Phone: </b><%= @workorder.user.phone %></span>
-  <% end %>
-  <span class="content"><b>Description: </b><%= @workorder.description %></span>
-  <span class="content"><b>Building: </b><%= @workorder.building %></span>
-  <span class="content"><b>Room: </b><%= @workorder.room %></span>
+    <!-- override deferred state to hide from user --> 
+    <% if (@workorder.state == "Deferred" and current_user.class == User) %>
+      <span class="content"><b>State: </b>Pending</span>
+    <% else %>
+      <span class="content"><b>State: </b><%= @workorder.state %></span>
+    <% end %> 
 
-  <!-- override deferred state to hide from user --> 
-  <% if (@workorder.state == "Deferred" and current_user.class == User) %>
-    <span class="content"><b>State: </b>Pending</span>
-  <% else %>
-    <span class="content"><b>State: </b><%= @workorder.state %></span>
-  <% end %> 
+    <% unless @workorder.worker.nil? %> 
+      <span class="content"><b>Worker: </b><%= @workorder.worker.name %></span>
+    <% end %>
 
-  <% unless @workorder.worker.nil? %> 
-    <span class="content"><b>Worker: </b><%= @workorder.worker.name %></span>
-  <% end %>
+    <!-- restricts visible worklogs if user is viewing page --> 
+    <% if current_user.class == User %> 
+      <% @worklogs_visible = @workorder.worklogs.where(:fac_man_only => false) %>
+    <% else %>
+      <% @worklogs_visible = @workorder.worklogs.all %>
+    <% end %> 
 
-  <!-- restricts visible worklogs if user is viewing page --> 
-  <% if current_user.class == User %> 
-    <% @worklogs_visible = @workorder.worklogs.where(:fac_man_only => false) %>
-  <% else %>
-    <% @worklogs_visible = @workorder.worklogs.all %>
-  <% end %> 
+    <!-- show latest worklog description if a worklog exists -->
+    <% if (!@worklogs_visible.first.nil?) %>
+      <span class="content"><b>Latest Update: </b><%= @worklogs_visible.first.description %></span>
+    <% end %>
 
-  <!-- show latest worklog description if a worklog exists -->
-  <% if (!@worklogs_visible.first.nil?) %>
-    <spac class="content"><b>Latest Update: </b><%= @worklogs_visible.first.description %></span><br />
-  <% end %>
+    <span class="content" id="timestamp">
+      Originally created <%= time_ago_in_words(@workorder.created_at) %> ago 
+    </span>
+    <span class="content" id="timestamp">
+      Last Updated <%= time_ago_in_words(@workorder.updated_at) %> ago
+    </span>
 
-  <span class="timestamp">
-    Originally created <%= time_ago_in_words(@workorder.created_at) %> ago 
-  </span><br />
-  <span class="timestamp">
-    Last Updated <%= time_ago_in_words(@workorder.updated_at) %> ago
-  </span>
-  <br />
-
-<ol class="workorders">
-<li>
-  <h1>Add New Comments/Updates</h1>
-  <!-- render worklog creation with state inherited from workorder - if worker show option to hide from user -->
-  <!-- display form to resolve workorder if current_user is a worker and the workorder is 'In Progress' state --> 
-  <% @worklog = @workorder.worklogs.new(params[:worklog]) %><br />
-  <%= render 'add_comment' %> 
-</li>
+  <ol class="workorders">
+  <li>
+    <h1>Add New Comments/Updates</h1>
+    <!-- render worklog creation with state inherited from workorder - if worker show option to hide from user -->
+    <!-- display form to resolve workorder if current_user is a worker and the workorder is 'In Progress' state --> 
+    <% @worklog = @workorder.worklogs.new(params[:worklog]) %>
+    <div class="row-fluid">
+      <%= render 'add_comment' %> 
+    </div>
+  </li>
 
 
-<li>
-  <!-- show worklogs if any exist -->
-  <!-- restricts visible worklogs if user is viewing page --> 
-  <h1>Recent Updates and Comments</h1>
-  <% if (!@worklogs_visible.first.nil?) %>
-    <ol class="workorders">
-      <%= render @worklogs_visible %> 
-    </ol>
-  <% end %>
-</li>
+  <li>
+    <!-- show worklogs if any exist -->
+    <!-- restricts visible worklogs if user is viewing page --> 
+    <h1>Recent Updates and Comments</h1>
+    <div class="row-fluid">
+    <% if (!@worklogs_visible.first.nil?) %>
+      <ol class="workorders">
+        <%= render @worklogs_visible %> 
+      </ol>
+    <% end %>
+    </div>
+  </li>
 
-  
+  </div>
+</div> <!-- end row fluid -->
 
-<!-- <%= link_to 'Edit', edit_workorder_path(@workorder) %> | --> 
 <%= link_to 'Back', :back %>

@@ -4,6 +4,10 @@
     <span class="content"><b>Date: </b><%= worklog.created_at.strftime("%I:%M %p || %b. %d %Y") %></span>
     <% if (current_user.class == Worker) %>
         <span class="content"><b>Hidden from User: </b><%= worklog.fac_man_only %></span>
+        <span class="content"><b>High Priority: </b><%= worklog.unsolicited %></span>
+        <% if :show_link == true %> 
+            <span class="content"><b><%= link_to "Show Workorder", workorder_path(worklog.workorder_id) %></b> </span>
+        <% end %>
     <% end %>
     <span class="content"><b>Comment/Update: </b><%= worklog.description %></span>
 </li>

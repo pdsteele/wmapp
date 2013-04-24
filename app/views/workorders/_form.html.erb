@@ -1,5 +1,5 @@
 <%= form_for(@workorder) do |f| %>
-  
+<div class="form-page">  
   <% if @workorder.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@workorder.errors.count, "error") %> prohibited this workorder from being saved:</h2>
@@ -11,8 +11,8 @@
     </div> <!-- end error --> 
   <% end %> <!-- end if --> 
 
-  <% if @workorder.worker == current_user %> <!-- what is displayed for workers --> 
-    <%= f.label "User name: " %> <b><%= @workorder.user.name %></b>
+  <% if current_user.class == Worker %> <!-- what is displayed for workers --> 
+    <%= f.label :user %> 
     <%= f.label "User email: " %> <b><%= @workorder.user.email %></b>
     <%= f.label "User phone: " %> <b><%= @workorder.user.phone %></b>
     
@@ -40,8 +40,10 @@
   <% end %> <!-- end if --> 
 
   <div class="row-fluid" id="button">
-          <%= f.submit "Create Workorder", :class => "btn btn-primary" %>
+          <%= f.submit "Create Workorder", :class => "btn btn-large btn-primary" %>
   </div>
+
+</div> <!-- end field -->
   
 <% end %> <!-- end form -->
 

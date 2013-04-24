@@ -1,0 +1,13 @@
+<h1>Urgent Message Center</h1>
+<h2>These may have critical information from the user or from the administrator</h2>
+
+<div class="row-fluid">
+  <div class="span4 offset4">
+    <% if !@urgent_worklogs.first.nil? %>
+      <h1><%= @urgent_worklogs.count %> Urgent Messages From the Past Week</h1>
+      <ol class="workorders">
+        <%= render @urgent_worklogs, :locals => { :show_link => true }  %>
+      </ol>
+    <% end %>
+  </div>
+</div>

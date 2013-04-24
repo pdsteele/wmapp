@@ -53,9 +53,11 @@
                 <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
                 <li><%= link_to 'Log Out', logout_path, method: "delete" %></li>
               <% elsif signed_in_worker? %>
+                <li><%= link_to "Urgent Messages", message_center_path %></li>
+                <li><%= link_to "All Your Workorders", worker_path(current_user) %></li>
                 <li><%= link_to "Assigned Workorders", assigned_workorders_path %></li>
                 <li><%= link_to "Workorders in Progress", progress_workorders_path %></li>
-                <li><%= link_to "All Your Workorders", worker_path(current_user) %></li>
+                <li><%= link_to "Create a Workorder", new_workorder_path %></li> 
                 <li><%= link_to "Edit Profile", edit_worker_path(current_user) %></li>
                 <li><%= link_to 'Log Out', logout_path, method: "delete" %></li>
               <% else %>
