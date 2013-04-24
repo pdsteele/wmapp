@@ -27,21 +27,22 @@ describe Worker do
 
 	
 	
-	describe "Accept workorder " do
+	describe "Accept workorder" do
 	
-		sign_in FactoryGirl.create(:worker)
+		 let(:worker)   { FactoryGirl.create(:worker) }
+		let!(:user)     { FactoryGirl.create(:user) }   
+		let!(:workorder){ FactoryGirl.create(:workorder, worker: worker, state: "Assigned", user: user) } #
 		
+		before{ sign_in( worker ) }
+
 		before{ visit '/assigned_workorders' }
-			
+		
 		
 		
 		describe "With empty text field" do
 		
 			it { should have_selector('h1', text: "Assigned Workorders") }
 
-		
-			# create a new workorder and assign it to the worker
-			#@workorder = Workorder.new( description: "Test", building: "Adair", room: "34", state: "Assigned", user_id: @user.id )
 			
 		end
 	

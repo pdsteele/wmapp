@@ -5,7 +5,7 @@ FactoryGirl.define do
     description "Everything's broken"
     building    "Adair"
     room        "54"
-    worker      "Default"
-    state       "Assigned"
+    worker      "Someone"
+    state       "Somestate"
   end
 end

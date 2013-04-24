@@ -35,7 +35,7 @@ group :test do
   gem 'capybara', '~> 2.0.2'
   gem 'launchy',  '~> 2.2.0'
   gem "database_cleaner", '1.0.0.RC1'
-  gem "spork", "> 0.9.0.rc"
+  gem "spork-rails", "> 0.9.0.rc"
 end
 
 group :production do
