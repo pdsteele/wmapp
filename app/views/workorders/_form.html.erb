@@ -1,56 +1,48 @@
 <%= form_for(@workorder) do |f| %>
+  
   <% if @workorder.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@workorder.errors.count, "error") %> prohibited this workorder from being saved:</h2>
-
       <ul>
       <% @workorder.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
-    </div>
-  <% end %>
-
-  <% if @workorder.worker == current_user %> <!-- what is displayed for workers --> 
-    <div class="field"><%= f.label "User name: " %> <b><%= @workorder.user.name %></b></div>
-    <div class="field"><%= f.label "User email: " %> <b><%= @workorder.user.email %></b></div>
-    <div class="field"><%= f.label "User phone: " %> <b><%= @workorder.user.phone %></b></div>
-
-    <div class="field">
-      <%= f.label :building %><br />
-      <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort, :selected => @workorder.building)) %> <!--Default text is the current user's building-->
-    </div>
-    <div class="field">
-      <%= f.label :room %><br />
-      <%= f.text_field :room, :value => @workorder.room %><!--Default text is the current user's room-->
-    </div>
-
-    <div class="field">
-      <%= f.label :state %><br />
-      <%= f.select(:state, options_for_select(['Pending', 'Assigned','In Progress', 'Deferred', 'Resolved'], :selected => @workorder.state)) %> 
-    </div>
-
-    <div class="field"><%= f.label "Description: " %> <b><%= @workorder.description %></b></div>
-
-  <% else %> <!-- what is displayed to users --> 
-      <div class="field">
-        <%= f.label :building %><br />
-        <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort, :selected => current_user.dorm)) %> <!--Default text is the current user's building-->
-      </div>
-
-      <div class="field">
-        <%= f.label :room %><br />
-        <%= f.text_field :room, :value => current_user.room %><!--Default text is the current user's room-->
-      </div>
-
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_area :description, :cols => "15", :rows => "8" %> <!-- workers cannot modify the description -->
-    </div>
+    </div> <!-- end error --> 
   <% end %> <!-- end if --> 
 
-  <div class="actions">
-    <%= f.submit %>
+  <% if @workorder.worker == current_user %> <!-- what is displayed for workers --> 
+    <%= f.label "User name: " %> <b><%= @workorder.user.name %></b>
+    <%= f.label "User email: " %> <b><%= @workorder.user.email %></b>
+    <%= f.label "User phone: " %> <b><%= @workorder.user.phone %></b>
+    
+    <%= f.label :building %>
+    <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort, :selected => @workorder.building)) %> <!--Default text is the current user's building-->
+    
+    <%= f.label :room %>
+    <%= f.text_field :room, :value => @workorder.room %><!--Default text is the current user's room-->
+
+    <%= f.label :state %>
+    <%= f.select(:state, options_for_select(['Pending', 'Assigned','In Progress', 'Deferred', 'Resolved'], :selected => @workorder.state)) %> 
+
+    <%= f.label "Description: " %> <b><%= @workorder.description %></b>
+
+  <% else %> <!-- what is displayed to users --> 
+      
+      <%= f.label :building %>
+      <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort, :selected => current_user.dorm)) %> <!--Default text is the current user's building-->
+
+      <%= f.label :room %>
+      <%= f.text_field :room, :value => current_user.room %><!--Default text is the current user's room-->
+
+      <%= f.label :description %>
+      <%= f.text_area :description, :cols => "15", :rows => "8" %> <!-- workers cannot modify the description -->
+  <% end %> <!-- end if --> 
+
+  <div class="row-fluid" id="button">
+          <%= f.submit "Create Workorder", :class => "btn btn-primary" %>
   </div>
-<% end %>
+  
+<% end %> <!-- end form -->
+
 

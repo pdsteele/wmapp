@@ -9,7 +9,7 @@
       <%= f.hidden_field :fac_man_only, :value => false %>
       <%= f.hidden_field :state, :value => "Resolved" %> 
       
-      <div class="actions">
-        <%= f.submit "Resolve Workorder" %>
+      <div class="row-fluid" id="button">
+          <%= f.submit "Resolve Workorder", :class => "btn btn-primary" %>
       </div>
 <% end %> <!-- end form --> 

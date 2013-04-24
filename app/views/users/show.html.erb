@@ -1,9 +1,9 @@
 <h1><%= current_user.name %>'s Workorders</h1>
-<h2>Click on 'Workorder Details' to check out updates and to append notes for Facilities Management!</h2>
+<h2>Click on 'Updates, Details, and Comments' to check out updates and to append notes for Facilities Management!</h2>
 
 <div class="row">
 
-  <div class="span12">
+  <div class="span6 offset3">
     <% if current_user.workorders.any? %>
       <h3><%= current_user.workorders.count %> Total Workorders</h3>
       <ol class="workorders">
