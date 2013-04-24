@@ -1,5 +1,5 @@
-$navbarBackground: #216315;
-$navbarBackgroundHighlight: #3D992C;
+$navbarBackground: #343A35;
+$navbarBackgroundHighlight: #343A35;
 $navbarBrandColor: #FFFFFF;
 $navbarLinkColor: #FFFFFF;
 $navbarLinkColorHover: #E3EB15;
@@ -13,6 +13,9 @@ $linkColor: #216315;
     padding-top: 60px;
 }
 
+body {
+  background: #D7D7BC;
+}
 
 .center {
     text-align: center;
