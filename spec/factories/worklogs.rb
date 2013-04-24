@@ -7,5 +7,6 @@ FactoryGirl.define do
     fac_man_only false
     name "Steve"
     workorder_id 1
+    workorder Workorder.first
   end
 end

@@ -29,9 +29,27 @@ describe Worker do
 	
 	describe "Accept workorder" do
 	
-		 let(:worker)   { FactoryGirl.create(:worker) }
-		let!(:user)     { FactoryGirl.create(:user) }   
+		let(:worker)    { FactoryGirl.create(:worker)  }
+		let!(:user)     { FactoryGirl.create(:user)    }   
 		let!(:workorder){ FactoryGirl.create(:workorder, worker: worker, state: "Assigned", user: user) } #
+		
+		
+		let!(:worklog ) do 
+			@worklog = Worklog.new(description: "test", fac_man_only: false, name: "This", state: "Assigned", workorder_id: workorder.id, workorder: workorder, unsolicited: false) 
+			@worklog.save
+		end
+
+
+		# before do
+# 			puts "Here is the description"
+# 			puts workorder.worklogs.all 
+# 		end
+		
+		
+
+		#let!(:worklog ) { FactoryGirl.create(:worklog, workorder_id: workorder.id, workorder: workorder) }
+		#attr_accessible :description, :fac_man_only, :name, :state, :workorder_id, :workorder,  :unsolicited, :worker_id
+		
 		
 		before{ sign_in( worker ) }
 
@@ -41,7 +59,7 @@ describe Worker do
 		
 		describe "With empty text field" do
 		
-			it { should have_selector('h1', text: "Assigned Workorders") }
+			it { should have_selector('h1', text: "Assigned/Deferred/Reopened Workorders") }
 
 			
 		end
