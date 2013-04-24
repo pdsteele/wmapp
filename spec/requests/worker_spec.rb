@@ -29,21 +29,27 @@ describe Worker do
 	
 	describe "Accept workorder" do
 	
-		let(:worker)    { FactoryGirl.create(:worker)  }
+		let!(:worker)   { FactoryGirl.create(:worker)  }
 		let!(:user)     { FactoryGirl.create(:user)    }   
 		let!(:workorder){ FactoryGirl.create(:workorder, worker: worker, state: "Assigned", user: user) } #
 		
 		
+		# can't get the worklog factory working for some reason
 		let!(:worklog ) do 
+			#@workorder =Workorder.new()
+			#declare worklogs
 			@worklog = Worklog.new(description: "test", fac_man_only: false, name: "This", state: "Assigned", workorder_id: workorder.id, workorder: workorder, unsolicited: false) 
 			@worklog.save
 		end
 
+		# worklogs 
 
-		# before do
-# 			puts "Here is the description"
-# 			puts workorder.worklogs.all 
-# 		end
+
+		before do
+			puts "Here is the description"
+			puts workorder.worklogs.first #<== This doesnt give any error and does the right thing
+			#puts workorder.worklogs.all   #<== This line gives error:  ActionView::Template::Error:wrong number of arguments (0 for 1)
+		end
 		
 		
 
