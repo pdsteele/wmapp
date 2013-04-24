@@ -85,6 +85,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    database_cleaner (1.0.0.RC1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -211,6 +212,7 @@ GEM
     simplest_auth (0.3.1)
       bcrypt-ruby (>= 2.1.1)
     slop (3.4.4)
+    spork (1.0.0rc3)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -244,6 +246,7 @@ DEPENDENCIES
   capistrano-ext
   capybara (~> 2.0.2)
   coffee-rails (~> 3.2.1)
+  database_cleaner (= 1.0.0.RC1)
   factory_girl_rails (~> 4.2.1)
   jquery-rails
   launchy (~> 2.2.0)
@@ -256,6 +259,7 @@ DEPENDENCIES
   sass-rails (~> 3.2)
   shoulda-matchers (~> 1.4.2)
   simplest_auth (= 0.3.1)
+  spork (> 0.9.0.rc)
   sqlite3 (= 1.3.5)
   uglifier (>= 1.0.3)
   will_paginate (= 3.0.3)

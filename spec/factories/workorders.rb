@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :workorder do
-    description "MyString"
-    building "MyString"
-    room "MyString"
-    worker "MyString"
-    state "MyString"
+    description "Everything's broken"
+    building    "Adair"
+    room        "54"
+    worker      "Default"
+    state       "Assigned"
   end
 end

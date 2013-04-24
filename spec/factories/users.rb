@@ -2,8 +2,15 @@
 
 FactoryGirl.define do
   factory :user do
-    email "jonstewart@email.wm.edu"
-    password "dailyshow"
-    password_confirmation "dailyshow"
+  	name "Example User"
+    email "example@email.wm.edu"
+    dorm "Adair"
+    phone "18045678901"
+    bannerID "930111222"
+    room  "45"
+    password "password"
+    password_confirmation "password"
   end
 end
+
+
