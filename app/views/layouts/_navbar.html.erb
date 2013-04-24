@@ -1,12 +1,17 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 
-      </a> 
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
       <%= link_to 'WM Work Order Request Tracker', root_path, :class => "brand" %>
+
       <div class="nav-collapse">
-        <ul class="nav">
+        <ul class="nav pull-right">
           <% if signed_in_user? %>
             <li><%= link_to "Your Workorders", current_user %></li>
 			      <li><%= link_to "Create a Workorder", new_workorder_path %></li>
@@ -24,5 +29,6 @@
           <% end %>
         </ul>
       </div>
+    </div>
   </div>
 </div>

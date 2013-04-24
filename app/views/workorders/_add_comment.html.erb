@@ -25,8 +25,8 @@
 
       <%= f.hidden_field :state, :value => @workorder.state %> <!-- comments/minor updates do not change state, so inherit state from workorder --> 
       
-      <div class="actions">
-        <%= f.submit "Submit Comment/Update" %>
+      <div class="row-fluid" id="button">
+          <%= f.submit "Post Comment", :class => "btn btn-primary" %>
       </div>
       
 <% end %>

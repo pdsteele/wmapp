@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Worklog - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/worklog.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-check_for_state_change">#check_for_state_change</a>
+    
+    <li><a href="#method-i-set_default_state">#set_default_state</a>
+    
+    <li><a href="#method-i-set_defaults">#set_defaults</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./AdminUser.html">AdminUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Assignment.html">Assignment</a>
+  
+    <li><a href="./Buildings.html">Buildings</a>
+  
+    <li><a href="./BuildingsController.html">BuildingsController</a>
+  
+    <li><a href="./BuildingsHelper.html">BuildingsHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./PagesHelper.html">PagesHelper</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+    <li><a href="./Worker.html">Worker</a>
+  
+    <li><a href="./WorkerController.html">WorkerController</a>
+  
+    <li><a href="./WorkerHelper.html">WorkerHelper</a>
+  
+    <li><a href="./Worklog.html">Worklog</a>
+  
+    <li><a href="./WorklogHelper.html">WorklogHelper</a>
+  
+    <li><a href="./WorklogsController.html">WorklogsController</a>
+  
+    <li><a href="./Workorder.html">Workorder</a>
+  
+    <li><a href="./WorkordersController.html">WorkordersController</a>
+  
+    <li><a href="./WorkordersHelper.html">WorkordersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Worklog</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-set_default_state" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_default_state</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_default_state-source">
+            <pre><span class="ruby-comment"># File app/models/worklog.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_default_state</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">state</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">state</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_default_state-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_default_state-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Protected Instance Methods</h3>
+
+    
+      <div id="method-i-check_for_state_change" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_for_state_change</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="check_for_state_change-source">
+            <pre><span class="ruby-comment"># File app/models/worklog.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_for_state_change</span>
+
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">description</span>.<span class="ruby-identifier">nil?</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">description</span> = <span class="ruby-string">&quot;Changed state to &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">state</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment">#end if</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- check_for_state_change-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- check_for_state_change-method -->
+
+    
+      <div id="method-i-set_defaults" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_defaults</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_defaults-source">
+            <pre><span class="ruby-comment"># File app/models/worklog.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_defaults</span> <span class="ruby-comment">#needs to set name automatically, assume default for fac_man boolean if blank, inherit state if blank,  </span>
+  
+  <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>)
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">name</span> <span class="ruby-comment">#name will always be made to be current user's for workers and users - admin will input their name automatically </span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment">#endif</span>
+
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">fac_man_only</span>.<span class="ruby-identifier">nil?</span>)
+     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">fac_man_only</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment">#endif </span>
+
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">unsolicited</span>.<span class="ruby-identifier">nil?</span>)
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unsolicited</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span> 
+
+  <span class="ruby-comment">#sets new state in workorder, or inherits one if blank</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">state</span>.<span class="ruby-identifier">nil?</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">state</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">state</span>
+  
+  <span class="ruby-keyword">elsif</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">state</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">state</span>) 
+    <span class="ruby-comment"># WORKORDER INHERITS STATE FROM WORKLOG</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">state</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">state</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment">#end if </span>
+
+  <span class="ruby-comment">#sets new worker in workorder if it has changed</span>
+  <span class="ruby-keyword">if</span> ((<span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">worker_id</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword">and</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">worker_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">worker_id</span>))
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">worker_id</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">worker_id</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">worker</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">worker</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">workorder</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">description</span>.<span class="ruby-identifier">nil?</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">description</span> = <span class="ruby-string">&quot;Changed state to &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">state</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment">#end if</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_defaults-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_defaults-method -->
+
+    
+    </section><!-- protected-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

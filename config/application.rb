@@ -60,7 +60,7 @@ module Wmapps
     config.assets.version = '1.0'
 
     #ACTIVE ADMIN - for heroku 
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
 
     # for sass-bootstrap
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)

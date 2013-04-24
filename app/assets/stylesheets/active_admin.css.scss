@@ -10,8 +10,6 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
-//@import "bootstrap";
-//@import "bootstrap-responsive";
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -31,9 +29,6 @@
 // .other_namespace    applies to a custom namespace named other (eg: /other)
 
 // remove this block of code when updating dashboard 
-table.dashboard > tbody > tr > td {
-  display:block;
-}
 // removal up to here 
 
 

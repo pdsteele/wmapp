@@ -13,7 +13,7 @@
 
       <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to true in controller if deferred --> 
       
-      <div class="actions">
-        <%= f.submit "Accept/Defer Workorder" %>
+      <div class="row-fluid" id="button">
+          <%= f.submit "Update Workorder", :class => "btn btn-primary" %>
       </div>
 <% end %>

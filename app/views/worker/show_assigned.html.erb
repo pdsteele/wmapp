@@ -1,15 +1,14 @@
-<h1><%= current_user.name %>'s Assigned Workorders</h1>
-<h5>Be sure to check out the updates/comments if a Workorder has been reopened</h5>
+<h1><%= current_user.name %>'s Assigned/Deferred/Reopened Workorders</h1>
+<h2>Be sure to check out the updates/comments if a Workorder has been reopened</h2>
 
 
 <div class="row">
-  <div class="span8">
+  <div class="span6 offset3">
     <% if current_user.workorders.any? %>
-      <h3><%= current_user.workorders.where(:state => ["Assigned","Reopened", "Deferred"]).count %> Assigned Workorders</h3>
+      <h1><%= current_user.workorders.where(:state => ["Assigned","Reopened", "Deferred"]).count %> Total</h1>
       <ol class="workorders">
         <%= render @workorders %> <!--renders _workorder.html.erb-->
       </ol>
     <% end %>
   </div>
-
 </div>

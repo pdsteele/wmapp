@@ -1,6 +1,7 @@
 ActiveAdmin.register Workorder do
     controller { with_role :admin } 
 
+    #show page override 
     show do
       @workorder = Workorder.find(params[:id])
       @worklog = @workorder.worklogs.new(params[:worklog])
@@ -16,7 +17,7 @@ ActiveAdmin.register Workorder do
           row("Building") { |workorder| workorder.building }
           row("Room") { |workorder| workorder.room }
           row("State") { |workorder| workorder.state }
-          row("Worker") { |workorder| workorder.worker ? workorder.worker : 'NONE' } 
+          row("Worker") { |workorder| workorder.worker ? (link_to workorder.worker.name, admin_worker_path(workorder.worker_id)) : 'NONE' } 
           row("User Description") { |workorder| workorder.description }
           row("Last Updated") { |workorder| time_ago_in_words(workorder.updated_at)+" ago" }
           row("Originally Created") { |workorder| time_ago_in_words(workorder.created_at)+" ago" }
@@ -29,11 +30,26 @@ ActiveAdmin.register Workorder do
         render 'form'
       end
 
+
+      #show worker stats panel if assigning
+      if (@worklogs_visible.size == 0 or (@worklogs_visible.first.state == 'Pending' or @worklogs_visible.first.state == 'Deferred' or @worklogs_visible.first.state == 'Reopened'))
+        panel "Worker Stats" do
+          table_for Worker.all do |t|
+            t.column("Name") { |worker| link_to worker.name, admin_worker_path(worker.id) }
+            t.column("Number of Currently Assigned Workorders") { |worker| Workorder.where(:worker_id => worker.id, :state => "Assigned").size }
+            t.column("Number of Workorders In Progress") { |worker| Workorder.where(:worker_id => worker.id, :state => "In Progress").size }
+            t.column("Workorders Completed in Last Month") { |worker| Workorder.where(:worker_id => worker.id, :state => "Resolved").size + Workorder.where(:worker_id => worker.id, :state => "Closed").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
+            t.column("Workorders Reopened in Last Month") {|worker| Worklog.where(:worker_id => worker.id, :state => "Reopened").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
+          end #end table
+        end #end panel
+      end #end if
+
+
       panel "Comments and Updates" do
         table_for @worklogs_visible do |t|
           t.column("Author") { |worklog| worklog.name }
           t.column("Date Created") { |worklog| worklog.created_at.strftime("%b. %d %Y   %I:%M %p") }
-          t.column("Assigned Worker") { |worklog| worklog.worker ? worklog.worker.name : 'N/A' }
+          t.column("Assigned Worker") { |worklog| worklog.worker ? (link_to worklog.worker.name, admin_worker_path(workorder.worker_id)) : 'N/A' }
           t.column("State") {|worklog| worklog.state }
           t.column("Comment/Update") { |worklog| worklog.description }
           t.column("Hidden From User") { |worklog| status_tag (worklog.fac_man_only ? "true" : "false"), (worklog.fac_man_only ? :error : :ok) }
@@ -42,7 +58,6 @@ ActiveAdmin.register Workorder do
           t.column("Delete Update") { |worklog| link_to "Delete", admin_workorder_worklog_path(worklog.workorder_id, worklog), :method => :delete, :data => {:confirm => "Are you sure?"} }
         end #end table
       end #end panel
-
 
     end #end show override 
 
@@ -59,6 +74,7 @@ ActiveAdmin.register Workorder do
       f.buttons
     end
 
+    # CONTROLLER OVERRIDES
     controller do
 
       def assign_workorder
@@ -68,38 +84,49 @@ ActiveAdmin.register Workorder do
         #@worklog.name = current_admin_user.email
       end
 
-      def resolve_workorder 
+      def close_workorder 
         # page for resolving a workorder and creating worklog necessary
-      end
+        @workorder = Workorder.find(params[:id])
+        @worklog = @workorder.worklogs.new(params[:worklog])
+        @worklogs_visible = @workorder.worklogs.all
+
+        # creating closed worklog 
+        @worklog.name = "Administrator"
+        @worklog.state = "Closed"
+        @worklog.description = "Workorder has been resolved and inactive for some time, so it has been closed. Please submit a new workorder for new issues."
+        @worklog.fac_man_only = false
+        @worklog.unsolicited = false 
+        @worklog.worker_id = @workorder.worker_id
+        @worklog.worker = @workorder.worker
+
+        if @worklog.save
+          flash[:success] = "Workorder has been closed!"
+        end #end if
+
+        redirect_to admin_workorder_path(@workorder)
+
+      end #end function 
 
       def respond_to_comment
         # page to respond to high priority comment and automatically change its unsolicited bool to false 
         @workorder = Workorder.find(params[:id])
         @worklog = @workorder.worklogs.new(params[:worklog])
         @worklogs_visible = @workorder.worklogs.all
-        @unsolicitedworklog = @workorder.worklogs.find(params[:worklog_id])#where(:unsolicited => true)
+        @unsolicitedworklog = @workorder.worklogs.find(params[:worklog_id])
 
         @unsolicitedworklog.unsolicited = false
 
         if @unsolicitedworklog.save
-          flash[:success] = "Comment marked as read!"
+          flash[:success] = "Comment marked as low priority!"
         end
 
         redirect_to admin_workorder_path(@workorder)
       end
 
-      # def update
-      #   @workorder = Workorder.find(params[:id])
-      #   if @workorder.update_attributes(params[:workorder])
-      #     flash[:success] = "Workorder updated"
-      #     redirect_to admin_workorder_path(@workorder.id)
-      #   end
-      # end
-
     end #end controller overrides 
 
-    
-   actions :index, :show, :new, :destroy
+   #define actions and scope  
+   actions :index, :show, :new
    scope :all
    scope :pending
    scope :in_progress
@@ -107,73 +134,6 @@ ActiveAdmin.register Workorder do
    scope :deferred
    scope :resolved
    scope :closed
-   
-   
-   
-  #  index do
-#     actions do |workorder|
-#     	link_to "Assign "
-#   end
-   
-   # show do |ad|
-   #    attributes_table do
-   #      row :id
-   #      row :user_id
-   #      row :description 
-   #      row :building
-   #      row :room
-   #      row :worker_id
-   #      row :state
-   #    end
-      
-   #    controller do 
-   #    	def workers
-   #    		Worker.all
-   #    	end
-   #    	panel "Assign" do
-   #       table_for(workers) do |t|
-   #       t.column("Building")     {|item|  item.building        }
-   #       t.column("Description")  {|item|  item.description     }
-   #      end
-   #    end
-      
-   #    active_admin_comments
-   #  end
-   # end
-
-
-  # show do
-#     panel "Assign" do
-#        table_for(workorder.attribu) do |t|
-# #         t.column("Building")     {|item|  item.building        }
-# #         t.column("Description")  {|item|  item.description     }
-#        end
-#     end
-#   end
-   		
-   		
-   	# show do
-#     panel "Assign" do
-#       table_for(order.line_items) do |t|
-#         t.column("Product") {|item| auto_link item.product        }
-#         t.column("Price")   {|item| number_to_currency item.price }
-#         tr :class => "odd" do
-#           td "Total:", :style => "text-align: right;"
-#           td number_to_currency(order.total_price)
-#         end
-#       end
-#     end
-   		
-   
- #  sidebar "Project Details" do
-#    	ul do
-#     	  li link_to("Assign", admin_project_assignments_path())
-#  	end
-#  	end
-   
-   # batch_action :assign do |selection|
-# 	 	 link_to("Assign", admin_project_assign_path(Workorder))
-#      end
     
 end
 

@@ -1,5 +1,5 @@
 class BuildingsController < ApplicationController
-    def new
+  def new
     @building = Buildings.new
   end
 
@@ -15,6 +15,6 @@ class BuildingsController < ApplicationController
   end
 
   def show
-    @user = Buildings.find(params[:id])
+    @building = Buildings.find(params[:id])
   end
 end

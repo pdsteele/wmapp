@@ -1,27 +1,18 @@
+$navbarBackground: #216315;
+$navbarBackgroundHighlight: #3D992C;
+$navbarBrandColor: #FFFFFF;
+$navbarLinkColor: #FFFFFF;
+$navbarLinkColorHover: #E3EB15;
+$btnPrimaryBackground: #216315;
+$linkColor: #216315;
+
 @import "bootstrap";
 @import "bootstrap-responsive";
 
-body {
+#topspace {
     padding-top: 60px;
 }
 
-.container {
-    left:auto;
-    right:auto;
-    overflow-y: auto;
-}
-
-html {
-    overflow-y: auto;
-}
-
-section {
-    overflow: auto;
-}
-
-textarea {
-    resize: vertical;
-}
 
 .center {
     text-align: center;
@@ -90,6 +81,7 @@ p {
 .content {
   display: block;
 }
+
 .timestamp {
   color: $grayLight;
 }

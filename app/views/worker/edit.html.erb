@@ -1,7 +1,7 @@
 <h1>Update Your Profile</h1>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span3 offset5">
     <%= form_for @worker do |f| %>
     <%= render 'error_message' %>
 
@@ -20,7 +20,10 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
     
-    <%= f.submit "Save changes", :class => "btn btn-primary" %>
+      <div class="row-fluid" id="button">
+            <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+      </div>
+  
     <% end %>
 
   </div>
