@@ -1,19 +1,17 @@
 <%= form_for([@workorder,@worklog]) do |f| %>
       <%= render 'worklog_error_message' %>
-
       <div class="field">
-          <%= f.label :state %><br />
-          <%= f.select(:state, options_for_select(["In Progress", "Deferred"])) %> <!--Default text is the current user's building-->
-      </div>
 
-      <div class="field">
-        <%= f.label "If accepting, input approximate time/date that you will fix it --- If deferring, input your reason why." %><br />
+        <%= f.label :state %>
+        <%= f.select(:state, options_for_select(["In Progress", "Deferred"])) %> <!--Default text is the current user's building-->
+
+        <%= f.label "If accepting, input approximate time/date that you will fix it --- If deferring, input your reason why." %>
         <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
-      </div>
 
-      <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to true in controller if deferred --> 
+        <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to true in controller if deferred --> 
       
-      <div class="row-fluid" id="button">
+        <div class="row-fluid" id="button">
           <%= f.submit "Update Workorder", :class => "btn btn-large btn-primary" %>
+        </div>
       </div>
 <% end %>

@@ -1,15 +1,14 @@
 <%= form_for([@workorder,@worklog]) do |f| %>
-      <%= render 'worklog_error_message' %>
-
-      <div class="field">
-        <%= f.label "Provide details on the work completed" %><br />
+  <%= render 'worklog_error_message' %>
+    <div class="field">
+        <%= f.label "Provide details on the work completed" %>
         <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
-      </div>
 
-      <%= f.hidden_field :fac_man_only, :value => false %>
-      <%= f.hidden_field :state, :value => "Resolved" %> 
-      
+        <%= f.hidden_field :fac_man_only, :value => false %>
+        <%= f.hidden_field :state, :value => "Resolved" %> 
+        
       <div class="row-fluid" id="button">
           <%= f.submit "Resolve Workorder", :class => "btn btn-large btn-primary" %>
       </div>
+    </div>
 <% end %> <!-- end form --> 

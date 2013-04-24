@@ -1,7 +1,7 @@
 <h1><%= current_user.name %>'s Workorders</h1>
 <h2>Remember to 'Resolve' completed workorders with a description of the work you completed, parts you used, and costs your incurred</h2>
 
-<div class="row">
+<div class="row-fluid">
   <div class="span6 offset3">
     <% if current_user.workorders.any? %>
       <h1><%= current_user.workorders.where(:state => "In Progress").count %> Workorders in Progress</h1>

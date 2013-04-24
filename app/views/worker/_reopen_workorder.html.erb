@@ -1,17 +1,16 @@
 <%= form_for([@workorder,@worklog]) do |f| %>
-      <div class="field">
-          <%= f.label :state %><br />
-          <%= f.select(:state, options_for_select(["Reopened"])) %> <!--re-open ticket to deferred state --> 
-      </div>
+  <%= render 'worklog_error_message' %>
+  <div class="field">
+    <%= f.label :state %>
+    <%= f.select(:state, options_for_select(["Reopened"])) %> <!--re-open ticket to deferred state --> 
 
-      <div class="field">
-        <%= f.label "Explain why you are re-opening this workorder" %><br />
-        <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
-      </div>
+    <%= f.label "Explain why you are re-opening this workorder" %>
+    <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
 
-      <%= f.hidden_field :fac_man_only, :value => false %>
+    <%= f.hidden_field :fac_man_only, :value => false %>
       
-      <div class="row-fluid" id="button">
-          <%= f.submit "Reopen Workorder", :class => "btn btn-large btn-primary" %>
-      </div>
+    <div class="row-fluid" id="button">
+        <%= f.submit "Reopen Workorder", :class => "btn btn-large btn-primary" %>
+    </div>
+  </div>
 <% end %> <!-- end form --> 
