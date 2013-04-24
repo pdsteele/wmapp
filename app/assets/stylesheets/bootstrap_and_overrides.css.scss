@@ -1,9 +1,9 @@
-$navbarBackground: #216315;
-$navbarBackgroundHighlight: #3D992C;
+$navbarBackground: #343A35;
+$navbarBackgroundHighlight: #343A35;
 $navbarBrandColor: #FFFFFF;
 $navbarLinkColor: #FFFFFF;
 $navbarLinkColorHover: #E3EB15;
-$btnPrimaryBackground: #216315;
+$btnPrimaryBackground: #343A35;
 $linkColor: #216315;
 
 @import "bootstrap";
@@ -13,6 +13,10 @@ $linkColor: #216315;
     padding-top: 60px;
 }
 
+body {
+  background: #D7D7BC;
+  margin-bottom: 20px;
+}
 
 .center {
     text-align: center;
@@ -91,4 +95,15 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+// makes flashes responsive to both mobile and desktop
+.phone-flashes {
+  padding-top: 1em;
+	padding-bottom: 2em;
+}
+
+.form-page {
+  display: block;
+  text-align: center;
 }
