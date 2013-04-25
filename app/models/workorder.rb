@@ -3,8 +3,12 @@ class Workorder < ActiveRecord::Base
   before_save :set_state_default #when a work order is created, its default value should be "Pending"
 
   
-  attr_accessible :building, :description, :room, :state, :user_id  
-  attr_accessible :building, :description, :room, :state, :user_id, :worker_id, as: :admin #everything accessible as admin
+  attr_accessible :building, :description, :room, :state, :user_id, :rating, :review
+   attr_accessible :building, :description, :room, :state, :user_id, :worker_id, as: :admin #everything accessible as admin
+
+
+  #attr_accessible :building, :description, :room, :state, :user_id, :rating, :review, as: :user #only user can submit ratings/reviews
+
   
   
   belongs_to :user

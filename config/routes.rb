@@ -5,13 +5,28 @@ Wmapps::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :users
+  resources :users do
+    member do
+      get  'completed_workorders'
+    end
+  end
+
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :worker, :only => [:edit, :update, :show]
+
+  resources :worker, :only => [:edit, :update, :show] do
+    member do
+      get  'completed_workorders'
+    end
+  end
+
   resources :workorders do
+    member do
+      put 'set_review_and_close' # routing for the close method
+    end
+
     resources :worklogs
   end
-  
+
 
   match '/login',   :to => 'sessions#new'
   match '/logout',  :to => 'sessions#destroy', via: :delete
@@ -26,6 +41,15 @@ Wmapps::Application.routes.draw do
 
   match '/admin/workorders/:id/respond_to_comment/:worklog_id(.:format)', :to => 'admin/workorders#respond_to_comment', :as => 'respond_to_comment'
   match '/admin/workorders/:id/close_workorder/', :to => 'admin/workorders#close_workorder', :as => 'close_workorder'
+
+
+  match '/workorder_review', :to => 'users#show_workorder_review'
+
+  #match '/completed_workorders', :to => 'users#show_completed'
+
+
+
+
 end
 
 

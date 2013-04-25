@@ -1,0 +1,21 @@
+
+
+<h2>Please take a moment to provide feedback so that we may better serve you in the future</h2>
+<%= form_for(@workorder, :url => set_review_and_close_workorder_path(@workorder), :method => :put)  do |f| %>
+    <!--Need some error checking-->
+
+    <%= f.label :rating, "Rating" %>
+    <%= f.select(:rating, options_for_select([["1 - Poor", 1], ["2 - Acceptable", 2 ], ["3 - Average ", 3  ], [ "4 - Good", 4 ], [ "5 - Excellent", 5 ]   ])) %>
+
+
+    <%= f.label :review, "Review" %>
+    <%= f.text_area :review, :size => '50x10' %>
+
+
+    <%= f.label :state, "Workorder will be closed after review submission" %>
+    <%= f.select(:state, options_for_select(["Closed", "Closed"]) ) %>  <!-- There's probably a better option for setting the state as closed -->
+
+    <div class="row-fluid" id="button">
+      <%= f.submit "Submit Review and Close Work Order", class: "btn btn-large btn-primary" %>
+    </div>
+<% end %>

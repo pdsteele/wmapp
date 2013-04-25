@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def show
     #@user = User.find(params[:id])
-    @workorders = current_user.workorders#.paginate(page: params[:page])
+    @workorders = current_user.workorders.where( "State != ?", "Closed" ) # don't display closed workorders
     store_location 
   end
 
@@ -55,6 +55,21 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+
+  def show_workorder_review
+    @workorder = Workorder.find(params[:workorder_id])
+    store_location
+  end
+
+
+  def completed_workorders
+
+    @workorders = current_user.workorders.where(:state => "Closed")
+    store_location
+
+  end
+
 
 
 # for ensuring a user is logged in before accessing their stuff

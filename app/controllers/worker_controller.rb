@@ -69,6 +69,14 @@ class WorkerController < ApplicationController
       render 'show_in_progress'
     end
   end
+
+
+  def completed_workorders
+
+    @workorders = current_user.workorders.where(:state => "Closed")
+    store_location
+
+  end
   
   
   # def show_deferral_form

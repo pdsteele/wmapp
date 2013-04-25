@@ -4,8 +4,8 @@
 <div class="row">
 
   <div class="span6 offset3">
-    <% if current_user.workorders.any? %>
-      <h3><%= current_user.workorders.count %> Total Workorders</h3>
+    <% if current_user.workorders.where( "State != ?", "Closed" ).any? %>
+      <h3><%= current_user.workorders.where( "State != ?", "Closed" ).count %> Total Workorders</h3>
       <ol class="workorders">
         <%= render @workorders %>
       </ol>

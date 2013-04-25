@@ -60,8 +60,13 @@
   <% if (current_user.class == User) and (workorder.state == "Resolved") %>
     <% @workorder = workorder %>
     <% @worklog = workorder.worklogs.new(params[:worklog]) %><br />
-    <%= render 'reopen_workorder' %> 
-  <% end %> 
+    <%= render 'reopen_workorder' %>
+
+      <!-- provide a link to the review form -->
+    <span class="content"><b><%= link_to 'Or you can close and leave a review', workorder_review_path(:workorder_id => workorder.id) %></b></span>
+  <% end %>
+
+
 
   <% if (current_user.class == User) and (workorder.state != "Resolved") and (workorder.state != "Closed") %>
     <% @workorder = workorder %>

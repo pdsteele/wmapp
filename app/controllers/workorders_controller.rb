@@ -5,8 +5,8 @@ class WorkordersController < ApplicationController
 
   def new
   	@user = current_user
-  	@current_user_building = @user[:dorm] # the use shouldn't have to enter their info for building and room
-	  @current_user_room   = @user[:room] # we will set these as defaults in the text fields by passing them to the partial
+  	@current_user_building = @user[:dorm] # the user shouldn't have to enter their info for building and room
+	  @current_user_room     = @user[:room] # we will set these as defaults in the text fields by passing them to the partial
 
   	@workorder = Workorder.new
   end
@@ -38,6 +38,7 @@ class WorkordersController < ApplicationController
 
   def update
     @workorder = Workorder.find(params[:id])
+
     if @workorder.update_attributes(params[:workorder])
       flash[:success] = "Workorder updated"
       redirect_to @workorder
@@ -60,6 +61,25 @@ class WorkordersController < ApplicationController
     @workorder = Workorder.find(params[:id])
     @workorder.destroy
   end
+
+
+  # a method to update the workorder with review
+  # information and update the worker stats. Note
+  # that this should be the last update
+  def set_review_and_close
+    puts "WE ARE IN THE CLOSE METHOD"
+    @workorder = Workorder.find(params[:id])
+
+    if @workorder.update_attributes(params[:workorder])
+      flash[:success] = "Workorder updated"
+      redirect_to @workorder
+    else
+      render 'edit'
+    end
+
+  end
+
+
 
   private
 
