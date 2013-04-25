@@ -68,7 +68,8 @@ class WorkerController < ApplicationController
   end
 
   def message_center
-    @urgent_worklogs = current_user.worklogs.where(:fac_man_only => true).find(:all, :conditions => ["created_at > ?", 7.days.ago]) #unsolicited condition missing and link still needs put in 
+    @urgent_worklogs = current_user.worklogs.where("created_at > ?", 7.days.ago).find(:all, :conditions => ['fac_man_only = ? or unsolicited = ?', true, true]) 
+    @show_link = true 
 
     render 'message_center'
   end

@@ -12,20 +12,21 @@
   <% end %> <!-- end if --> 
 
   <% if current_user.class == Worker %> <!-- what is displayed for workers --> 
+    
     <%= f.label :user %> 
-    <%= f.label "User email: " %> <b><%= @workorder.user.email %></b>
-    <%= f.label "User phone: " %> <b><%= @workorder.user.phone %></b>
+    <%= f.select(:user_id, options_for_select(User.order("name ASC").all.map{ |user| [user.name, user.id] })) %> 
+    <div class="form_hint">If user does not have an account, select 'Other' as user and provide their email, phone, and bannerID in the workorder description</div>
     
     <%= f.label :building %>
-    <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort, :selected => @workorder.building)) %> <!--Default text is the current user's building-->
+    <%= f.select(:building, options_for_select(Buildings.all.map(&:name).sort)) %> 
     
     <%= f.label :room %>
-    <%= f.text_field :room, :value => @workorder.room %><!--Default text is the current user's room-->
+    <%= f.text_field :room %>
 
     <%= f.label :state %>
-    <%= f.select(:state, options_for_select(['Pending', 'Assigned','In Progress', 'Deferred', 'Resolved'], :selected => @workorder.state)) %> 
+    <%= f.select(:state, options_for_select(['Assigned','In Progress','Resolved'])) %> 
 
-    <%= f.label "Description: " %> <b><%= @workorder.description %></b>
+    <%= f.hidden_field :worker_id, :value => current_user.id %>    
 
   <% else %> <!-- what is displayed to users --> 
       
@@ -35,12 +36,13 @@
       <%= f.label :room %>
       <%= f.text_field :room, :value => current_user.room %><!--Default text is the current user's room-->
 
-      <%= f.label :description %>
-      <%= f.text_area :description, :cols => "15", :rows => "8" %> <!-- workers cannot modify the description -->
   <% end %> <!-- end if --> 
 
+  <%= f.label :description %>
+  <%= f.text_area :description, :cols => "15", :rows => "8" %> 
+
   <div class="row-fluid" id="button">
-          <%= f.submit "Create Workorder", :class => "btn btn-large btn-primary" %>
+      <%= f.submit "Create Workorder", :class => "btn btn-large btn-primary" %>
   </div>
 
 </div> <!-- end field -->
