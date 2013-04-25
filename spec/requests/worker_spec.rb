@@ -29,26 +29,36 @@ describe Worker do
 	
 	describe "Accept workorder" do
 	
-		let!(:worker)   { FactoryGirl.create(:worker)  }
-		let!(:user)     { FactoryGirl.create(:user)    }   
-		let!(:workorder){ FactoryGirl.create(:workorder, worker: worker, state: "Assigned", user: user) } #
-		
-		
-		# can't get the worklog factory working for some reason
-		let!(:worklog ) do 
-			#@workorder =Workorder.new()
-			#declare worklogs
-			@worklog = Worklog.new(description: "test", fac_man_only: false, name: "This", state: "Assigned", workorder_id: workorder.id, workorder: workorder, unsolicited: false) 
-			@worklog.save
-		end
+		let!(:worker1)   { FactoryGirl.create(:worker)  }
+		let!(:user1)     { FactoryGirl.create(:user)    }   
+		let!(:workorder1){ FactoryGirl.create(:workorder, worker: worker1, state: "Assigned", user: user1) } #
+# 		
+# 		
+# 		# can't get the worklog factory working for some reason
+# 		 let!(:worklog ) do 
+# # 			#@workorder =Workorder.new()
+# # 			#declare worklogs
+# # 			@workorder =Workorder.all[0]
+#  			@worklog = Worklog.new(description: "test", fac_man_only: false, name: "This", state: "Assigned", workorder_id: workorder.id, workorder: workorder, unsolicited: false) 
+#  			@worklog.save
+#  			
+#  			puts "Is the worklog valid?"
+#  			puts @worklog.valid?
+# 		end
 
-		# worklogs 
+		
+		
+
+		before do
+			@worklog = workorder1.worklogs.build( description: "test", fac_man_only: false, name: "This", state: "Assigned", workorder_id: workorder1.id, workorder: workorder1, unsolicited: false )
+		end
 
 
 		before do
 			puts "Here is the description"
-			puts workorder.worklogs.first #<== This doesnt give any error and does the right thing
-			#puts workorder.worklogs.all   #<== This line gives error:  ActionView::Template::Error:wrong number of arguments (0 for 1)
+			#puts workorder.worklogs.first #<== This doesnt give any error and does the right thing
+			#puts @worklog.valid?
+			puts workorder1.worklogs   #<== This line gives error:  ActionView::Template::Error:wrong number of arguments (0 for 1)
 		end
 		
 		
@@ -57,7 +67,7 @@ describe Worker do
 		#attr_accessible :description, :fac_man_only, :name, :state, :workorder_id, :workorder,  :unsolicited, :worker_id
 		
 		
-		before{ sign_in( worker ) }
+		before{ sign_in( worker1 ) }
 
 		before{ visit '/assigned_workorders' }
 		

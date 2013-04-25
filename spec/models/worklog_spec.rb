@@ -9,4 +9,11 @@ describe Worklog do
     it { should validate_presence_of(:name) }
     its(:fac_man_only) { should eq(false) }
   end
+  
+  # let( :worker ) { FactoryGirl.create(:user) }
+#   
+#   describe "accessible attributes" do
+#   	it "should not allow access to worker_id" do
+#   		expect do
+#   			Work
 end

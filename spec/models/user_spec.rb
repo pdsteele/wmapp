@@ -24,6 +24,9 @@ describe User do
             invalid_emails.each do |email|
                 it { should_not allow_value(email).for(:email) }
             end
+            
+                    
+            
         end
     end
     
