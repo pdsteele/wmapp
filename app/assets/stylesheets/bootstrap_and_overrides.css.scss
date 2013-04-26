@@ -3,7 +3,7 @@ $navbarBackgroundHighlight: #343A35;
 $navbarBrandColor: #FFFFFF;
 $navbarBrandColorHover: darken($navbarBrandColor, 5%);
 $navbarLinkColor: #FFFFFF;
-$navbarLinkColorHover: #9b9a8d;
+$navbarLinkColorHover: #CFC329;
 $btnPrimaryBackground: #343A35;
 $linkColor: #216315;
 
@@ -12,12 +12,17 @@ $linkColor: #216315;
 @import "bootstrap-responsive";
 
 
+.brand:hover {
+  color: #CFC329;
+  background-color: #343A35;
+}
+
 #topspace {
     padding-top: 60px;
 }
 
 body {
-  background: #D7D7BC;
+  background-color: #D7D7BC;
   margin-bottom: 20px;
 }
 
@@ -99,13 +104,13 @@ p {
 
 #timestamp {
   color: $grayLight;
-  font-size: 1em; 
+  font-size: 1em;
   font-weight: light;
 }
 
 .form_hint {
   color: $grayLight;
-  font-size: .9em; 
+  font-size: .9em;
   font-weight: light;
   margin-bottom: 20px;
 }
