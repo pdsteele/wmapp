@@ -1,13 +1,16 @@
 $navbarBackground: #343A35;
 $navbarBackgroundHighlight: #343A35;
 $navbarBrandColor: #FFFFFF;
+$navbarBrandColorHover: darken($navbarBrandColor, 5%);
 $navbarLinkColor: #FFFFFF;
-$navbarLinkColorHover: #E3EB15;
+$navbarLinkColorHover: #9b9a8d;
 $btnPrimaryBackground: #343A35;
 $linkColor: #216315;
 
+
 @import "bootstrap";
 @import "bootstrap-responsive";
+
 
 #topspace {
     padding-top: 60px;

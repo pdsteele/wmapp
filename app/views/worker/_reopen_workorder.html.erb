@@ -5,6 +5,7 @@
     <%= f.select(:state, options_for_select(["Reopened"])) %> <!--re-open ticket to deferred state --> 
 
     <%= f.label "Explain why you are re-opening this workorder" %>
+    <div class="form_hint">If you have a preference, please also provide a good time frame to visit</div>
     <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
 
     <%= f.hidden_field :fac_man_only, :value => false %>

@@ -5,7 +5,8 @@
         <%= f.label :state %>
         <%= f.select(:state, options_for_select(["In Progress", "Deferred"])) %> <!--Default text is the current user's building-->
 
-        <%= f.label "If accepting, input approximate time/date that you will fix it --- If deferring, input your reason why." %>
+        <%= f.label "Details" %>
+        <div class="form_hint">If you are accepting the workorder, please be friendly and provide a timeframe for the user. <br> If you are deferring, state the reason why</div>
         <%= f.text_area :description, :cols => "15", :rows => "8" %> <!--Default text is the current user's building-->
 
         <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to true in controller if deferred --> 

@@ -1,7 +1,7 @@
 <h1>New workorder</h1>
 
 <div class="row-fluid; position: absolute; overflow-y: auto;">
-    <div class="span2 offset5">
+    <div class="span3 offset5">
         <% if current_user.class == User %>
             <%= render 'form', :locals => { :current_user_building => @current_user_building, :current_user_room => @current_user_room} %>
         <% else %>
