@@ -8,6 +8,7 @@ gem 'meta_search', '>= 1.1.0.pre'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'twitter-bootstrap-rails'
+#gem 'therubyracer'
 
 group :assets do
 #  gem 'sass-rails',     '~> 3.2.3'
