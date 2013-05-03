@@ -42,7 +42,8 @@ Summary of changes:
    be closed by both admins and users--only want ratings to show up for users.
 8. It was necessary to make a change to the Worker model's password_confirmation validation so that 
    it only does the validation when a new worker is created.  This is important because without this change
-   I can't get the worker rating to save with update_attributes.  Worker can still edit password correctly.
+   I can't get the worker rating to save with update_attributes.  Worker can still edit password correctly. 
+   We might want to make this change to User model also ( User.first.valid? returns false)
 
 
 
