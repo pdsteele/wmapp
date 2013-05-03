@@ -21,6 +21,7 @@ ActiveAdmin.register Worker do
       column :phone
       column :total_workorders_completed
       column :average_workorder_rating
+      default_actions
     end
 
     show do
