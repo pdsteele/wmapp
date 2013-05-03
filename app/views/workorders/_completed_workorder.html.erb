@@ -12,8 +12,13 @@
   <% unless workorder.worker.nil? %>
       <span class="content"><b>Worker: </b><%= workorder.worker.name %></span>
   <% end %>
-  <span class="content"><b>Rating: </b><%=   workorder.rating %></span>
-  <span class="content"><b>Review: </b><%=   workorder.review %></span>
+
+  <% if workorder.closed_by_user %> <!-- If the work order was closed by user will have rating and review -->
+    <span class="content"><b>Rating: </b><%=   workorder.rating %></span>
+    <span class="content"><b>Review: </b><%=   workorder.review %></span>
+  <% else %>
+    <span class="content"><b> This work order closed by admin </b></span>
+  <% end %>
 
 
 

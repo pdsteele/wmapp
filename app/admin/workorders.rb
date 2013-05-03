@@ -77,6 +77,8 @@ ActiveAdmin.register Workorder do
     # CONTROLLER OVERRIDES
     controller do
 
+
+
       def assign_workorder
         # Page for assigning a workorder and creating worklog necessary for it 
         @workorder = Workorder.find(params[:workorder_id])

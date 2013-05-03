@@ -17,14 +17,14 @@ password
 ====================Implementing Ratings Branch======================
 
 
-Changes in this branch are predicated on the idea that "Closed" is the final state for a workorder.
+Changes in this branch are predicated on the idea that "Closed" is the final state for a work order.
 
 Summary of changes:
 
-1. Made a workorder review form for the user, the link for which shows up under a resolved workorder
+1. Made a work order review form for the user, the link for which shows up under a resolved workorder
 2. Added total_workorders_completed and average_workorder_rating columns to the worker model--need rake db:migrate.
    When a new worker is created these values are set to 0 by default. 
-   Also, since these attributes will initially be undefined for existing workers values of 0 may have to be made 
+   Also, since these attributes will initially be undefined for existing workers, values of 0 may have to be made 
    manually in the console for all workers, something like:
    
 			Worker.all.each do |worker|
@@ -32,18 +32,21 @@ Summary of changes:
 			    worker.update_attributes(total_workorders_completed: 0)
 			  end
 
-3. Made it so that all closed workorders show up on their own page. 
+3. Made it so that all closed workorders show up on their own page.  Also added several partials.  
 4. Created new links in the navbar for both users and workers to show their completed workorders. 
    Accordingly, this involved making changes to routes.rb.  
-5. Made it so that users can't add comments/updates to a closed workorder--simple if-else in workorders/show.html.erb
-6. Made the worker stat page display the worker average and workers can be sorted on their average.
+5. Made it so that users can't add comments/updates to a closed workorder since that should be its final state.  
+   Simple if-else in workorders/show.html.erb if you want to revert
+6. Made the worker stat page under the admin view display the worker average.
 7. Had to add another migration to Workorder model as a workaround for the fact that work orders can 
    be closed by both admins and users--only want ratings to show up for users.
 8. It was necessary to make a change to the Worker model's password_confirmation validation so that 
-   it only does the validation when a new worker is created.  Worker can still edit password correctly.
+   it only does the validation when a new worker is created.  This is important because without this change
+   I can't get the worker rating to save with update_attributes.  Worker can still edit password correctly.
 
 
-Note: There is a discrepancy between the closed work order stat  : closed on db != closed
+
+Note: There might be a discrepancy between the completed work order statistic in the admin view and the total_workorders_completed attribute of the Worker model.  The former treats 'Resolved' as the qualifying state while the latter treats 'Closed' as the state for which to  
 
 
 

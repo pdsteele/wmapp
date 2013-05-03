@@ -5,10 +5,14 @@ ActiveAdmin.register Worklog do
     controller { with_role :admin } 
 
     controller do
+
+
         def create
             @workorder = Workorder.find(params[:workorder_id])
             @worklog = @workorder.worklogs.new(params[:worklog])
-            
+
+
+
             if (@worklog.name.nil?)
                 @worklog.name = current_admin_user.email
             end
@@ -42,6 +46,11 @@ ActiveAdmin.register Worklog do
                 
                 if (@workorder.save)
                     flash[:success] = "Workorder updated!"
+
+                    if @workorder.state == "Closed"
+                      @workorder.update_attributes(:closed_by_user => false)
+                    end
+
                     redirect_to admin_workorder_path(@workorder.id)
                 end
 
