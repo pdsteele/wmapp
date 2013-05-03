@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">WM Workorder Management</a>
+          <a class="brand" href="/">WM Workorder Management</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav pull-right">
               <% if signed_in_user? %>
@@ -54,10 +54,16 @@
                 <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
                 <li><%= link_to 'Log Out', logout_path, method: "delete" %></li>
               <% elsif signed_in_worker? %>
+                <li><%= link_to "Urgent Messages", message_center_path %></li>
+                <li><%= link_to "All Your Workorders", worker_path(current_user) %></li>
                 <li><%= link_to "Assigned Workorders", assigned_workorders_path %></li>
                 <li><%= link_to "Workorders in Progress", progress_workorders_path %></li>
+
                  <li><%= link_to "Your Completed Workorders", completed_workorders_worker_path(current_user) %></li>
                  <li><%= link_to "All Your Workorders", worker_path(current_user) %></li>
+
+                <li><%= link_to "Create a Workorder", new_workorder_path %></li> 
+
                 <li><%= link_to "Edit Profile", edit_worker_path(current_user) %></li>
                 <li><%= link_to 'Log Out', logout_path, method: "delete" %></li>
               <% else %>
@@ -72,14 +78,33 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
+        <div class="hidden-phone">
+			    <% flash.each do |key, value| %>
+		      	<div class="alert alert-<%= key %>">
+					    <%= value %>
+					    <a class="close" data-dismiss="alert" href="#">&times;</a>
+				    </div>
+		      <% end %>
+		    </div>
+
+		    <div class="visible-phone phone-flashes">
+			    <% flash.each do |key, value| %>
+		      	<div class="alert alert-<%= key %>">
+					    <%= value %>
+					    <a class="close" data-dismiss="alert" href="#">&times;</a>
+				    </div>
+		      <% end %>
+		    </div>
+		  </div>
+      <div class="row-fluid">
         <div class="span12">
           <%= yield %>
         </div>
       </div><!--/row-->
 
-      <!--<footer>
-        <p>&copy; Company 2013</p>
-      </footer> -->
+      <!-- <footer>
+        <p>The College of William and Mary Facilities Management &copy;</p>
+      </footer>--> 
 
     </div> <!-- /container -->
 

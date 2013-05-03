@@ -33,6 +33,7 @@ Wmapps::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/assigned_workorders', :to => 'worker#show_assigned'
   match '/progress_workorders', :to => 'worker#show_in_progress'
+  match '/message_center', :to => 'worker#message_center'
   
   #match '/deferral', :to => 'worker#show_deferral_form'
   

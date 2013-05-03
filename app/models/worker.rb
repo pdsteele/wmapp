@@ -20,9 +20,9 @@ class Worker < ActiveRecord::Base
 	  validates :phone, :presence => true, :format => { :with => /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/, :message => "Invalid phone number" } #got this regex online
     
     validates :password, :confirmation => true
-    #validates :password_confirmation, :presence => true , :on => :create
+    validates :password_confirmation, :presence => true , :on => :create
 
-    validates :password_confirmation, :presence => true
+    #validates :password_confirmation, :presence => true  # this line causes update_attributes() to fail in certain cases
 
     authenticate_by :email 
 

@@ -1,32 +1,32 @@
 <%= form_for([@workorder,@worklog]) do |f| %>
-      <%= render 'worklog_error_message' %>
+    <%= render 'worklog_error_message' %>
+    <div class="form-page">
       
       <% if current_user.class == Worker %> 
-        <div class="field">
-            <%= f.label "Hide from User?" %><br />
+        
+            <%= f.label "Hide from User?" %>
+            <div class="form_hint">If you think it may offend the user, or expose them to unnecessary details, then select this.</div>
             <%= f.select(:fac_man_only, options_for_select([false, true])) %> <!--allow workers to choose to hide a comment from the user -->
-        </div>
 
-        <div class="field">
-            <%= f.label "Urgent for administrator to respond to?" %><br />
+            <%= f.label "Urgent for administrator to respond to?" %>
             <%= f.select(:unsolicited, options_for_select([false, true])) %> <!-- select true if it should be flagged for viewing by administrator --> 
-        </div>
 
       <% else %>
         <%= f.hidden_field :fac_man_only, :value => false %> <!-- gets set to false no matter what for users--> 
         <%= f.hidden_field :unsolicited, :value => true %> <!-- comments/updates made by non-workers are always flagged to be viewed by an administrator --> 
       <% end %> 
 
-      <div class="field">
-        <%= f.label "Comment/Update" %><br />
-        <%= f.text_area :description, :cols => "15", :rows => "5" %> <!--Default text is the current user's building-->
-      </div>
-
-
+      <%= f.label "Comment/Update" %>
+      <% if current_user.class == User %>
+        <div class="form_hint">Feel free to let us know what times work well for you, any schedule changes, more details about the issue, or feedback about the work completed!</div>
+      <% end %> 
+      <%= f.text_area :description, :cols => "15", :rows => "5" %> <!--Default text is the current user's building-->
+      
       <%= f.hidden_field :state, :value => @workorder.state %> <!-- comments/minor updates do not change state, so inherit state from workorder --> 
       
       <div class="row-fluid" id="button">
           <%= f.submit "Post Comment", :class => "btn btn-primary" %>
       </div>
+    </div><!-- end form page -->
       
 <% end %>

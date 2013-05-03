@@ -28,37 +28,39 @@
 
   <!-- show latest worklog description if a worklog exists -->
   <% if (!@worklogs_visible.first.nil?) %>
-    <spac class="content"><b>Latest Update: </b><%= @worklogs_visible.first.description %></span><br />
+    <spac class="content"><b>Latest Update: </b><%= @worklogs_visible.first.description %></span>
   <% end %>
 
-  <span class="content"><b><%= link_to 'Updates, Details, and Comments', workorder_path(workorder.id) %></b></span>
+  <span class="content" id="link"><b><%= link_to 'Updates, Details, and Comments', workorder_path(workorder.id) %></b></span>
 
-  <span class="timestamp">
+  <span class="content" id="timestamp">
     Last Updated <%= time_ago_in_words(workorder.updated_at) %> ago.
-  </span> <br /> 
-  <span class="timestamp">
+  </span> 
+
+  <span class="content" id="timestamp">
     Originally Created <%= time_ago_in_words(workorder.created_at) %> ago.
-  </span> <br />
+  </span> 
 
   <!-- all code below for forms to accept/defer/resolve --> 
   
   <!--Display form here only if current_user is a worker and the workorder is in 'Assigned' state-->
   <% if (current_user.class == Worker) and ((workorder.state == "Assigned") or (workorder.state == "Reopened") or (workorder.state == "Deferred")) %>
     <% @workorder = workorder %>
-    <% @worklog = workorder.worklogs.new(params[:worklog]) %><br />
+    <% @worklog = workorder.worklogs.new(params[:worklog]) %>
     <%= render 'accept_workorder' %> 
   <% end %><!-- end conditional --> 
 
   <!-- display form to resolve workorder if current_user is a worker and the workorder is 'In Progress' state --> 
   <% if (current_user.class == Worker) and (workorder.state == "In Progress") %>
     <% @workorder = workorder %>
-    <% @worklog = workorder.worklogs.new(params[:worklog]) %><br />
+    <% @worklog = workorder.worklogs.new(params[:worklog]) %>
     <%= render 'resolve_workorder' %> 
   <% end %> <!-- end conditional --> 
 
   <!-- display form to re-open workorder if current_user is a user and workorder is in 'Resolved' state -->
   <% if (current_user.class == User) and (workorder.state == "Resolved") %>
     <% @workorder = workorder %>
+
     <% @worklog = workorder.worklogs.new(params[:worklog]) %><br />
     <%= render 'reopen_workorder' %>
 
@@ -68,9 +70,10 @@
 
 
 
+
   <% if (current_user.class == User) and (workorder.state != "Resolved") and (workorder.state != "Closed") %>
     <% @workorder = workorder %>
-    <% @worklog = workorder.worklogs.new(params[:worklog]) %><br />
+    <% @worklog = workorder.worklogs.new(params[:worklog]) %>
     <%= render 'cancel_workorder' %> 
   <% end %> 
 

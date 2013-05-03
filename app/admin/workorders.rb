@@ -71,7 +71,7 @@ ActiveAdmin.register Workorder do
         f.input :state, :collection => ['Pending', 'Assigned', 'In Progress', 'Deferred', 'Resolved', 'Closed']
         f.input :description
       end
-      f.buttons
+      f.actions
     end
 
     # CONTROLLER OVERRIDES
@@ -126,7 +126,7 @@ ActiveAdmin.register Workorder do
     end #end controller overrides 
 
    #define actions and scope  
-   actions :index, :show, :new
+   actions :index, :show, :new, :create
    scope :all
    scope :pending
    scope :in_progress

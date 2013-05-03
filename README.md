@@ -14,9 +14,36 @@ password
 
 
 
-====================Assigning-Worker Branch======================
+====================Implementing Ratings Branch======================
 
-1. Created a WorkorderRelationship model that reflects the state of a worker being assigned to a workorder
-2. Made it so that when a WorkorderRelationship( an assignment) is created, destroyed, or updated, the name of the worker should be changed. 
-3. Other minor changes
+
+Changes in this branch are predicated on the idea that "Closed" is the final state for a workorder.
+
+Summary of changes:
+
+1. Made a workorder review form for the user, the link for which shows up under a resolved workorder
+2. Added total_workorders_completed and average_workorder_rating columns to the worker model--need rake db:migrate.
+   When a new worker is created these values are set to 0 by default. 
+   Also, since these attributes will initially be undefined for existing workers values of 0 may have to be made 
+   manually in the console for all workers, something like:
+   
+			Worker.all.each do |worker|
+			    worker.update_attributes(average_workorder_rating: 0.0)
+			    worker.update_attributes(total_workorders_completed: 0)
+			  end
+
+3. Made it so that all closed workorders show up on their own page. 
+4. Created new links in the navbar for both users and workers to show their completed workorders. 
+   Accordingly, this involved making changes to routes.rb.  
+5. Made it so that users can't add comments/updates to a closed workorder--simple if-else in workorders/show.html.erb
+6. Made the worker stat page display the worker average
+7. Had to add another migration as a workaround for the fact that work orders can 
+   be closed by both admins and users--only want ratings to show up for users.
+
+
+
+
+
+
+
 

@@ -1,18 +1,30 @@
-$navbarBackground: #216315;
-$navbarBackgroundHighlight: #3D992C;
+$navbarBackground: #343A35;
+$navbarBackgroundHighlight: #343A35;
 $navbarBrandColor: #FFFFFF;
+$navbarBrandColorHover: darken($navbarBrandColor, 5%);
 $navbarLinkColor: #FFFFFF;
-$navbarLinkColorHover: #E3EB15;
-$btnPrimaryBackground: #216315;
+$navbarLinkColorHover: #CFC329;
+$btnPrimaryBackground: #343A35;
 $linkColor: #216315;
+
 
 @import "bootstrap";
 @import "bootstrap-responsive";
+
+
+.brand:hover {
+  color: #CFC329;
+  background-color: #343A35;
+}
 
 #topspace {
     padding-top: 60px;
 }
 
+body {
+  background-color: #D7D7BC;
+  margin-bottom: 20px;
+}
 
 .center {
     text-align: center;
@@ -80,10 +92,34 @@ p {
 }
 .content {
   display: block;
+  font-size: 1.4em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
 }
 
-.timestamp {
+#link {
+  margin-top: 30px;
+}
+
+#timestamp {
   color: $grayLight;
+  font-size: 1em;
+  font-weight: light;
+}
+
+.form_hint {
+  color: $grayLight;
+  font-size: .9em;
+  font-weight: light;
+  margin-bottom: 20px;
+}
+
+.field label {
+    font-size: 1.1em;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    margin-top: 15px;
 }
 
 aside {
@@ -91,4 +127,15 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+// makes flashes responsive to both mobile and desktop
+.phone-flashes {
+  padding-top: 1em;
+	padding-bottom: 2em;
+}
+
+.form-page {
+  display: block;
+  text-align: center;
 }
