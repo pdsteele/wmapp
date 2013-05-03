@@ -3,14 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0820eeb6-99bd-4205-9418-f89fe0184e59" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workorders/_completed_workorder.html.erb" afterPath="$PROJECT_DIR$/app/views/workorders/_completed_workorder.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/worklogs.rb" afterPath="$PROJECT_DIR$/app/admin/worklogs.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/workorders.rb" afterPath="$PROJECT_DIR$/app/admin/workorders.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="wmapp.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1367555136146" ignored="false" />
+    <file path="/Dummy.txt" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1367590788211" ignored="false" />
     <file path="/Gemfile" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1366822481532" ignored="false" />
     <file path="/_workorder.html.erb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1366854527274" ignored="false" />
     <file path="/dashboard.rb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1367556858517" ignored="false" />
@@ -79,10 +75,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workorders.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="workorders.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/admin/workorders.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="0" selection-start="4414" selection-end="4414" vertical-scroll-proportion="-8.653846">
+            <state line="92" column="67" selection-start="4964" selection-end="4964" vertical-scroll-proportion="1.6292287">
               <folding />
             </state>
           </provider>
@@ -91,16 +87,16 @@
       <file leaf-file-name="completed_workorders.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/worker/completed_workorders.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="69" selection-start="559" selection-end="559" vertical-scroll-proportion="-8.75">
+            <state line="14" column="69" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_completed_workorder.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_completed_workorder.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/workorders/_completed_workorder.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="19" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.5945946">
+            <state line="19" column="98" selection-start="1107" selection-end="1107" vertical-scroll-proportion="-11.875">
               <folding />
             </state>
           </provider>
@@ -118,7 +114,7 @@
       <file leaf-file-name="_workorder.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/workorders/_workorder.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="0" selection-start="2896" selection-end="2896" vertical-scroll-proportion="-11.625">
+            <state line="63" column="0" selection-start="2896" selection-end="2896" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,7 +123,7 @@
       <file leaf-file-name="show_workorder_review.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/show_workorder_review.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="16" selection-start="724" selection-end="724" vertical-scroll-proportion="-11.875">
+            <state line="19" column="16" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -219,7 +215,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -366,16 +361,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="appearance" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="appearance" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Rails.Development: wmapp">
     <configuration default="false" name="worker_spec" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
@@ -709,11 +705,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24967825" sideWeight="0.0" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17310168" sideWeight="0.7845579" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17503217" sideWeight="0.7845579" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18971062" sideWeight="0.29654035" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21544209" sideWeight="0.91634494" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21497585" sideWeight="0.91634494" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -831,14 +827,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workorders/_workorder.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="2896" selection-end="2896" vertical-scroll-proportion="-11.625">
+        <state line="63" column="0" selection-start="2896" selection-end="2896" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/show_workorder_review.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="16" selection-start="724" selection-end="724" vertical-scroll-proportion="-11.875">
+        <state line="19" column="16" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -871,13 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/workorders.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="0" selection-start="4414" selection-end="4414" vertical-scroll-proportion="-8.653846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/worklogs.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="23" selection-start="1732" selection-end="1732" vertical-scroll-proportion="0.0">
@@ -887,14 +876,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/worker/completed_workorders.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="69" selection-start="559" selection-end="559" vertical-scroll-proportion="-8.75">
+        <state line="14" column="69" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workorders/_completed_workorder.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="19" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.5945946">
+        <state line="19" column="98" selection-start="1107" selection-end="1107" vertical-scroll-proportion="-11.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/workorders.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="67" selection-start="4964" selection-end="4964" vertical-scroll-proportion="1.6292287">
           <folding />
         </state>
       </provider>

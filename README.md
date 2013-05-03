@@ -14,7 +14,7 @@ password
 
 
 
-====================Implementing Ratings Branch======================
+==================== Implementing Ratings Branch ======================
 
 
 Changes in this branch are predicated on the idea that "Closed" is the final state for a work order.
@@ -46,7 +46,10 @@ Summary of changes:
 
 
 
-Note: There might be a discrepancy between the completed work order statistic in the admin view and the total_workorders_completed attribute of the Worker model.  The former treats 'Resolved' as the qualifying state while the latter treats 'Closed' as the state for which to  
+
+
+Note: There might be a discrepancy between the completed work order statistic in the admin view and the total_workorders_completed 
+attribute of the Worker model.  The former treats 'Resolved' as a qualifying state while the latter treats 'Closed' as that state.  
 
 
 
