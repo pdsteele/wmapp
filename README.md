@@ -52,6 +52,8 @@ Summary of changes:
 Note: There might be a discrepancy between the completed work order statistic in the admin view and the total_workorders_completed 
 attribute of the Worker model.  The former treats 'Resolved' as a qualifying state while the latter treats 'Closed' as that state.  
 
+Also: if the close_workorder method in the workorders.rb admin controller is a method that is in use, the closed_by_user attribute of
+the workorder will have to be set to false in that method.  It didn't seem as if that method is being used for anything.
 
 
 
