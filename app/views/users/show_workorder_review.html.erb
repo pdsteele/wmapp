@@ -5,15 +5,18 @@
     <!--Need some error checking-->
 
     <%= f.label :rating, "Rating" %>
-    <%= f.select(:rating, options_for_select([["1 - Poor", 1], ["2 - Acceptable", 2 ], ["3 - Average ", 3  ], [ "4 - Good", 4 ], [ "5 - Excellent", 5 ]   ])) %>
+    <%= f.select(:rating, options_for_select([["5 - Excellent", 5], ["4 - Good", 4 ], ["3 - Average ", 3  ], [ "2 - Acceptable", 2 ], [ "1 - Poor", 1 ]   ])) %>
 
 
     <%= f.label :review, "Review" %>
     <%= f.text_area :review, :size => '50x10' %>
 
 
+
     <%= f.label :state, "Workorder will be closed after review submission" %>
-    <%= f.select(:state, options_for_select(["Closed", "Closed"]) ) %>  <!-- There's probably a better option for setting the state as closed -->
+    <%= f.hidden_field :state, :value => "Closed" %>
+    <%= f.hidden_field :closed_by_user, :value => true %>
+
 
     <div class="row-fluid" id="button">
       <%= f.submit "Submit Review and Close Work Order", class: "btn btn-large btn-primary" %>

@@ -24,6 +24,9 @@ class Worker < ActiveRecord::Base
 
     #validates :password_confirmation, :presence => true  # this line causes update_attributes() to fail in certain cases
 
+    scope :resolved,    where(:state => "Resolved")
+
+
     authenticate_by :email 
 
     def set_total_workorders(new_total)

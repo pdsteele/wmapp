@@ -36,9 +36,14 @@ Summary of changes:
 4. Created new links in the navbar for both users and workers to show their completed workorders. 
    Accordingly, this involved making changes to routes.rb.  
 5. Made it so that users can't add comments/updates to a closed workorder--simple if-else in workorders/show.html.erb
-6. Made the worker stat page display the worker average
-7. Had to add another migration as a workaround for the fact that work orders can 
+6. Made the worker stat page display the worker average and workers can be sorted on their average.
+7. Had to add another migration to Workorder model as a workaround for the fact that work orders can 
    be closed by both admins and users--only want ratings to show up for users.
+8. It was necessary to make a change to the Worker model's password_confirmation validation so that 
+   it only does the validation when a new worker is created.  Worker can still edit password correctly.
+
+
+Note: There is a discrepancy between the closed work order stat  : closed on db != closed
 
 
 

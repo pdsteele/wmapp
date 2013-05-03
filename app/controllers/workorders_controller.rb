@@ -66,7 +66,7 @@ class WorkordersController < ApplicationController
   end
 
 
-
+  ##
   # a method to update the workorder with review
   # information and update the worker stats. Note
   # that this should be the last update of the workorder
@@ -75,24 +75,21 @@ class WorkordersController < ApplicationController
     @workorder = Workorder.find(params[:id])
 
 
-
     if @workorder.update_attributes(params[:workorder])
       flash[:success] = "Workorder updated"
 
       @worker = Worker.find_by_id(@workorder.worker_id)
 
 
-      # an average
-      puts @worker.update_attributes( :average_workorder_rating => Workorder.where( :worker_id => @worker.id , :state => "Closed" ).average("rating") )
-
-      @worker.update_attributes( :total_workorders_completed => Workorder.where( :worker_id => @worker.id , :state => "Closed" ).count  )
-      #@worker.update_attributes( :average_workorder_rating => 9000.0 )
+      @worker.update_attributes( :average_workorder_rating   => Workorder.where( :worker_id => @worker.id , :state => "Closed", :closed_by_user => true ).average("rating") )
+      @worker.update_attributes( :total_workorders_completed => Workorder.where( :worker_id => @worker.id , :state => "Closed", :closed_by_user => true ).count  )
 
       redirect_to @workorder
 
 
     else
-      render 'edit'
+      flash[:warning] = "Workorder not saved"
+      redirect_to @workorder
     end
 
   end

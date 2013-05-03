@@ -13,6 +13,16 @@ ActiveAdmin.register Worker do
       f.buttons
     end
 
+
+    index do
+      column :id
+      column :name
+      column :email
+      column :phone
+      column :total_workorders_completed
+      column :average_workorder_rating
+    end
+
     show do
         @worker = Worker.find(params[:id])
         @worker_workorders = @worker.workorders.all
