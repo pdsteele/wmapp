@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0820eeb6-99bd-4205-9418-f89fe0184e59" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/workorders_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/workorders_controller.rb" />
     </list>
     <ignored path="wmapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,7 +19,7 @@
     <file path="/show_completed_workorder.html.erb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1366868151714" ignored="false" />
     <file path="/_completed_workorder.html.erb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1367589511657" ignored="false" />
     <file path="/show_completed.html.erb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1366869986452" ignored="false" />
-    <file path="/workorders_controller.rb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1367568729010" ignored="false" />
+    <file path="/workorders_controller.rb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1367592391242" ignored="false" />
     <file path="/application.html.erb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1366904876582" ignored="false" />
     <file path="/show.html.erb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1367032925453" ignored="false" />
     <file path="/worker.rb" changelist="0820eeb6-99bd-4205-9418-f89fe0184e59" time="1367557225442" ignored="false" />
@@ -50,10 +49,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="workorders_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="workorders_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/workorders_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="55" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.0">
+            <state line="88" column="19" selection-start="2337" selection-end="2337" vertical-scroll-proportion="0.63492066">
               <folding />
             </state>
           </provider>
@@ -86,10 +85,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="53" selection-start="827" selection-end="827" vertical-scroll-proportion="0.47619048">
+            <state line="30" column="85" selection-start="1334" selection-end="1334" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -169,11 +168,11 @@
         <option value="$PROJECT_DIR$/app/views/workorders/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/show_workorder_review.html.erb" />
         <option value="$PROJECT_DIR$/app/models/worker.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/workorders_controller.rb" />
         <option value="$PROJECT_DIR$/app/admin/workorders.rb" />
         <option value="$PROJECT_DIR$/app/admin/worklogs.rb" />
         <option value="$PROJECT_DIR$/app/views/workorders/_completed_workorder.html.erb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/workorders_controller.rb" />
       </list>
     </option>
   </component>
@@ -859,23 +858,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/workorders_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="55" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/workorder.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="46" selection-start="640" selection-end="640" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/worklogs.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="23" selection-start="1732" selection-end="1732" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -894,13 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/workorders.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="60" selection-start="5000" selection-end="5000" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/worker.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="69" selection-start="1576" selection-end="1576" vertical-scroll-proportion="0.0">
@@ -910,7 +888,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="53" selection-start="827" selection-end="827" vertical-scroll-proportion="0.47619048">
+        <state line="30" column="85" selection-start="1334" selection-end="1334" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/workorders.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="60" selection-start="5000" selection-end="5000" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/worklogs.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="23" selection-start="1732" selection-end="1732" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/workorders_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="19" selection-start="2337" selection-end="2337" vertical-scroll-proportion="0.63492066">
           <folding />
         </state>
       </provider>

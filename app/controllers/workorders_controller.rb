@@ -88,7 +88,7 @@ class WorkordersController < ApplicationController
 
 
     else
-      flash[:warning] = "Workorder not saved"
+      flash[:error] = "Workorder not saved"
       redirect_to @workorder
     end
 
