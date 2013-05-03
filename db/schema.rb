@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425004744) do
+ActiveRecord::Schema.define(:version => 20130425162437) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,13 +68,15 @@ ActiveRecord::Schema.define(:version => 20130425004744) do
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
   create_table "workers", :force => true do |t|
-    t.string   "name",                             :null => false
-    t.string   "email",                            :null => false
-    t.string   "phone",                            :null => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.string   "crypted_password", :default => "", :null => false
+    t.string   "name",                                       :null => false
+    t.string   "email",                                      :null => false
+    t.string   "phone",                                      :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "crypted_password",           :default => "", :null => false
     t.string   "remember_token"
+    t.integer  "total_workorders_completed"
+    t.float    "average_workorder_rating"
   end
 
   add_index "workers", ["remember_token"], :name => "index_workers_on_remember_token"

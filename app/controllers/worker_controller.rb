@@ -41,6 +41,7 @@ class WorkerController < ApplicationController
     end
   end
 
+
   def show_assigned
     #@worker = Worker.find(params[:id])
     @workorders = current_user.workorders.where(:state => ["Assigned", "Reopened"]) #also shows workorders that were resolved but reopened 

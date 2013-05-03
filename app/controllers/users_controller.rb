@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def show
     #@user = User.find(params[:id])
-    @workorders = current_user.workorders.where( "State != ?", "Closed" ) # don't display closed workorders
+    @workorders = current_user.workorders.where( "State != ?", "Closed" ) # don't display closed workorders under this page
     store_location 
   end
 

@@ -45,11 +45,15 @@
 
 <ol class="workorders">
 <li>
-  <h1>Add New Comments/Updates</h1>
-  <!-- render worklog creation with state inherited from workorder - if worker show option to hide from user -->
-  <!-- display form to resolve workorder if current_user is a worker and the workorder is 'In Progress' state --> 
-  <% @worklog = @workorder.worklogs.new(params[:worklog]) %><br />
-  <%= render 'add_comment' %> 
+  <% if @workorder.state != "Closed" %> <!-- Updates shouldn't be appended to a closed workorder -->
+      <h1>Add New Comments/Updates</h1>
+      <!-- render worklog creation with state inherited from workorder - if worker show option to hide from user -->
+      <!-- display form to resolve workorder if current_user is a worker and the workorder is 'In Progress' state -->
+      <% @worklog = @workorder.worklogs.new(params[:worklog]) %><br />
+      <%= render 'add_comment' %>
+  <% else %>
+    <h1>Workorder Closed</h1>
+  <% end %>
 </li>
 
 
