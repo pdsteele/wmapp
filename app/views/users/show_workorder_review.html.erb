@@ -1,6 +1,10 @@
 
 
 <h2>Please take a moment to provide feedback so that we may better serve you in the future</h2>
+
+<div class="row-fluid">
+
+  <div class="span6 offset5">
 <%= form_for(@workorder, :url => set_review_and_close_workorder_path(@workorder), :method => :put)  do |f| %>
     <!--Need some error checking-->
 
@@ -22,3 +26,6 @@
       <%= f.submit "Submit Review and Close Work Order", class: "btn btn-large btn-primary" %>
     </div>
 <% end %>
+
+</div>
+</div>

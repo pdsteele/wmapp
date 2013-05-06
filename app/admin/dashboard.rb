@@ -73,7 +73,7 @@ ActiveAdmin.register_page "Dashboard" do
             t.column("Number of Workorders In Progress") { |worker| Workorder.where(:worker_id => worker.id, :state => "In Progress").size }
             t.column("Workorders Completed in Last Month") { |worker| Workorder.where(:worker_id => worker.id, :state => "Resolved").size + Workorder.where(:worker_id => worker.id, :state => "Closed").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
             t.column("Workorders Reopened in Last Month") {|worker| Worklog.where(:worker_id => worker.id, :state => "Reopened").find(:all, :conditions => ["created_at > ?", 30.days.ago]).size }
-            t.column("Overall Rating" ){|worker| worker.average_workorder_rating.round(2)}
+            t.column("Overall Rating" ){|worker| worker.average_workorder_rating ? worker.average_workorder_rating.round(2) : "N/A"}
         end #end table
       end #end panel
     end #end column
@@ -107,8 +107,8 @@ ActiveAdmin.register_page "Dashboard" do
           t.column("Worker") { |workorder| workorder.worker ? (link_to workorder.worker.name, admin_worker_path(workorder.worker_id)) : 'NONE' }
           t.column("Building") { |workorder| workorder.building }
           t.column("Room Number") { |workorder| workorder.room }
-          t.column("Description") { |workorder| workorder.description }
-          t.column("Work Completed") { |workorder| workorder.worklogs.where(:state => "Resolved").first.description }
+          t.column("Description") { |workorder| workorder.description ? workorder.description : "-" }
+          t.column("Work Completed") { |workorder| workorder.worklogs.where(:state => "Resolved").first ? workorder.worklogs.where(:state => "Resolved").first.description : "-" }
           t.column("Assignment") { |workorder| link_to "Close Workorder", close_workorder_path(workorder.id) }
         end #end table
       end #end panel

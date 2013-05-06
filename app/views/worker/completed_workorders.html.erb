@@ -1,6 +1,8 @@
 <h1><%= current_user.name %>'s Completed Workorders</h1>
 
-<h1>Your current average workorder rating: <%= current_user.average_workorder_rating.round(2) %></h1>
+<% if !current_user.average_workorder_rating.nil? %>
+    <h1>Your current average workorder rating: <%= current_user.average_workorder_rating.round(2) %></h1>
+<% end %>
 
 
 <div class="row">
